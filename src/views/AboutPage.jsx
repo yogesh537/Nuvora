@@ -1,5 +1,5 @@
 import React from 'react';
-import { ArrowRight, ArrowUpRight, BadgeCheck, Leaf, PackageCheck, Sprout } from 'lucide-react';
+import { ArrowRight, ArrowUpRight, BadgeCheck, Building2, ClipboardCheck, Leaf, PackageCheck, Sprout, UsersRound } from 'lucide-react';
 import { products } from '../data/products';
 
 const companyImage = 'https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=1400&q=85';
@@ -90,6 +90,50 @@ export default function AboutPage({ onExploreProducts, onOpenQuote }) {
               </div>
               <span className="absolute right-3 top-3 font-mono text-[8px] text-white/40 sm:right-4 sm:top-4">01 / {String(products.length).padStart(2, '0')}</span>
             </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="border-y border-[#183126]/15 bg-[#ebe7db]">
+        <div className="mx-auto grid max-w-[1440px] gap-8 px-5 py-12 sm:px-8 sm:py-16 lg:grid-cols-[0.9fr_1.1fr] lg:gap-16 lg:px-12 lg:py-20">
+          <div className="flex flex-col justify-center">
+            <p className="text-[10px] font-black uppercase tracking-[0.18em] text-[#9b7a32]">Company / Nuvaro Agro</p>
+            <h2 className="mt-4 max-w-xl text-4xl font-black leading-[0.94] tracking-[-0.055em] sm:text-5xl">
+              An ingredient partner for businesses that make things.
+            </h2>
+            <p className="mt-5 max-w-xl text-sm leading-7 text-[#59635b]">
+              Nuvaro Agro is an India-based B2B supplier of dehydrated vegetable, spice, fruit and botanical powders. We work with manufacturers and product teams to discuss ingredient fit, intended use and order requirements.
+            </p>
+          </div>
+          <div className="grid border-l border-t border-[#183126]/20 sm:grid-cols-3">
+            {[
+              {
+                icon: Building2,
+                label: 'What we supply',
+                detail: `${products.length} listed ingredients across ${categories.length} product groups.`
+              },
+              {
+                icon: UsersRound,
+                label: 'Who we work with',
+                detail: 'Manufacturers and product teams across food, beverage and botanical applications.'
+              },
+              {
+                icon: ClipboardCheck,
+                label: 'How we work',
+                detail: 'Specifications, packaging, checks and documents are discussed per inquiry.'
+              }
+            ].map(({ icon: Icon, label, detail }, index) => (
+              <article key={label} className={`flex min-h-[190px] flex-col justify-between border-b border-r border-[#183126]/20 bg-[#f4f1e8] p-5 sm:p-6 ${index === 0 ? 'sm:col-span-3 sm:min-h-0 sm:flex-row sm:items-center sm:gap-6' : ''}`}>
+                <div className={`flex items-center justify-between ${index === 0 ? 'sm:gap-6' : ''}`}>
+                  <Icon className="h-5 w-5 text-[#9b7a32]" />
+                  <span className="font-mono text-[9px] text-[#9b7a32]">0{index + 1}</span>
+                </div>
+                <div className={index === 0 ? 'sm:flex-1' : 'mt-8'}>
+                  <h3 className="text-xs font-black uppercase tracking-[0.12em]">{label}</h3>
+                  <p className="mt-2 text-xs leading-5 text-[#657067]">{detail}</p>
+                </div>
+              </article>
+            ))}
           </div>
         </div>
       </section>
