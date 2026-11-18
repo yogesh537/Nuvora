@@ -1,0 +1,542 @@
+export const products = [
+  {
+    id: "onion-powder",
+    name: "Dehydrated Onion Powder",
+    botanicalName: "Allium cepa",
+    category: "Spice Powders",
+    process: "Air dried & Dehydrated",
+    availableProcesses: ["Air dried", "Continuous belt dried"],
+    meshSize: "80 - 100 Mesh",
+    color: "Creamy White to Pale Amber",
+    taste: "Sharp, pungent, authentic sweet-savory onion",
+    moisture: "5.0% Max",
+    ash: "4.5% Max",
+    protein: "10.4%",
+    bulkDensity: "0.48 - 0.58 g/ml",
+    microbiological: {
+      tpc: "< 10,000 CFU/g (Steam Sterilized)",
+      yeastMould: "< 100 CFU/g",
+      eColi: "Absent / 25g",
+      salmonella: "Absent / 25g",
+      coliforms: "< 10 CFU/g"
+    },
+    shelfLife: "24 Months",
+    storage: "Cool, dry ambient storage (<20°C, RH < 60%)",
+    packaging: ["10kg Foil Bag", "25kg Multi-wall Kraft Paper Bag", "25kg Fibre Drum"],
+    moq: "500 kg",
+    leadTime: "5 - 7 Business Days",
+    hsCode: "07122000",
+    certifications: ["ISO 22000", "HACCP", "FSSAI Central", "Halal", "Kosher", "Non-GMO"],
+    featured: true,
+    rating: 4.9,
+    reviewsCount: 1256,
+    pricePerKg: "$3.80",
+    image: "https://images.unsplash.com/photo-1618512496248-a07fe83aa8cb?auto=format&fit=crop&w=800&q=80",
+    rawImage: "https://images.unsplash.com/photo-1508747703725-719777637510?auto=format&fit=crop&w=600&q=80",
+    description: "Export benchmark dehydrated white onion powder processed from freshly harvested Gujarat white onions. Free-flowing, steam-sterilized, and non-caking with robust natural pungency. Ideal for seasoning mixes, bouillons, sauces, and snack dustings.",
+    applications: [
+      "Snack Seasonings, Potato Chips & Savory Coatings",
+      "Instant Soups, Ramen Seasoning & Bouillon Cubes",
+      "Meat Processing, Marinades & Dry Rubs",
+      "Bakery Crackers & Bagel Toppings"
+    ],
+    nutritionPer100g: {
+      energy: "349 kcal",
+      carbohydrates: "79.1 g",
+      protein: "10.4 g",
+      fat: "1.0 g",
+      dietaryFiber: "15.2 g",
+      calcium: "384 mg"
+    }
+  },
+  {
+    id: "ginger-powder",
+    name: "Ginger Powder",
+    botanicalName: "Zingiber officinale",
+    category: "Spice Powders",
+    process: "Air dried & Micronized",
+    availableProcesses: ["Air dried", "Superfine Micronized", "Freeze dried"],
+    meshSize: "80 - 100 Mesh Superfine",
+    color: "Warm Golden Tan",
+    taste: "Sharp, spicy, intensely aromatic with gingerol bite",
+    moisture: "6.5% Max",
+    ash: "5.5% Max",
+    protein: "8.9%",
+    bulkDensity: "0.45 - 0.55 g/ml",
+    microbiological: {
+      tpc: "< 15,000 CFU/g",
+      yeastMould: "< 100 CFU/g",
+      eColi: "Absent / 25g",
+      salmonella: "Absent / 25g",
+      coliforms: "Negative"
+    },
+    shelfLife: "24 Months",
+    storage: "Airtight containers in cool, dry climate away from humidity",
+    packaging: ["5kg Foil Bag", "10kg Carton", "25kg Paper Bag with PE Liner"],
+    moq: "250 kg",
+    leadTime: "7 Business Days",
+    hsCode: "09101110",
+    certifications: ["FSSAI", "ISO 22000", "HACCP", "Halal", "Kosher", "Organic Certified"],
+    featured: true,
+    rating: 5.0,
+    reviewsCount: 982,
+    pricePerKg: "$5.20",
+    image: "https://images.unsplash.com/photo-1615485290382-441e4d049cb5?auto=format&fit=crop&w=800&q=80",
+    rawImage: "https://images.unsplash.com/photo-1599940824399-b87987ceb72a?auto=format&fit=crop&w=600&q=80",
+    description: "Finely milled pure ginger powder processed from sun-dried, peeled ginger roots. Standardized active gingerols (min 1.5%) deliver superior functional benefits for digestive supplements, functional beverages, gingerbread baking, and chai blends.",
+    applications: [
+      "Herbal Teas, Chai Premixes & Functional Lattes",
+      "Nutraceutical Digestive & Immunity Tablets",
+      "Bakery Cookies, Confectionery & Gingerbread",
+      "Asian Culinary Sauces & Curry Premixes"
+    ],
+    nutritionPer100g: {
+      energy: "335 kcal",
+      carbohydrates: "71.6 g",
+      protein: "8.9 g",
+      fat: "4.2 g",
+      gingerols: "> 1.5%",
+      essentialOil: "> 1.8% v/w"
+    }
+  },
+  {
+    id: "garlic-powder",
+    name: "Dehydrated Garlic Powder",
+    botanicalName: "Allium sativum",
+    category: "Spice Powders",
+    process: "Air dried & Steam Treated",
+    availableProcesses: ["Air dried", "Superfine Micronized"],
+    meshSize: "80 - 100 Mesh",
+    color: "Creamy White to Ivory",
+    taste: "Intense, savory, authentic allicin-rich garlic bite",
+    moisture: "5.5% Max",
+    ash: "4.0% Max",
+    protein: "16.8%",
+    bulkDensity: "0.52 - 0.62 g/ml",
+    microbiological: {
+      tpc: "< 10,000 CFU/g",
+      yeastMould: "< 100 CFU/g",
+      eColi: "Absent / 25g",
+      salmonella: "Absent / 25g",
+      coliforms: "< 10 CFU/g"
+    },
+    shelfLife: "24 Months",
+    storage: "Moisture-proof sealed drums in climate-controlled storage (<18°C)",
+    packaging: ["10kg Foil Bag", "25kg Multi-wall Paper Bag", "25kg Fibre Drum"],
+    moq: "500 kg",
+    leadTime: "5 - 7 Business Days",
+    hsCode: "07129020",
+    certifications: ["FSSAI", "ISO 22000", "HACCP", "Halal", "Kosher", "US FDA Reg"],
+    featured: true,
+    rating: 4.9,
+    reviewsCount: 1150,
+    pricePerKg: "$4.10",
+    image: "https://images.unsplash.com/photo-1540148426945-6cf22a6b2383?auto=format&fit=crop&w=800&q=80",
+    rawImage: "https://images.unsplash.com/photo-1540148426945-6cf22a6b2383?auto=format&fit=crop&w=600&q=80",
+    description: "Steam-sterilized garlic powder made from mature whole cloves. High allicin potential (min 4,500 ppm) with zero chemical additives or irradiation. Essential for commercial snack seasonings, pizza sauces, and meat processing.",
+    applications: [
+      "Meat Processing, Sausages, Patties & Jerky",
+      "Garlic Bread Premixes, Pizza Sauces & Dips",
+      "Snack Seasonings & Fast Food Batters",
+      "Nutraceutical Garlic Supplements"
+    ],
+    nutritionPer100g: {
+      energy: "331 kcal",
+      carbohydrates: "72.7 g",
+      protein: "16.8 g",
+      fat: "0.7 g",
+      allicinPotential: "4500 ppm min",
+      dietaryFiber: "9.0 g"
+    }
+  },
+  {
+    id: "beetroot-powder",
+    name: "Beetroot Powder",
+    botanicalName: "Beta vulgaris",
+    category: "Vegetable Powders",
+    process: "Spray dried (Carrier-Free Option)",
+    availableProcesses: ["Spray dried", "Freeze dried", "Air dried"],
+    meshSize: "80 Mesh Free-Flowing",
+    color: "Deep Ruby Red / Carmine",
+    taste: "Sweet, earthy natural beet flavor",
+    moisture: "4.5% Max",
+    ash: "6.0% Max",
+    protein: "11.5%",
+    bulkDensity: "0.50 - 0.62 g/ml",
+    microbiological: {
+      tpc: "< 5,000 CFU/g",
+      yeastMould: "< 50 CFU/g",
+      eColi: "Absent / 25g",
+      salmonella: "Absent / 25g",
+      coliforms: "Negative"
+    },
+    shelfLife: "24 Months",
+    storage: "Airtight moisture-barrier packaging (<18°C)",
+    packaging: ["5kg Foil Bag", "10kg Carton", "20kg/25kg Fibre Drum"],
+    moq: "200 kg",
+    leadTime: "5 - 7 Business Days",
+    hsCode: "07129090",
+    certifications: ["FSSAI", "ISO 22000", "HACCP", "Halal", "Kosher", "Non-GMO"],
+    featured: true,
+    rating: 5.0,
+    reviewsCount: 875,
+    pricePerKg: "$5.80",
+    image: "https://images.unsplash.com/photo-1593105544559-ecb03bf76f82?auto=format&fit=crop&w=800&q=80",
+    rawImage: "https://images.unsplash.com/photo-1526470608268-f674ce90ebd4?auto=format&fit=crop&w=600&q=80",
+    description: "Standardized betanin and natural dietary nitrates (min 1.8%). Free-flowing, 100% water soluble spray-dried beetroot powder. The industry benchmark replacement for synthetic Red #40 and Carmine.",
+    applications: [
+      "Pre-Workout Nitric Oxide Formulations",
+      "Clean-Label Red Dye for Gummy Candy & Bakery",
+      "Plant-Based Meat Burger Patty Coloration",
+      "Functional Beverage Smoothies & Lattes"
+    ],
+    nutritionPer100g: {
+      energy: "338 kcal",
+      carbohydrates: "70.5 g",
+      protein: "11.5 g",
+      fat: "0.9 g",
+      dietaryNitrates: "> 1.8%",
+      potassium: "2850 mg"
+    }
+  },
+  {
+    id: "moringa-powder",
+    name: "Moringa Leaf Powder",
+    botanicalName: "Moringa oleifera",
+    category: "Herbal & Botanical",
+    process: "Shade dried & Superfine Micronized",
+    availableProcesses: ["Shade dried", "Low-temperature vacuum dried"],
+    meshSize: "100 Mesh Superfine",
+    color: "Deep Olive Emerald Green",
+    taste: "Mildly grassy, clean herbal earthy flavor",
+    moisture: "6.0% Max",
+    ash: "9.0% Max",
+    protein: "28.5%",
+    bulkDensity: "0.38 - 0.48 g/ml",
+    microbiological: {
+      tpc: "< 10,000 CFU/g",
+      yeastMould: "< 100 CFU/g",
+      eColi: "Absent / 25g",
+      salmonella: "Absent / 25g",
+      coliforms: "Negative"
+    },
+    shelfLife: "24 Months",
+    storage: "Dry, cool, dark climate. Light and oxygen sensitive.",
+    packaging: ["10kg Foil Pouches", "20kg/25kg Fibre Drums with Poly Liner"],
+    moq: "200 kg",
+    leadTime: "5 Business Days",
+    hsCode: "12119099",
+    certifications: ["Organic NPOP", "USDA NOP", "ISO 22000", "HACCP", "Halal", "Kosher"],
+    featured: true,
+    rating: 5.0,
+    reviewsCount: 653,
+    pricePerKg: "$6.20",
+    image: "https://images.unsplash.com/photo-1546868871-7041f2a55e12?auto=format&fit=crop&w=800&q=80",
+    rawImage: "https://images.unsplash.com/photo-1546868871-7041f2a55e12?auto=format&fit=crop&w=600&q=80",
+    description: "Certified Organic Indian Moringa leaves ozone-washed and shade-dried below 45°C. Rich in 9 essential amino acids, iron, and plant protein (28.5%). Top-selling functional green powder exported worldwide.",
+    applications: [
+      "Supergreen Drink Blends & Wellness Powders",
+      "Nutraceutical Capsules, Tablets & Gummies",
+      "Functional Herbal Teas & Infusions",
+      "Plant-Based Meal Replacements"
+    ],
+    nutritionPer100g: {
+      energy: "329 kcal",
+      carbohydrates: "38.2 g",
+      protein: "28.5 g",
+      fat: "5.2 g",
+      iron: "28.2 mg",
+      calcium: "2050 mg"
+    }
+  },
+  {
+    id: "rose-petal-powder",
+    name: "Rose Petal Powder",
+    botanicalName: "Rosa damascena",
+    category: "Herbal & Botanical",
+    process: "Shade dried & Superfine Milled",
+    availableProcesses: ["Shade dried", "Low-temperature vacuum dried"],
+    meshSize: "80 - 100 Mesh",
+    color: "Soft Pink to Rich Dusty Rose",
+    taste: "Fragrant, floral, mildly astringent and sweet",
+    moisture: "6.5% Max",
+    ash: "6.0% Max",
+    protein: "4.5%",
+    bulkDensity: "0.35 - 0.45 g/ml",
+    microbiological: {
+      tpc: "< 10,000 CFU/g",
+      yeastMould: "< 100 CFU/g",
+      eColi: "Absent / 25g",
+      salmonella: "Absent / 25g",
+      coliforms: "Negative"
+    },
+    shelfLife: "24 Months",
+    storage: "Airtight barrier containers away from light and humidity",
+    packaging: ["5kg Foil Bag", "10kg Carton", "20kg Fibre Drum"],
+    moq: "100 kg",
+    leadTime: "7 Business Days",
+    hsCode: "12119029",
+    certifications: ["FSSAI Central", "ISO 22000", "HACCP", "Halal", "Kosher"],
+    featured: true,
+    rating: 4.9,
+    reviewsCount: 742,
+    pricePerKg: "$8.50",
+    image: "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=800&q=80",
+    rawImage: "https://images.unsplash.com/photo-1559563458-527698bf5295?auto=format&fit=crop&w=600&q=80",
+    description: "Pure edible and cosmetic-grade Indian Damask Rose petals gently shade-dried. Preserves natural essential rose oils, polyphenols, and delicate floral aroma. Popular for luxury cosmetics, herbal teas, gourmet confectioneries, and ayurvedic skin formulations.",
+    applications: [
+      "Natural Cosmetic Clay Face Masks & Herbal Scrubs",
+      "Luxury Herbal Teas & Botanical Infusions",
+      "Gourmet Bakery, Macaron & Chocolate Fillings",
+      "Ayurvedic Skin Health & Anti-Aging Formulations"
+    ],
+    nutritionPer100g: {
+      energy: "295 kcal",
+      carbohydrates: "64.0 g",
+      protein: "4.5 g",
+      fat: "1.8 g",
+      vitaminC: "145 mg",
+      anthocyanins: "High Natural"
+    }
+  },
+  {
+    id: "jackfruit-powder",
+    name: "Green Jackfruit Powder",
+    botanicalName: "Artocarpus heterophyllus",
+    category: "Exotic Fruit",
+    process: "Controlled Air dried & Milling",
+    availableProcesses: ["Air dried", "Continuous belt dried"],
+    meshSize: "80 Mesh Flour",
+    color: "Creamy Pale Beige / Off-White",
+    taste: "Neutral, subtle earthy aroma with zero sweetness",
+    moisture: "5.5% Max",
+    ash: "4.2% Max",
+    protein: "6.8%",
+    bulkDensity: "0.55 - 0.65 g/ml",
+    microbiological: {
+      tpc: "< 10,000 CFU/g",
+      yeastMould: "< 100 CFU/g",
+      eColi: "Absent / 25g",
+      salmonella: "Absent / 25g",
+      coliforms: "< 10 CFU/g"
+    },
+    shelfLife: "24 Months",
+    storage: "Moisture-barrier bags in cool, dry warehouse",
+    packaging: ["10kg Poly-lined Carton", "25kg Multi-wall Paper Bag", "25kg Drum"],
+    moq: "300 kg",
+    leadTime: "7 - 10 Business Days",
+    hsCode: "08039010",
+    certifications: ["FSSAI Central", "ISO 22000", "HACCP", "Halal", "Kosher", "Gluten-Free"],
+    featured: true,
+    rating: 4.9,
+    reviewsCount: 890,
+    pricePerKg: "$4.90",
+    image: "https://images.unsplash.com/photo-1610832958506-aa56368176cf?auto=format&fit=crop&w=800&q=80",
+    rawImage: "https://images.unsplash.com/photo-1610832958506-aa56368176cf?auto=format&fit=crop&w=600&q=80",
+    description: "Raw, mature green jackfruit dehydrated before starch turns into sugar. Clinically documented low glycemic index (GI), high soluble fiber, and resistant starch. Revolutionizing diabetic-friendly foods, flour blending, and vegan binding.",
+    applications: [
+      "Low-GI Diabetic Friendly Roti & Bread Flour Fortification",
+      "Gluten-Free Binders for Plant-Based Meat & Patties",
+      "Prebiotic Dietary Fiber Supplements",
+      "Functional Bakery, Pancakes & Pasta"
+    ],
+    nutritionPer100g: {
+      energy: "318 kcal",
+      carbohydrates: "72.4 g",
+      protein: "6.8 g",
+      fat: "0.6 g",
+      dietaryFiber: "22.5 g",
+      resistantStarch: "18.2 g"
+    }
+  },
+  {
+    id: "spinach-powder",
+    name: "Spinach Powder",
+    botanicalName: "Spinacia oleracea",
+    category: "Vegetable Powders",
+    process: "Controlled Thermal Air dried",
+    availableProcesses: ["Air dried", "Spray dried"],
+    meshSize: "80 Mesh",
+    color: "Deep Vibrant Green",
+    taste: "Characteristic mild, earthy spinach flavor",
+    moisture: "5.0% Max",
+    ash: "8.5% Max",
+    protein: "26.4%",
+    bulkDensity: "0.45 - 0.55 g/ml",
+    microbiological: {
+      tpc: "< 10,000 CFU/g",
+      yeastMould: "< 100 CFU/g",
+      eColi: "Absent / 25g",
+      salmonella: "Absent / 25g",
+      coliforms: "< 10 CFU/g"
+    },
+    shelfLife: "24 Months",
+    storage: "Cool (<20°C), dry room away from direct light",
+    packaging: ["5kg Foil Bag", "10kg Corrugated Carton", "25kg Fibre Drum"],
+    moq: "200 kg",
+    leadTime: "5 - 7 Business Days",
+    hsCode: "07129090",
+    certifications: ["FSSAI", "ISO 22000", "HACCP", "Halal", "Kosher", "Organic Certified"],
+    featured: true,
+    rating: 4.8,
+    reviewsCount: 1042,
+    pricePerKg: "$4.60",
+    image: "https://images.unsplash.com/photo-1576045057995-568f588f82fb?auto=format&fit=crop&w=800&q=80",
+    rawImage: "https://images.unsplash.com/photo-1576045057995-568f588f82fb?auto=format&fit=crop&w=600&q=80",
+    description: "Farm-contracted fresh spinach dehydrated to preserve natural chlorophyll, plant iron, and lutein. Free from artificial colors. The preferred clean-label green dye and nutrient fortifier for commercial noodles, health snacks, and green blends.",
+    applications: [
+      "Natural Green Food Coloring (Clean Label)",
+      "Instant Noodles, Extruded Snacks & Pasta",
+      "Green Superfood Beverage Blends",
+      "Functional Bakery & Healthy Soups"
+    ],
+    nutritionPer100g: {
+      energy: "310 kcal",
+      carbohydrates: "38.2 g",
+      protein: "26.4 g",
+      fat: "3.1 g",
+      dietaryFiber: "22.0 g",
+      iron: "28.5 mg"
+    }
+  },
+  {
+    id: "green-chilli-powder",
+    name: "Green Chilli Powder",
+    botanicalName: "Capsicum annuum",
+    category: "Spice Powders",
+    process: "Air dried & Cold Milled",
+    availableProcesses: ["Air dried", "Cryogenic ground"],
+    meshSize: "60 - 80 Mesh",
+    color: "Bright Leafy Green",
+    taste: "Sharp, fiery, fresh authentic green chilli heat",
+    moisture: "6.0% Max",
+    ash: "6.8% Max",
+    protein: "12.2%",
+    bulkDensity: "0.42 - 0.52 g/ml",
+    microbiological: {
+      tpc: "< 15,000 CFU/g",
+      yeastMould: "< 100 CFU/g",
+      eColi: "Absent / 25g",
+      salmonella: "Absent / 25g",
+      coliforms: "Negative"
+    },
+    shelfLife: "18 Months",
+    storage: "Cool, dry, light-proof barrier storage (<18°C)",
+    packaging: ["10kg Foil Bag", "25kg Heavy Duty Fibre Drum"],
+    moq: "250 kg",
+    leadTime: "7 Business Days",
+    hsCode: "09042211",
+    certifications: ["FSSAI Central", "ISO 22000", "HACCP", "Halal", "Kosher"],
+    featured: true,
+    rating: 4.9,
+    reviewsCount: 618,
+    pricePerKg: "$5.60",
+    image: "https://images.unsplash.com/photo-1588252303782-cb80119abd6d?auto=format&fit=crop&w=800&q=80",
+    rawImage: "https://images.unsplash.com/photo-1588252303782-cb80119abd6d?auto=format&fit=crop&w=600&q=80",
+    description: "Processed from mature Indian green chillies with standardized natural heat (25,000 - 40,000 SHU). Cold-milled to retain the signature fresh, tangy aroma of raw green chillies with zero red oxidation. Essential for crisp snack dustings and curries.",
+    applications: [
+      "Extruded Snack Seasonings, Chips & Namkeen",
+      "Instant Curry Premixes & Masala Blends",
+      "Dry Chutney Powders & Ready-to-Eat Sauces",
+      "Institutional HORECA & Canned Food Processing"
+    ],
+    nutritionPer100g: {
+      energy: "324 kcal",
+      carbohydrates: "56.8 g",
+      protein: "12.2 g",
+      fat: "6.5 g",
+      capsaicinHeat: "25,000 - 40,000 SHU",
+      vitaminC: "185 mg"
+    }
+  }
+];
+
+export const categoriesList = [
+  {
+    id: "vegetable-powders",
+    name: "Vegetable Powders",
+    count: 24,
+    description: "Nutrient-dense dehydrated vegetables for soups, seasonings, and natural clean-label colorings.",
+    image: "https://images.unsplash.com/photo-1576045057995-568f588f82fb?auto=format&fit=crop&w=400&q=80",
+    skus: ["Spinach", "Beetroot", "Onion", "Tomato"]
+  },
+  {
+    id: "spice-powders",
+    name: "Spice Powders",
+    count: 18,
+    description: "Steam-sterilized spices with certified essential oils and low microbial bio-burden.",
+    image: "https://images.unsplash.com/photo-1615485500704-8e990f9900f7?auto=format&fit=crop&w=400&q=80",
+    skus: ["Ginger", "Garlic", "Green Chilli", "Turmeric"]
+  },
+  {
+    id: "herbal-powders",
+    name: "Herbal & Botanical",
+    count: 22,
+    description: "Standardized botanical powders for nutraceutical capsules, herbal teas, and cosmetic grade formulations.",
+    image: "https://images.unsplash.com/photo-1546868871-7041f2a55e12?auto=format&fit=crop&w=400&q=80",
+    skus: ["Moringa", "Rose Petal", "Amla", "Ashwagandha"]
+  },
+  {
+    id: "exotic-fruit",
+    name: "Exotic Fruit & Low-GI",
+    count: 14,
+    description: "Functional spray-dried fruits and raw low-GI green jackfruit resistant starch.",
+    image: "https://images.unsplash.com/photo-1610832958506-aa56368176cf?auto=format&fit=crop&w=400&q=80",
+    skus: ["Jackfruit Powder", "Alphonso Mango", "Banana"]
+  },
+  {
+    id: "superfood-blends",
+    name: "Superfood Blends",
+    count: 12,
+    description: "Custom turnkey formulations combining greens, roots, and botanicals.",
+    image: "https://images.unsplash.com/photo-1509358271058-acd22cc93898?auto=format&fit=crop&w=400&q=80",
+    skus: ["Daily Greens", "Triple Antioxidant", "Immunity 7x"]
+  },
+  {
+    id: "organic-line",
+    name: "Organic Line (NPOP)",
+    count: 16,
+    description: "100% certified organic contracted agricultural supply with residue test dossiers.",
+    image: "https://images.unsplash.com/photo-1546868871-7041f2a55e12?auto=format&fit=crop&w=400&q=80",
+    skus: ["Organic Moringa", "Organic Ginger", "Organic Turmeric"]
+  },
+  {
+    id: "custom-formulations",
+    name: "Custom Specs",
+    count: "On Demand",
+    description: "Custom mesh milling (60-120 mesh), carrier-free drying, and toll processing.",
+    image: "https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=400&q=80",
+    skus: ["Private Label", "Maltodextrin-Free", "Micronized"]
+  },
+  {
+    id: "sample-kits",
+    name: "Sample Lab Kits",
+    count: "Free",
+    description: "Free 100g laboratory sample packages with batch COA for R&D evaluation.",
+    image: "https://images.unsplash.com/photo-1556228720-195a672e8a03?auto=format&fit=crop&w=400&q=80",
+    skus: ["100g Lab Packs", "DHL Express", "Free Testing"]
+  }
+];
+
+export const certificationsData = [
+  { code: "ISO 22000:2018", title: "Food Safety Management System", issuer: "TÜV SÜD Certified", validity: "Valid through 2027", scope: "Processing & Export of Dehydrated Powders", badge: "ISO 22000" },
+  { code: "HACCP", title: "Hazard Analysis Critical Control Point", issuer: "SGS International", validity: "Annual Audit Compliance", scope: "Critical safety monitoring at blanching, drying, metal detection and packing", badge: "HACCP Certified" },
+  { code: "FSSAI Central License", title: "Food Safety and Standards Authority of India", issuer: "Ministry of Health & Family Welfare", validity: "Lic. No. 10020021008942", scope: "Manufacturing, Processing & Export License", badge: "FSSAI Registered" },
+  { code: "US FDA Registered", title: "US Food and Drug Administration", issuer: "FDA Facility Registration", validity: "Registration No. 19482019482", scope: "Bioterrorism Act and FSMA compliant for direct exports to USA", badge: "US FDA" },
+  { code: "Halal Certification", title: "Halal Trust International", issuer: "JAKIM & MUI Recognized", validity: "Certified Annually", scope: "100% Plant-origin, alcohol-free and contamination-free processing", badge: "Halal Certified" },
+  { code: "Kosher Certified", title: "Star-K Kosher / OU Equivalent", issuer: "Global Kosher Rabbinical Council", validity: "Pareve Certified", scope: "Approved for Kosher food processing worldwide", badge: "Kosher Pareve" },
+  { code: "Organic Certification", title: "NPOP & USDA NOP Equivalency", issuer: "OneCert International", validity: "Organic Certified Farming & Processing", scope: "Chemical-free, pesticide-free contracted organic farms", badge: "Organic Certified" },
+  { code: "GMP Compliance", title: "Good Manufacturing Practices", issuer: "WHO-GMP Aligned", validity: "Class 100,000 Cleanroom Packaging", scope: "Sterility standards for food, nutraceutical and cosmetic grade powders", badge: "GMP Certified" }
+];
+
+export const clientTestimonials = [
+  { id: 1, client: "Dr. Klaus Weber", role: "Head of Ingredient Sourcing", company: "VitaNova Pharma GmbH", country: "Frankfurt, Germany", type: "Nutraceutical Manufacturer", rating: 5, quote: "Nuvaro Agro supplies our European plants with over 120 MT of Moringa and Beetroot powder. Their batch COAs match Eurofins third-party laboratory verification every single time." },
+  { id: 2, client: "Sarah Jenkins", role: "VP of Product Development", company: "PureEarth Organics LLC", country: "Chicago, USA", type: "Clean-Label Food Brand", rating: 5, quote: "Their green jackfruit powder and dehydrated onion/garlic are top tier. High allicin potential, low moisture (<5%), and nitrogen-flushed barrier bags guarantee 24-month stability." },
+  { id: 3, client: "Tariq Al-Mansoor", role: "Procurement Director", company: "Al-Futtaim Food Industries", country: "Dubai, UAE", type: "Snack & Seasoning Processor", rating: 5, quote: "Their green chilli powder and rose petal powder have superior aroma retention and consistent mesh size. Ocean shipments via JNPT are always strictly on schedule." }
+];
+
+export const blogPostsData = [
+  { id: 1, title: "Green Jackfruit Powder: The Low-GI Flour Replacement Revolution", slug: "jackfruit-powder-low-gi-functional-flour", category: "Functional Nutrition", date: "November 2026", readTime: "5 min read", author: "Dr. Rajeshwar Patil", image: "https://images.unsplash.com/photo-1610832958506-aa56368176cf?auto=format&fit=crop&w=600&q=80", excerpt: "How dehydrated raw jackfruit powder provides clinically documented resistant starch, glycemic management, and gluten-free binding properties for commercial food formulators." },
+  { id: 2, title: "Rose Petal Powder in Gourmet Foods & Cosmeceuticals", slug: "rose-petal-powder-food-cosmetics-guide", category: "Botanical Extracts", date: "November 2026", readTime: "6 min read", author: "Ananya Sharma, QA Director", image: "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=600&q=80", excerpt: "Extracting pure Rosa Damascena active polyphenols through controlled shade dehydration for luxury food flavoring, macaron glazes, and skin formulations." },
+  { id: 3, title: "Steam Sterilization vs ETO for Exporting Onion & Garlic Powders", slug: "steam-sterilization-vs-eto-spices", category: "Quality Assurance", date: "October 2026", readTime: "7 min read", author: "Vikram Singhania", image: "https://images.unsplash.com/photo-1540148426945-6cf22a6b2383?auto=format&fit=crop&w=600&q=80", excerpt: "Navigating EU and US FDA pesticide and microbial limits with chemical-free steam sterilization technology." }
+];
