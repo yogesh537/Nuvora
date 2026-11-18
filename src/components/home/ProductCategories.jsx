@@ -1,21 +1,33 @@
 import React from 'react';
-import { categoriesList } from '../../data/products';
-import { ArrowRight, Sparkles, Layers, Check } from 'lucide-react';
+import { products } from '../../data/products';
+import { ArrowRight } from 'lucide-react';
 
 export default function ProductCategories({ onSelectCategory }) {
+  const categoriesList = [...new Set(products.map((product) => product.category))].map((name) => {
+    const categoryProducts = products.filter((product) => product.category === name);
+    return {
+      id: name,
+      name,
+      count: categoryProducts.length,
+      image: categoryProducts[0].image,
+      description: `Explore ${name.toLowerCase()} in the current ingredient range.`,
+      samples: categoryProducts.map((product) => product.name)
+    };
+  });
+
   return (
     <section className="py-16 md:py-24 bg-[#F5F1E6]/50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6">
         {/* Section Heading */}
         <div className="text-center max-w-2xl mx-auto mb-12">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-100 text-[#1F4D36] text-xs font-bold uppercase tracking-wider mb-2">
-            Broad Botanical Portfolio
+            Ingredient range
           </div>
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-[#1F4D36] tracking-tight">
-            Comprehensive Product Categories
+            Browse by product group
           </h2>
           <p className="text-stone-600 text-sm sm:text-base mt-2">
-            Manufactured from single-origin, traceable raw produce with controlled dehydration technologies.
+            Review the listed products and example applications, then share a brief to discuss your requirements.
           </p>
         </div>
 
@@ -75,7 +87,7 @@ export default function ProductCategories({ onSelectCategory }) {
 
               {/* Action Strip */}
               <div className="px-5 py-3 bg-stone-50 border-t border-stone-100 flex items-center justify-between text-xs font-semibold text-[#1F4D36] group-hover:text-[#C9972B] group-hover:bg-[#1F4D36]/5 transition-colors">
-                <span>Explore Specifications</span>
+                <span>Explore ingredients</span>
                 <ArrowRight className="w-4 h-4 transform group-hover:translate-x-1 transition-transform" />
               </div>
             </div>

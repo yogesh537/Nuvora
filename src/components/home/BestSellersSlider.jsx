@@ -40,7 +40,7 @@ export default function BestSellersSlider({ products, onSelectProduct, onOpenQui
               BEST SELLERS
             </h2>
             <p className="text-xs sm:text-sm text-stone-500 mt-1">
-              Hand-harvested, steam-sterilized export dehydrated powders trusted by 250+ food & supplement brands
+              A selection of vegetable, fruit, spice and botanical powders for commercial applications
             </p>
           </div>
 

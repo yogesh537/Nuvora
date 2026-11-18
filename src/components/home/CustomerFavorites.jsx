@@ -54,7 +54,7 @@ const allPowders = [
     stars: 4.8,
     reviews: 1420,
     image: 'https://images.unsplash.com/photo-1546868871-7041f2a55e12?auto=format&fit=crop&w=400&q=80',
-    badge: 'Organic',
+    badge: 'Botanical',
     badgeColor: 'bg-green-600',
     waMsg: 'Hello, I want bulk pricing for Moringa Powder from Nuvaro Agro.',
   },
@@ -120,7 +120,7 @@ export default function CustomerFavorites({ onSelectProduct }) {
                   </div>
                   <div className="text-xs font-bold text-stone-800 mb-3">{p.price}</div>
                   <button
-                    onClick={openQuoteModal}
+                    onClick={() => openQuoteModal(p)}
                     className="w-full bg-[#c8922b] hover:bg-[#b07d22] text-white text-[10px] font-bold py-2 rounded-lg transition-colors mt-auto"
                   >
                     Request Quote

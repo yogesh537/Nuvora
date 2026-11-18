@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useLeads } from '../context/LeadContext';
 import { useCompare } from '../context/CompareContext';
+import { products } from '../data/products';
 import { Menu, X, ChevronDown } from 'lucide-react';
 
 export default function Navbar({ currentView, setCurrentView, onSelectCategory }) {
@@ -26,13 +27,14 @@ export default function Navbar({ currentView, setCurrentView, onSelectCategory }
   const navLinks = [
     { label: 'Home', view: 'home' },
     { label: 'Products', view: 'products', hasDropdown: true },
-    { label: 'Manufacturing', view: 'manufacturing' },
-    { label: 'Quality & Certs', view: 'quality' },
+    { label: 'About Us', view: 'about' },
+    { label: 'Industries', view: 'industries' },
+    { label: 'Quality Assurance', view: 'quality' },
     { label: 'Private Label', view: 'private-label' },
     { label: 'Blog', view: 'blog' },
   ];
 
-  const categories = ['Vegetable Powders','Spice Powders','Herbal & Botanical','Exotic Fruit','Superfood Blends','Custom Formulations'];
+  const categories = [...new Set(products.map((product) => product.category))];
 
   return (
     <header className={`sticky top-0 z-50 w-full border-b border-stone-100 bg-white/95 backdrop-blur-md transition-shadow duration-300 ${isScrolled ? 'shadow-md shadow-stone-900/5' : 'shadow-sm'}`}>
@@ -94,7 +96,7 @@ export default function Navbar({ currentView, setCurrentView, onSelectCategory }
             className="hidden rounded-lg border border-stone-200 px-3.5 py-2 text-xs font-semibold text-stone-600 transition-colors hover:bg-stone-50 xl:block">
             Admin
           </button>
-          <button onClick={openQuoteModal}
+          <button onClick={() => openQuoteModal()}
             className="rounded-lg bg-[#1F4D36] px-2.5 py-2.5 text-[10px] font-semibold text-white shadow-sm transition-colors hover:bg-[#193e2c] sm:px-5 sm:text-xs">
             <span className="sm:hidden">Get a quote</span>
             <span className="hidden sm:inline">Request a quote</span>

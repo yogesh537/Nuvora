@@ -19,11 +19,11 @@ const featuredProducts = [
   },
   {
     id: 'moringa-powder',
-    badge: 'Organic',
+    badge: 'Botanical',
     badgeColor: 'bg-green-600',
     name: 'Moringa Leaf Powder',
     botanicalName: 'Moringa oleifera',
-    desc: 'NPOP certified organic shade-dried moringa superfine powder. 28% plant protein.',
+    desc: 'Shade-dried moringa superfine powder for food, beverage and wellness applications.',
     price: '$4.75 / kg',
     moq: 'MOQ: 100 kg',
     rating: 4.8,

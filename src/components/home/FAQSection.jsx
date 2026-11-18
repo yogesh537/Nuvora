@@ -4,27 +4,27 @@ import { Plus, Minus } from 'lucide-react';
 const faqs = [
   {
     q: "What is your minimum order quantity (MOQ)?",
-    a: "Our standard export MOQ is 100 kg to 250 kg per powder line for initial commercial trial orders. For contracted annual buyers, we supply in full container loads (FCL 10 MT to 20 MT) with scheduled staggered dispatches."
+    a: "Minimum quantities vary by product, packaging and production requirements. The current product MOQ is shared during inquiry, and custom runs are discussed separately."
   },
   {
     q: "How long does delivery take?",
-    a: "Standard export batch production takes 7 - 10 business days. Ocean freight shipments depart weekly from Nhava Sheva (JNPT) and Mundra ports (transit 14-22 days to EU/USA). Express lab sample pouches arrive via DHL within 3 - 5 days."
+    a: "Production and transit timing depend on the product, order size and destination. The estimated schedule is confirmed with your quotation."
   },
   {
     q: "Do you provide regulatory & marketing support?",
-    a: "Yes. Every shipment includes batch-specific Certificate of Analysis (COA), Technical Data Sheet (TDS), Material Safety Data Sheet (MSDS), Phytosanitary certificate, Non-GMO declaration, and heavy metal & pesticide test reports."
+    a: "The facility holds an FSSAI license. Product specifications, batch documents and any additional tests are discussed and confirmed for each order."
   },
   {
     q: "Do you offer private labeling and custom mesh?",
-    a: "Absolutely. We specialize in custom particle milling from 60 mesh to superfine 120 mesh, custom carrier ratios (including 100% carrier-free options), and complete private label retail packaging (stand-up pouches, jars, sachets)."
+    a: "Particle size, carrier preferences and retail packaging can be discussed in your brief. Available options are confirmed against product feasibility and order requirements."
   },
   {
-    q: "Can I get free samples before placing a bulk order?",
-    a: "Yes, we dispatch 100g free laboratory samples for verified R&D, food science, and formulation teams worldwide. The sample arrives with complete analytical batch test results."
+    q: "Can I request a sample before placing a bulk order?",
+    a: "Sample availability, quantity, shipping and accompanying documents are confirmed when you submit a request."
   },
   {
     q: "What payment methods and terms do you accept?",
-    a: "We accept International Wire Transfer (T/T), Letter of Credit (L/C at sight), and standard B2B trade payment terms (30% Advance T/T and 70% balance against Bill of Lading copy)."
+    a: "Payment terms are provided with the quotation and depend on the order and destination. Please include your preferred terms in your inquiry."
   }
 ];
 

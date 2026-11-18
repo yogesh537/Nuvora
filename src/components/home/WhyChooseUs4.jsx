@@ -8,7 +8,7 @@ const reasons = [
       </svg>
     ),
     title: 'Premium Quality',
-    sub: 'Organic Products',
+    sub: 'Botanical Products',
     desc: 'Farm-sourced raw materials with stringent quality checks at every stage of processing.',
   },
   {
@@ -19,7 +19,7 @@ const reasons = [
     ),
     title: 'Sustainably',
     sub: 'Sourced',
-    desc: 'Ethically sourced from certified farmers. Zero harmful chemicals. Eco-friendly packaging.',
+    desc: 'Sourced through regional grower relationships with ingredient and packaging details confirmed per order.',
   },
   {
     icon: (

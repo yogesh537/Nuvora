@@ -5,8 +5,8 @@ export default function TrustStrip() {
   const trustItems = [
     {
       icon: ShieldCheck,
-      title: "ISO 22000 & HACCP & FSSAI",
-      subtitle: "Central Export License & US FDA Registered Facility"
+      title: "FSSAI Licensed Facility",
+      subtitle: "Facility license details available on request"
     },
     {
       icon: FileCheck2,

@@ -1,7 +1,7 @@
 import React from 'react';
+import { ArrowRight, BadgeCheck, Trash2, X } from 'lucide-react';
 import { useCompare } from '../../context/CompareContext';
 import { useLeads } from '../../context/LeadContext';
-import { X, Check, Trash2, ArrowRight } from 'lucide-react';
 
 export default function CompareModal() {
   const { comparedProducts, isCompareOpen, setIsCompareOpen, removeFromCompare, clearCompare } = useCompare();
@@ -9,196 +9,98 @@ export default function CompareModal() {
 
   if (!isCompareOpen || comparedProducts.length === 0) return null;
 
+  const rows = [
+    { label: 'Product group', render: (product) => product.category },
+    { label: 'Botanical name', render: (product) => <span className="italic">{product.botanicalName}</span> },
+    {
+      label: 'Example applications',
+      render: (product) => (
+        <ul className="space-y-1.5">
+          {product.applications.slice(0, 3).map((application) => <li key={application}>{application}</li>)}
+        </ul>
+      )
+    },
+    {
+      label: 'Specifications, order volume & pack',
+      render: () => 'Discuss and confirm for the project'
+    }
+  ];
+
   return (
-    <div className="fixed inset-0 z-50 overflow-y-auto bg-black/60 backdrop-blur-sm flex items-center justify-center p-3 md:p-6">
-      <div 
-        className="relative bg-white w-full max-w-5xl rounded-2xl shadow-2xl border border-stone-200 overflow-hidden transform transition-all max-h-[90vh] flex flex-col"
-        onClick={(e) => e.stopPropagation()}
+    <div className="fixed inset-0 z-50 flex items-center justify-center overflow-y-auto bg-[#10231a]/75 p-3 backdrop-blur-sm">
+      <section
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="compare-title"
+        className="relative flex max-h-[90vh] w-full max-w-5xl flex-col overflow-hidden border border-[#d6d3c8] bg-[#f4f1e8] shadow-2xl"
+        onClick={(event) => event.stopPropagation()}
       >
-        {/* Header */}
-        <div className="bg-[#1F4D36] text-white px-6 py-4 flex items-center justify-between shrink-0">
-          <div className="flex items-center gap-3">
-            <span className="bg-[#C9972B] text-white text-xs px-2.5 py-0.5 rounded-full font-bold">
-              {comparedProducts.length} of 3 Selected
-            </span>
-            <h3 className="text-lg font-bold">Technical Specifications Comparison</h3>
+        <header className="flex items-center justify-between gap-4 bg-[#183126] px-5 py-4 text-white sm:px-7">
+          <div>
+            <p className="text-[9px] font-black uppercase tracking-[0.16em] text-[#d4ad49]">{comparedProducts.length} selected</p>
+            <h2 id="compare-title" className="mt-1 text-lg font-black">Compare ingredients</h2>
           </div>
           <div className="flex items-center gap-3">
-            <button
-              onClick={clearCompare}
-              className="text-xs text-stone-300 hover:text-red-300 flex items-center gap-1 transition-colors"
-            >
-              <Trash2 className="w-3.5 h-3.5" /> Clear All
+            <button type="button" onClick={clearCompare} className="inline-flex items-center gap-1.5 text-[9px] font-bold uppercase tracking-[0.1em] text-white/65 hover:text-white">
+              <Trash2 className="h-3.5 w-3.5" /> Clear
             </button>
-            <button
-              onClick={() => setIsCompareOpen(false)}
-              className="text-stone-300 hover:text-white p-1 rounded-lg hover:bg-white/10"
-            >
-              <X className="w-5 h-5" />
+            <button type="button" onClick={() => setIsCompareOpen(false)} aria-label="Close comparison" className="grid h-9 w-9 place-items-center border border-white/20 text-white/75 hover:bg-white/10 hover:text-white">
+              <X className="h-4 w-4" />
             </button>
           </div>
-        </div>
+        </header>
 
-        {/* Comparison Table / Matrix */}
-        <div className="p-6 overflow-y-auto flex-1">
-          <div className="overflow-x-auto">
-            <table className="w-full text-left text-xs border-collapse">
-              <thead>
-                <tr className="border-b border-stone-200">
-                  <th className="py-4 px-3 w-44 font-semibold text-stone-500 uppercase tracking-wider bg-stone-50/60 sticky left-0 z-10">
-                    Product Specification
-                  </th>
-                  {comparedProducts.map(p => (
-                    <th key={p.id} className="py-4 px-4 min-w-[220px] align-top bg-white">
-                      <div className="flex justify-between items-start gap-2 mb-2">
-                        <img 
-                          src={p.image} 
-                          alt={p.name} 
-                          className="w-16 h-16 rounded-xl object-cover border border-stone-200 shadow-sm"
-                        />
-                        <button
-                          onClick={() => removeFromCompare(p.id)}
-                          className="text-stone-400 hover:text-red-500 p-1 rounded hover:bg-red-50"
-                          title="Remove from comparison"
-                        >
-                          <X className="w-4 h-4" />
-                        </button>
-                      </div>
-                      <h4 className="font-bold text-sm text-stone-900 leading-tight">{p.name}</h4>
-                      <p className="italic text-[11px] text-stone-500">{p.botanicalName}</p>
-                      <button
-                        onClick={() => {
-                          setIsCompareOpen(false);
-                          openQuoteModal(p);
-                        }}
-                        className="mt-3 w-full py-1.5 px-3 rounded-lg bg-[#C9972B] hover:bg-[#b58622] text-white font-medium text-xs flex items-center justify-center gap-1 shadow-sm transition-all"
-                      >
-                        Request Quote <ArrowRight className="w-3 h-3" />
-                      </button>
-                    </th>
-                  ))}
-                </tr>
-              </thead>
-              <tbody className="divide-y divide-stone-200 text-stone-700">
-                <tr>
-                  <td className="py-3 px-3 font-semibold text-stone-600 bg-stone-50/60 sticky left-0">Category</td>
-                  {comparedProducts.map(p => (
-                    <td key={p.id} className="py-3 px-4 font-medium">{p.category}</td>
-                  ))}
-                </tr>
-                <tr>
-                  <td className="py-3 px-3 font-semibold text-stone-600 bg-stone-50/60 sticky left-0">Drying Process</td>
-                  {comparedProducts.map(p => (
-                    <td key={p.id} className="py-3 px-4">
-                      <span className="inline-block px-2 py-0.5 rounded bg-emerald-50 text-[#1F4D36] font-semibold text-[11px] border border-emerald-200/60">
-                        {p.process}
-                      </span>
-                    </td>
-                  ))}
-                </tr>
-                <tr>
-                  <td className="py-3 px-3 font-semibold text-stone-600 bg-stone-50/60 sticky left-0">Mesh Particle Size</td>
-                  {comparedProducts.map(p => (
-                    <td key={p.id} className="py-3 px-4 font-semibold text-stone-900">{p.meshSize}</td>
-                  ))}
-                </tr>
-                <tr>
-                  <td className="py-3 px-3 font-semibold text-stone-600 bg-stone-50/60 sticky left-0">Color & Odour</td>
-                  {comparedProducts.map(p => (
-                    <td key={p.id} className="py-3 px-4">
-                      <div className="font-medium text-stone-900">{p.color}</div>
-                      <div className="text-[11px] text-stone-500 mt-0.5">{p.taste}</div>
-                    </td>
-                  ))}
-                </tr>
-                <tr>
-                  <td className="py-3 px-3 font-semibold text-stone-600 bg-stone-50/60 sticky left-0">Moisture Limit</td>
-                  {comparedProducts.map(p => (
-                    <td key={p.id} className="py-3 px-4 font-mono font-semibold text-emerald-800">{p.moisture}</td>
-                  ))}
-                </tr>
-                <tr>
-                  <td className="py-3 px-3 font-semibold text-stone-600 bg-stone-50/60 sticky left-0">Total Ash %</td>
-                  {comparedProducts.map(p => (
-                    <td key={p.id} className="py-3 px-4 font-mono">{p.ash}</td>
-                  ))}
-                </tr>
-                <tr>
-                  <td className="py-3 px-3 font-semibold text-stone-600 bg-stone-50/60 sticky left-0">Bulk Density</td>
-                  {comparedProducts.map(p => (
-                    <td key={p.id} className="py-3 px-4 font-mono">{p.bulkDensity}</td>
-                  ))}
-                </tr>
-                <tr>
-                  <td className="py-3 px-3 font-semibold text-stone-600 bg-stone-50/60 sticky left-0">Microbial Limits (TPC)</td>
-                  {comparedProducts.map(p => (
-                    <td key={p.id} className="py-3 px-4 font-mono text-[11px]">
-                      <div>TPC: {p.microbiological.tpc}</div>
-                      <div className="text-stone-500">Y&M: {p.microbiological.yeastMould}</div>
-                      <div className="text-emerald-700 font-semibold">E. coli / Salm: Absent</div>
-                    </td>
-                  ))}
-                </tr>
-                <tr>
-                  <td className="py-3 px-3 font-semibold text-stone-600 bg-stone-50/60 sticky left-0">Minimum Order Qty (MOQ)</td>
-                  {comparedProducts.map(p => (
-                    <td key={p.id} className="py-3 px-4 font-bold text-stone-900">{p.moq}</td>
-                  ))}
-                </tr>
-                <tr>
-                  <td className="py-3 px-3 font-semibold text-stone-600 bg-stone-50/60 sticky left-0">Production Lead Time</td>
-                  {comparedProducts.map(p => (
-                    <td key={p.id} className="py-3 px-4">{p.leadTime}</td>
-                  ))}
-                </tr>
-                <tr>
-                  <td className="py-3 px-3 font-semibold text-stone-600 bg-stone-50/60 sticky left-0">HS Customs Code</td>
-                  {comparedProducts.map(p => (
-                    <td key={p.id} className="py-3 px-4 font-mono text-stone-600">{p.hsCode}</td>
-                  ))}
-                </tr>
-                <tr>
-                  <td className="py-3 px-3 font-semibold text-stone-600 bg-stone-50/60 sticky left-0">Export Certifications</td>
-                  {comparedProducts.map(p => (
-                    <td key={p.id} className="py-3 px-4">
-                      <div className="flex flex-wrap gap-1">
-                        {p.certifications.map(c => (
-                          <span key={c} className="text-[10px] bg-stone-100 text-stone-700 px-1.5 py-0.5 rounded border border-stone-200">
-                            {c}
-                          </span>
-                        ))}
-                      </div>
-                    </td>
-                  ))}
-                </tr>
-                <tr>
-                  <td className="py-3 px-3 font-semibold text-stone-600 bg-stone-50/60 sticky left-0">Key Applications</td>
-                  {comparedProducts.map(p => (
-                    <td key={p.id} className="py-3 px-4">
-                      <ul className="list-disc list-inside text-[11px] text-stone-600 space-y-1">
-                        {p.applications.slice(0, 3).map((app, i) => (
-                          <li key={i} className="truncate">{app}</li>
-                        ))}
-                      </ul>
-                    </td>
-                  ))}
-                </tr>
-              </tbody>
-            </table>
+        <div className="flex-1 overflow-auto p-4 sm:p-6">
+          <div className="min-w-[600px]">
+            <div className="grid gap-3" style={{ gridTemplateColumns: `170px repeat(${comparedProducts.length}, minmax(180px, 1fr))` }}>
+              <div className="flex items-end pb-3 text-[9px] font-black uppercase tracking-[0.12em] text-[#657067]">Ingredient profile</div>
+              {comparedProducts.map((product) => (
+                <article key={product.id} className="relative border border-[#183126]/15 bg-white/70 p-4">
+                  <button
+                    type="button"
+                    onClick={() => removeFromCompare(product.id)}
+                    aria-label={`Remove ${product.name} from comparison`}
+                    className="absolute right-2 top-2 grid h-8 w-8 place-items-center text-[#657067] hover:bg-[#ebe7db] hover:text-[#183126]"
+                  >
+                    <X className="h-4 w-4" />
+                  </button>
+                  <img src={product.image} alt={product.imageAlt || product.name} className="h-28 w-full object-cover" />
+                  {product.imageCredit && (
+                    <a href={product.imageCreditUrl} target="_blank" rel="noreferrer" className="mt-2 block text-[8px] text-[#657067] underline underline-offset-2">
+                      Photo: {product.imageCredit}
+                    </a>
+                  )}
+                  <h3 className="mt-3 pr-7 text-sm font-black leading-5">{product.name}</h3>
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setIsCompareOpen(false);
+                      openQuoteModal(product);
+                    }}
+                    className="mt-4 inline-flex w-full items-center justify-center gap-2 bg-[#183126] px-3 py-2.5 text-[9px] font-black uppercase tracking-[0.1em] text-white hover:bg-[#2b4939]"
+                  >
+                    Discuss ingredient <ArrowRight className="h-3.5 w-3.5 text-[#d4ad49]" />
+                  </button>
+                </article>
+              ))}
+            </div>
+
+            {rows.map((row) => (
+              <div key={row.label} className="grid gap-3 border-t border-[#183126]/15 py-4" style={{ gridTemplateColumns: `170px repeat(${comparedProducts.length}, minmax(180px, 1fr))` }}>
+                <div className="pt-1 text-[9px] font-black uppercase tracking-[0.11em] text-[#657067]">{row.label}</div>
+                {comparedProducts.map((product) => (
+                  <div key={product.id} className="text-xs leading-5 text-[#425047]">{row.render(product)}</div>
+                ))}
+              </div>
+            ))}
+          </div>
+
+          <div className="mt-5 flex items-start gap-2 border border-[#183126]/15 bg-[#ebe7db] p-3 text-[10px] leading-5 text-[#536056]">
+            <BadgeCheck className="mt-0.5 h-4 w-4 shrink-0 text-[#9b7a32]" />
+            <p>Product specifications, order volumes, packaging and supporting documents are confirmed for each inquiry. Facility credential: FSSAI license.</p>
           </div>
         </div>
-
-        {/* Footer */}
-        <div className="bg-stone-50 border-t border-stone-200 px-6 py-3 flex items-center justify-between text-xs text-stone-500">
-          <span>Need custom blending or toll drying? Contact our R&D pilot plant.</span>
-          <button
-            onClick={() => setIsCompareOpen(false)}
-            className="px-4 py-1.5 rounded-lg border border-stone-300 hover:bg-stone-200 font-medium text-stone-700 transition-colors"
-          >
-            Close Comparison
-          </button>
-        </div>
-      </div>
+      </section>
     </div>
   );
 }

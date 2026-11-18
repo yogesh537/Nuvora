@@ -14,7 +14,7 @@ export default function WhyChooseUs() {
     {
       icon: Tractor,
       title: "Farm-Sourced Raw Material",
-      desc: "Contract farming agreements with 1,200+ certified growers across Maharashtra and Gujarat agricultural belts. Processed within 24 hours of harvest to preserve active phytonutrients."
+      desc: "Work with regional growers across Maharashtra and Gujarat agricultural belts. Ingredient origin and lot details are discussed as part of the product brief."
     },
     {
       icon: ThermometerSnowflake,
@@ -23,8 +23,8 @@ export default function WhyChooseUs() {
     },
     {
       icon: QrCode,
-      title: "100% Batch Traceability",
-      desc: "Complete farm-gate to container provenance. Every drum is barcoded with lot data, soil pesticide screen records, and analytical laboratory testing results."
+      title: "Batch Identification",
+      desc: "Batch identification and available origin records are maintained for order follow-up. Testing scope is agreed for the product and destination."
     },
     {
       icon: PackageCheck,
@@ -34,7 +34,7 @@ export default function WhyChooseUs() {
     {
       icon: Ship,
       title: "On-Time Global Delivery",
-      desc: "Direct access to JNPT (Nhava Sheva) and Mundra maritime ports. Fast customs documentation, certified phytosanitary clearance, and express DHL air samples."
+      desc: "Export documentation and shipping options are discussed against the destination, order size and requested delivery route."
     }
   ];
 

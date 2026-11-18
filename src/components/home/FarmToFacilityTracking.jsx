@@ -62,7 +62,7 @@ export default function FarmToFacilityTracking() {
             </div>
 
             <p className="text-stone-600 text-sm sm:text-base leading-relaxed">
-              We ensure that every commercial consignment is packed with nitrogen protection, tested in certified laboratories, and tracked until arrival at your processing facility.
+              Orders move through ingredient preparation, product-specific quality checks, packing and dispatch planning. The test scope and supporting documents are confirmed for each order.
             </p>
 
             {/* 3 Green Bullet Blocks */}
@@ -72,8 +72,8 @@ export default function FarmToFacilityTracking() {
                   <Clock className="w-5 h-5" />
                 </div>
                 <div>
-                  <h4 className="font-bold text-sm text-stone-900">Real-Time Consignment & Batch COA Tracking</h4>
-                  <p className="text-xs text-stone-500 mt-0.5">Track your order from drying tower to final port release in real-time.</p>
+                  <h4 className="font-bold text-sm text-stone-900">Order progress & document scope</h4>
+                  <p className="text-xs text-stone-500 mt-0.5">Delivery timing and available documents are confirmed for each order.</p>
                 </div>
               </div>
 
@@ -82,8 +82,8 @@ export default function FarmToFacilityTracking() {
                   <ShieldCheck className="w-5 h-5" />
                 </div>
                 <div>
-                  <h4 className="font-bold text-sm text-stone-900">Freshness & Moisture Guaranteed</h4>
-                  <p className="text-xs text-stone-500 mt-0.5">100% moisture tested under 5%, certified zero microbial contamination.</p>
+                  <h4 className="font-bold text-sm text-stone-900">Product-specific quality checks</h4>
+                  <p className="text-xs text-stone-500 mt-0.5">Moisture and other test targets are agreed in the product specification.</p>
                 </div>
               </div>
 

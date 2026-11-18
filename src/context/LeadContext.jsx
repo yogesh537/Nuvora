@@ -19,7 +19,7 @@ const initialLeads = [
     intendedUse: "Organic Green Pasta & Clean-Label Colorant",
     type: "Commercial Quote",
     status: "New",
-    notes: "Requires EU pesticide screening report and Kosher certificate."
+    notes: "Discuss destination-market testing and documentation requirements."
   },
   {
     id: "NVS-2026-8938",
@@ -70,7 +70,7 @@ const initialLeads = [
     quantity: "20,000 kg (20 MT Contract)",
     packaging: "20kg Fibre Drum",
     targetDate: "Annual Contract",
-    intendedUse: "Certified Organic Dietary Supplement Capsules",
+    intendedUse: "Botanical dietary supplement capsules",
     type: "Commercial Quote",
     status: "Won",
     notes: "Annual master purchase agreement executed. First 10 MT batch shipped."

@@ -1,573 +1,446 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useLeads } from '../../context/LeadContext';
 import { products } from '../../data/products';
-import { X, CheckCircle2, ChevronRight, ChevronLeft, Building2, Package, Globe, ShieldCheck, Mail, Phone, User, FileText, Send } from 'lucide-react';
+import { ArrowLeft, ArrowRight, BadgeCheck, Building2, CheckCircle2, Mail, MapPin, Package, Phone, Send, User, X } from 'lucide-react';
+
+const CUSTOM_PRODUCT = 'Custom blend or another ingredient';
+const steps = ['Product brief', 'Use & destination', 'Your details'];
+const labelClass = 'block text-[9px] font-black uppercase tracking-[0.13em] text-[#657067]';
+const inputClass = 'mt-2 w-full border border-[#183126]/20 bg-white px-3.5 py-3 text-sm text-[#183126] outline-none placeholder:text-[#96978f] focus:border-[#9b7a32]';
+
+const initialFormData = {
+  product: '',
+  customProduct: '',
+  quantity: 'Not decided',
+  packaging: 'Need guidance',
+  intendedUse: '',
+  country: '',
+  destinationPort: '',
+  complianceNeeds: [],
+  message: '',
+  fullName: '',
+  jobTitle: '',
+  company: '',
+  email: '',
+  phone: ''
+};
 
 export default function QuoteRequestModal() {
-  const { activeLeadModal, selectedProductForQuote, closeModal, addLead } = useLeads();
+  const { activeLeadModal, selectedProductForQuote, closeModal, addLead, openQuoteModal } = useLeads();
   const isOpen = activeLeadModal === 'quote' || activeLeadModal === 'sample';
   const isSample = activeLeadModal === 'sample';
-
   const [step, setStep] = useState(1);
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [createdLead, setCreatedLead] = useState(null);
-
-  const [formData, setFormData] = useState({
-    product: '',
-    powderForm: 'Spray dried',
-    meshSize: '80 Mesh',
-    quantity: '1,000 kg (1 MT)',
-    packaging: '25kg Fibre Drum',
-    targetDate: 'Within 30 Days',
-    fullName: '',
-    jobTitle: '',
-    company: '',
-    email: '',
-    phone: '',
-    country: 'United States',
-    destinationPort: '',
-    intendedUse: 'Food & Beverage Manufacturing',
-    complianceNeeds: ['COA with Batch', 'ISO 22000 Certified'],
-    message: ''
-  });
+  const [validationMessage, setValidationMessage] = useState('');
+  const [formData, setFormData] = useState(initialFormData);
 
   useEffect(() => {
-    if (selectedProductForQuote) {
-      setFormData(prev => ({
-        ...prev,
-        product: selectedProductForQuote.name,
-        powderForm: selectedProductForQuote.process,
-        meshSize: selectedProductForQuote.meshSize,
-        quantity: isSample ? '100g Sample' : `${selectedProductForQuote.moq} (Standard MOQ)`
-      }));
-    } else if (products.length > 0 && !formData.product) {
-      setFormData(prev => ({
-        ...prev,
-        product: products[0].name,
-        powderForm: products[0].process
-      }));
-    }
-  }, [selectedProductForQuote, isSample]);
+    const handleOpenQuote = (event) => openQuoteModal(event.detail || null);
+    document.addEventListener('openQuoteModal', handleOpenQuote);
+    return () => document.removeEventListener('openQuoteModal', handleOpenQuote);
+  }, [openQuoteModal]);
+
+  useEffect(() => {
+    if (!isOpen) return;
+    setStep(1);
+    setIsSubmitted(false);
+    setCreatedLead(null);
+    setValidationMessage('');
+    setFormData({
+      ...initialFormData,
+      product: selectedProductForQuote?.name || ''
+    });
+  }, [activeLeadModal, isOpen, selectedProductForQuote]);
 
   if (!isOpen) return null;
 
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData(prev => ({ ...prev, [name]: value }));
+  const chosenProduct = products.find((product) => product.name === formData.product);
+  const productName = formData.product === CUSTOM_PRODUCT
+    ? formData.customProduct.trim() || CUSTOM_PRODUCT
+    : formData.product;
+
+  const handleChange = (event) => {
+    const { name, value } = event.target;
+    setFormData((previous) => ({
+      ...previous,
+      [name]: value,
+      ...(name === 'product' && value === CUSTOM_PRODUCT ? { customProduct: '' } : {})
+    }));
+    setValidationMessage('');
   };
 
   const handleCheckbox = (option) => {
-    setFormData(prev => {
-      const exists = prev.complianceNeeds.includes(option);
+    setValidationMessage('');
+    setFormData((previous) => {
+      const exists = previous.complianceNeeds.includes(option);
       return {
-        ...prev,
+        ...previous,
         complianceNeeds: exists
-          ? prev.complianceNeeds.filter(item => item !== option)
-          : [...prev.complianceNeeds, option]
+          ? previous.complianceNeeds.filter((item) => item !== option)
+          : [...previous.complianceNeeds, option]
       };
     });
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
+  const handleContinue = () => {
+    if (step === 1 && (!formData.product || (formData.product === CUSTOM_PRODUCT && !formData.customProduct.trim()))) {
+      setValidationMessage('Choose an ingredient or describe your product idea to continue.');
+      return;
+    }
+    if (step === 2 && !formData.country) {
+      setValidationMessage('Choose the destination country or select Other.');
+      return;
+    }
+    setValidationMessage('');
+    setStep((currentStep) => currentStep + 1);
+  };
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
     const newLead = addLead({
       fullName: formData.fullName,
+      jobTitle: formData.jobTitle,
       company: formData.company,
       email: formData.email,
       phone: formData.phone,
       country: formData.country,
-      product: formData.product,
-      powderForm: formData.powderForm,
-      quantity: isSample ? '100g Free Sample' : formData.quantity,
+      product: productName,
+      powderForm: 'To be discussed',
+      quantity: isSample ? 'Sample availability and quantity to be confirmed' : formData.quantity,
       packaging: formData.packaging,
-      targetDate: formData.targetDate,
-      intendedUse: formData.intendedUse,
+      targetDate: 'To be discussed',
+      intendedUse: formData.intendedUse || 'To be discussed',
       type: isSample ? 'Sample Request' : 'Commercial Quote',
-      notes: `Application: ${formData.intendedUse}. Dest Port: ${formData.destinationPort || 'N/A'}. Certs: ${formData.complianceNeeds.join(', ')}. Msg: ${formData.message}`
+      notes: [
+        `Destination details: ${formData.destinationPort || 'Not provided'}.`,
+        `Quality documents or tests to discuss: ${formData.complianceNeeds.join(', ') || 'None specified'}.`,
+        `Additional message: ${formData.message || 'None'}.`
+      ].join(' ')
     });
-
     setCreatedLead(newLead);
     setIsSubmitted(true);
   };
 
   const handleClose = () => {
-    setIsSubmitted(false);
     setStep(1);
+    setIsSubmitted(false);
+    setCreatedLead(null);
+    setValidationMessage('');
+    setFormData(initialFormData);
     closeModal();
   };
 
   return (
-    <div className="fixed inset-0 z-50 overflow-y-auto bg-black/60 backdrop-blur-sm flex items-center justify-center p-4">
-      <div 
-        className="relative bg-white w-full max-w-2xl rounded-2xl shadow-2xl border border-stone-200 overflow-hidden transform transition-all"
-        onClick={(e) => e.stopPropagation()}
+    <div className="fixed inset-0 z-50 flex items-center justify-center overflow-y-auto bg-[#10231a]/75 p-2 backdrop-blur-md sm:p-5">
+      <section
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="inquiry-title"
+        className="relative flex max-h-[94vh] w-full max-w-6xl flex-col overflow-hidden border border-[#d6d3c8] bg-[#f4f1e8] shadow-2xl"
+        onClick={(event) => event.stopPropagation()}
       >
-        {/* Header Bar */}
-        <div className="bg-[#1F4D36] text-white px-6 py-5 flex items-center justify-between">
+        <header className="flex items-start justify-between gap-5 bg-[#183126] px-5 py-5 text-white sm:px-8 sm:py-6">
           <div>
-            <div className="flex items-center gap-2">
-              <span className="inline-block px-2.5 py-0.5 rounded-full text-xs font-semibold uppercase tracking-wider bg-[#C9972B] text-white">
-                {isSample ? 'Free 100g Lab Trial' : 'B2B Wholesale Inquiry'}
-              </span>
-              <span className="text-xs text-emerald-200">Export Desk Response &lt; 4h</span>
-            </div>
-            <h3 className="text-xl font-bold font-sans mt-1">
-              {isSample ? 'Request a Free Product Sample' : 'Request Official CIF / FOB Quotation'}
-            </h3>
-            <p className="text-xs text-stone-200">
-              Direct from Nuvaro Agro Pvt Ltd manufacturing facility.
+            <p className="text-[9px] font-black uppercase tracking-[0.18em] text-[#d4ad49]">
+              {isSample ? 'Product sample inquiry' : 'Commercial product inquiry'}
+            </p>
+            <h2 id="inquiry-title" className="mt-2 text-2xl font-black tracking-[-0.03em] sm:text-3xl">
+              {isSample ? 'Tell us about your sample idea.' : 'Tell us what you want to make.'}
+            </h2>
+            <p className="mt-2 max-w-2xl text-xs leading-5 text-white/60">
+              Share what you know. We can review the application, product details and next steps with you.
             </p>
           </div>
-          <button 
-            onClick={handleClose}
-            className="text-stone-300 hover:text-white p-1 rounded-lg hover:bg-white/10 transition-colors"
-          >
-            <X className="w-6 h-6" />
+          <button type="button" onClick={handleClose} aria-label="Close inquiry form" className="grid h-10 w-10 shrink-0 place-items-center border border-white/20 text-white/70 hover:bg-white/10 hover:text-white">
+            <X className="h-5 w-5" />
           </button>
-        </div>
+        </header>
 
-        {/* Modal Body */}
         {isSubmitted ? (
-          <div className="p-8 text-center space-y-6">
-            <div className="w-16 h-16 bg-emerald-100 text-[#1F4D36] rounded-full flex items-center justify-center mx-auto shadow-inner">
-              <CheckCircle2 className="w-10 h-10" />
+          <div role="status" className="overflow-y-auto p-6 text-center sm:p-10">
+            <div className="mx-auto grid h-14 w-14 place-items-center bg-[#183126] text-[#d4ad49]">
+              <CheckCircle2 className="h-7 w-7" />
             </div>
-            <div>
-              <span className="text-xs font-mono bg-stone-100 text-stone-600 px-3 py-1 rounded-full border border-stone-200">
-                Inquiry ID: {createdLead?.id}
-              </span>
-              <h4 className="text-2xl font-bold text-stone-900 mt-3">
-                {isSample ? 'Sample Request Logged!' : 'Quotation Request Received!'}
-              </h4>
-              <p className="text-stone-600 text-sm max-w-md mx-auto mt-2 leading-relaxed">
-                Thank you, <strong>{formData.fullName}</strong> from <strong>{formData.company}</strong>. Our international export team will review your specifications for <strong>{formData.product}</strong> and email the official documentation to <strong>{formData.email}</strong> shortly.
-              </p>
+            <p className="mt-5 text-[9px] font-black uppercase tracking-[0.18em] text-[#9b7a32]">Inquiry received</p>
+            <h3 className="mt-2 text-2xl font-black tracking-[-0.03em] text-[#183126] sm:text-3xl">
+              Thank you, {formData.fullName}.
+            </h3>
+            <p className="mx-auto mt-3 max-w-lg text-sm leading-6 text-[#657067]">
+              Your request for <strong className="text-[#183126]">{productName}</strong> has been recorded with reference <strong className="text-[#183126]">{createdLead?.id}</strong>.
+            </p>
+            <div className="mx-auto mt-7 max-w-xl border-y border-[#183126]/15 text-left text-xs">
+              {[
+                ['Product', productName],
+                ['Order volume', isSample ? 'Sample request' : formData.quantity],
+                ['Destination', `${formData.country}${formData.destinationPort ? ` · ${formData.destinationPort}` : ''}`]
+              ].map(([label, value]) => (
+                <div key={label} className="flex justify-between gap-5 border-b border-[#183126]/10 py-3 last:border-0">
+                  <span className="text-[#657067]">{label}</span>
+                  <span className="text-right font-semibold text-[#183126]">{value}</span>
+                </div>
+              ))}
             </div>
-
-            <div className="bg-[#F5F1E6] rounded-xl p-4 text-left border border-amber-200/60 max-w-lg mx-auto text-xs space-y-2 text-stone-700">
-              <div className="flex justify-between border-b border-stone-200/70 pb-1.5">
-                <span className="text-stone-500">Target Product:</span>
-                <span className="font-semibold text-stone-900">{formData.product} ({formData.powderForm})</span>
-              </div>
-              <div className="flex justify-between border-b border-stone-200/70 pb-1.5">
-                <span className="text-stone-500">Quantity / Packing:</span>
-                <span className="font-semibold text-stone-900">{isSample ? '100g Vacuum Pouch' : formData.quantity}</span>
-              </div>
-              <div className="flex justify-between border-b border-stone-200/70 pb-1.5">
-                <span className="text-stone-500">Destination:</span>
-                <span className="font-semibold text-stone-900">{formData.country} {formData.destinationPort ? `(${formData.destinationPort})` : ''}</span>
-              </div>
-              <div className="flex justify-between pt-0.5">
-                <span className="text-stone-500">Estimated SLA:</span>
-                <span className="font-semibold text-[#1F4D36]">Formal Proforma & COA sent within 4 hours</span>
-              </div>
-            </div>
-
-            <div className="flex justify-center gap-3 pt-2">
-              <button
-                onClick={handleClose}
-                className="px-6 py-2.5 rounded-lg bg-[#1F4D36] text-white hover:bg-[#163a28] font-medium text-sm transition-colors"
-              >
-                Close & Return to Browsing
-              </button>
-            </div>
+            <button type="button" onClick={handleClose} className="mt-7 bg-[#183126] px-6 py-3 text-[9px] font-black uppercase tracking-[0.12em] text-white hover:bg-[#2b4939]">
+              Close
+            </button>
           </div>
         ) : (
-          <form onSubmit={handleSubmit} className="p-6">
-            {/* Step Indicators */}
-            <div className="flex items-center justify-between mb-6 border-b border-stone-100 pb-4">
-              <div className="flex items-center gap-2">
-                <span className={`w-7 h-7 rounded-full flex items-center justify-center text-xs font-bold ${
-                  step === 1 ? 'bg-[#1F4D36] text-white' : 'bg-emerald-100 text-[#1F4D36]'
-                }`}>1</span>
-                <span className={`text-xs font-medium ${step === 1 ? 'text-[#1F4D36] font-semibold' : 'text-stone-500'}`}>
-                  Product & Volume
-                </span>
-              </div>
-              <div className="h-0.5 w-12 bg-stone-200"></div>
-              <div className="flex items-center gap-2">
-                <span className={`w-7 h-7 rounded-full flex items-center justify-center text-xs font-bold ${
-                  step === 2 ? 'bg-[#1F4D36] text-white' : step > 2 ? 'bg-emerald-100 text-[#1F4D36]' : 'bg-stone-200 text-stone-600'
-                }`}>2</span>
-                <span className={`text-xs font-medium ${step === 2 ? 'text-[#1F4D36] font-semibold' : 'text-stone-500'}`}>
-                  Company & Delivery
-                </span>
-              </div>
-              <div className="h-0.5 w-12 bg-stone-200"></div>
-              <div className="flex items-center gap-2">
-                <span className={`w-7 h-7 rounded-full flex items-center justify-center text-xs font-bold ${
-                  step === 3 ? 'bg-[#1F4D36] text-white' : 'bg-stone-200 text-stone-600'
-                }`}>3</span>
-                <span className={`text-xs font-medium ${step === 3 ? 'text-[#1F4D36] font-semibold' : 'text-stone-500'}`}>
-                  Specs & Message
-                </span>
-              </div>
-            </div>
+          <form onSubmit={handleSubmit} className="grid min-h-0 flex-1 overflow-y-auto lg:grid-cols-[1fr_280px]">
+            <div className="min-w-0 p-4 sm:p-7">
+              <nav aria-label="Inquiry steps" className="mb-6 grid grid-cols-3 border-b border-[#183126]/15 pb-5">
+                {steps.map((label, index) => {
+                  const stepNumber = index + 1;
+                  const isCurrent = step === stepNumber;
+                  const isComplete = step > stepNumber;
+                  return (
+                    <div key={label} className={`flex items-center gap-2 ${index === 1 ? 'justify-center' : index === 2 ? 'justify-end' : ''}`}>
+                      <span className={`grid h-8 w-8 shrink-0 place-items-center text-[10px] font-black ${isCurrent ? 'bg-[#183126] text-white' : isComplete ? 'bg-[#d4ad49] text-[#183126]' : 'bg-white text-[#657067]'}`}>
+                        {isComplete ? <CheckCircle2 className="h-4 w-4" /> : `0${stepNumber}`}
+                      </span>
+                      <span className={`hidden text-[9px] font-black uppercase tracking-[0.1em] sm:block ${isCurrent ? 'text-[#183126]' : 'text-[#657067]'}`}>{label}</span>
+                    </div>
+                  );
+                })}
+              </nav>
 
-            {/* STEP 1: Product & Quantity */}
-            {step === 1 && (
-              <div className="space-y-4">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              {step === 1 && (
+                <section aria-labelledby="brief-step-title" className="space-y-5">
                   <div>
-                    <label className="block text-xs font-semibold text-stone-700 uppercase tracking-wider mb-1.5">
-                      Select Powder *
-                    </label>
-                    <select
-                      name="product"
-                      value={formData.product}
-                      onChange={handleChange}
-                      required
-                      className="w-full px-3.5 py-2.5 rounded-lg border border-stone-300 bg-white text-stone-800 text-sm focus:ring-2 focus:ring-[#1F4D36] focus:border-transparent outline-none"
-                    >
-                      {products.map(p => (
-                        <option key={p.id} value={p.name}>
-                          {p.name} ({p.category})
-                        </option>
-                      ))}
-                    </select>
+                    <p className="text-[9px] font-black uppercase tracking-[0.15em] text-[#9b7a32]">01 / Product brief</p>
+                    <h3 id="brief-step-title" className="mt-1 text-xl font-black tracking-[-0.03em]">What ingredient are you looking for?</h3>
                   </div>
-
-                  <div>
-                    <label className="block text-xs font-semibold text-stone-700 uppercase tracking-wider mb-1.5">
-                      Drying Technology
-                    </label>
-                    <select
-                      name="powderForm"
-                      value={formData.powderForm}
-                      onChange={handleChange}
-                      className="w-full px-3.5 py-2.5 rounded-lg border border-stone-300 bg-white text-stone-800 text-sm focus:ring-2 focus:ring-[#1F4D36] outline-none"
-                    >
-                      <option value="Spray dried">Spray Dried (High Solubility)</option>
-                      <option value="Air dried">Air Dried (Standard Botanical)</option>
-                      <option value="Freeze dried">Freeze Dried (Max Nutrient Retention)</option>
-                      <option value="Drum dried">Drum Dried</option>
-                      <option value="Custom Blend">Custom Formulation / Blend</option>
-                    </select>
-                  </div>
-                </div>
-
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                  <div>
-                    <label className="block text-xs font-semibold text-stone-700 uppercase tracking-wider mb-1.5">
-                      Mesh Size
-                    </label>
-                    <select
-                      name="meshSize"
-                      value={formData.meshSize}
-                      onChange={handleChange}
-                      className="w-full px-3.5 py-2.5 rounded-lg border border-stone-300 bg-white text-stone-800 text-sm focus:ring-2 focus:ring-[#1F4D36] outline-none"
-                    >
-                      <option value="60 Mesh">60 Mesh (Granular/Coarse)</option>
-                      <option value="80 Mesh">80 Mesh (Standard Powder)</option>
-                      <option value="100 Mesh Superfine">100 Mesh (Superfine / Smooth)</option>
-                      <option value="Custom Micronized">Custom Micronized (&lt; 150 Mesh)</option>
-                    </select>
-                  </div>
-
-                  <div>
-                    <label className="block text-xs font-semibold text-stone-700 uppercase tracking-wider mb-1.5">
-                      {isSample ? 'Sample Request Qty' : 'Estimated Batch Volume *'}
-                    </label>
-                    {isSample ? (
-                      <input
-                        type="text"
-                        disabled
-                        value="100g Free Lab Trial Sample"
-                        className="w-full px-3.5 py-2.5 rounded-lg border border-stone-200 bg-stone-100 text-stone-600 text-sm font-medium"
-                      />
-                    ) : (
-                      <select
-                        name="quantity"
-                        value={formData.quantity}
-                        onChange={handleChange}
-                        className="w-full px-3.5 py-2.5 rounded-lg border border-stone-300 bg-white text-stone-800 text-sm focus:ring-2 focus:ring-[#1F4D36] outline-none"
-                      >
-                        <option value="100 - 250 kg">100 - 250 kg (Trial Commercial)</option>
-                        <option value="500 kg">500 kg (Half Ton)</option>
-                        <option value="1,000 kg (1 MT)">1,000 kg (1 Metric Ton)</option>
-                        <option value="5,000 kg (5 MT)">5,000 kg (5 Metric Tons)</option>
-                        <option value="10,000 kg (1 FCL / 10 MT)">10,000 kg (Full Container FCL)</option>
-                        <option value="Annual Contract (20+ MT)">Annual Supply Contract (20+ MT)</option>
+                  <div className="grid gap-4 sm:grid-cols-2">
+                    <label className={`${labelClass} sm:col-span-2`}>
+                      Ingredient or concept *
+                      <select name="product" value={formData.product} onChange={handleChange} required className={inputClass}>
+                        <option value="">Choose an ingredient</option>
+                        {products.map((product) => (
+                          <option key={product.id} value={product.name}>{product.name} · {product.category}</option>
+                        ))}
+                        <option value={CUSTOM_PRODUCT}>Custom blend or another ingredient</option>
                       </select>
-                    )}
-                  </div>
-
-                  <div>
-                    <label className="block text-xs font-semibold text-stone-700 uppercase tracking-wider mb-1.5">
-                      Packaging Type
                     </label>
-                    <select
-                      name="packaging"
-                      value={formData.packaging}
-                      onChange={handleChange}
-                      className="w-full px-3.5 py-2.5 rounded-lg border border-stone-300 bg-white text-stone-800 text-sm focus:ring-2 focus:ring-[#1F4D36] outline-none"
-                    >
-                      <option value="25kg Fibre Drum">25kg Fibre Drum (Export Standard)</option>
-                      <option value="25kg Multi-wall Paper Bag">25kg Kraft Paper Bag with PE Liner</option>
-                      <option value="10kg Poly-lined Carton">10kg Carton with Inner Liner</option>
-                      <option value="5kg Aluminium Foil Bag">5kg Foil Pouch (Moisture-proof)</option>
-                      <option value="Private Label Packaging">Private Label Retail Jars / Pouches</option>
-                    </select>
-                  </div>
-                </div>
-
-                <div className="bg-emerald-50/70 border border-emerald-200/60 rounded-xl p-3 flex items-start gap-3 text-xs text-stone-700 mt-2">
-                  <ShieldCheck className="w-5 h-5 text-[#1F4D36] shrink-0 mt-0.5" />
-                  <p>
-                    Every commercial shipment from <strong>Nuvaro Agro Pvt Ltd</strong> is shipped with batch-specific Certificate of Analysis (COA), Phytosanitary certificate, and guaranteed heavy metal and microbiological compliance.
-                  </p>
-                </div>
-              </div>
-            )}
-
-            {/* STEP 2: Company & Destination */}
-            {step === 2 && (
-              <div className="space-y-4">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  <div>
-                    <label className="block text-xs font-semibold text-stone-700 uppercase tracking-wider mb-1.5">
-                      Full Name *
-                    </label>
-                    <div className="relative">
-                      <User className="w-4 h-4 text-stone-400 absolute left-3 top-3" />
-                      <input
-                        type="text"
-                        name="fullName"
-                        value={formData.fullName}
-                        onChange={handleChange}
-                        required
-                        placeholder="e.g. Michael Harris"
-                        className="w-full pl-9 pr-3.5 py-2.5 rounded-lg border border-stone-300 bg-white text-stone-800 text-sm focus:ring-2 focus:ring-[#1F4D36] outline-none"
-                      />
-                    </div>
-                  </div>
-
-                  <div>
-                    <label className="block text-xs font-semibold text-stone-700 uppercase tracking-wider mb-1.5">
-                      Job Title / Designation
-                    </label>
-                    <input
-                      type="text"
-                      name="jobTitle"
-                      value={formData.jobTitle}
-                      onChange={handleChange}
-                      placeholder="e.g. Procurement Manager / R&D Director"
-                      className="w-full px-3.5 py-2.5 rounded-lg border border-stone-300 bg-white text-stone-800 text-sm focus:ring-2 focus:ring-[#1F4D36] outline-none"
-                    />
-                  </div>
-                </div>
-
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  <div>
-                    <label className="block text-xs font-semibold text-stone-700 uppercase tracking-wider mb-1.5">
-                      Company Name *
-                    </label>
-                    <div className="relative">
-                      <Building2 className="w-4 h-4 text-stone-400 absolute left-3 top-3" />
-                      <input
-                        type="text"
-                        name="company"
-                        value={formData.company}
-                        onChange={handleChange}
-                        required
-                        placeholder="e.g. Botanica Foods Ltd"
-                        className="w-full pl-9 pr-3.5 py-2.5 rounded-lg border border-stone-300 bg-white text-stone-800 text-sm focus:ring-2 focus:ring-[#1F4D36] outline-none"
-                      />
-                    </div>
-                  </div>
-
-                  <div>
-                    <label className="block text-xs font-semibold text-stone-700 uppercase tracking-wider mb-1.5">
-                      Business Email *
-                    </label>
-                    <div className="relative">
-                      <Mail className="w-4 h-4 text-stone-400 absolute left-3 top-3" />
-                      <input
-                        type="email"
-                        name="email"
-                        value={formData.email}
-                        onChange={handleChange}
-                        required
-                        placeholder="name@company.com"
-                        className="w-full pl-9 pr-3.5 py-2.5 rounded-lg border border-stone-300 bg-white text-stone-800 text-sm focus:ring-2 focus:ring-[#1F4D36] outline-none"
-                      />
-                    </div>
-                  </div>
-                </div>
-
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                  <div>
-                    <label className="block text-xs font-semibold text-stone-700 uppercase tracking-wider mb-1.5">
-                      Direct / WhatsApp Phone *
-                    </label>
-                    <div className="relative">
-                      <Phone className="w-4 h-4 text-stone-400 absolute left-3 top-3" />
-                      <input
-                        type="tel"
-                        name="phone"
-                        value={formData.phone}
-                        onChange={handleChange}
-                        required
-                        placeholder="+1 (555) 000-0000"
-                        className="w-full pl-9 pr-3.5 py-2.5 rounded-lg border border-stone-300 bg-white text-stone-800 text-sm focus:ring-2 focus:ring-[#1F4D36] outline-none"
-                      />
-                    </div>
-                  </div>
-
-                  <div>
-                    <label className="block text-xs font-semibold text-stone-700 uppercase tracking-wider mb-1.5">
-                      Country of Import *
-                    </label>
-                    <div className="relative">
-                      <Globe className="w-4 h-4 text-stone-400 absolute left-3 top-3" />
-                      <select
-                        name="country"
-                        value={formData.country}
-                        onChange={handleChange}
-                        className="w-full pl-9 pr-3.5 py-2.5 rounded-lg border border-stone-300 bg-white text-stone-800 text-sm focus:ring-2 focus:ring-[#1F4D36] outline-none"
-                      >
-                        <option value="United States">United States</option>
-                        <option value="Germany">Germany</option>
-                        <option value="United Kingdom">United Kingdom</option>
-                        <option value="United Arab Emirates">United Arab Emirates</option>
-                        <option value="Canada">Canada</option>
-                        <option value="Australia">Australia</option>
-                        <option value="Netherlands">Netherlands</option>
-                        <option value="Japan">Japan</option>
-                        <option value="South Korea">South Korea</option>
-                        <option value="India">India (Domestic Supply)</option>
-                        <option value="Other">Other Global Destination</option>
-                      </select>
-                    </div>
-                  </div>
-
-                  <div>
-                    <label className="block text-xs font-semibold text-stone-700 uppercase tracking-wider mb-1.5">
-                      Destination Sea/Air Port
-                    </label>
-                    <input
-                      type="text"
-                      name="destinationPort"
-                      value={formData.destinationPort}
-                      onChange={handleChange}
-                      placeholder="e.g. Rotterdam / Hamburg / Long Beach"
-                      className="w-full px-3.5 py-2.5 rounded-lg border border-stone-300 bg-white text-stone-800 text-sm focus:ring-2 focus:ring-[#1F4D36] outline-none"
-                    />
-                  </div>
-                </div>
-              </div>
-            )}
-
-            {/* STEP 3: Technical requirements & compliance */}
-            {step === 3 && (
-              <div className="space-y-4">
-                <div>
-                  <label className="block text-xs font-semibold text-stone-700 uppercase tracking-wider mb-1.5">
-                    Intended Product Application
-                  </label>
-                  <select
-                    name="intendedUse"
-                    value={formData.intendedUse}
-                    onChange={handleChange}
-                    className="w-full px-3.5 py-2.5 rounded-lg border border-stone-300 bg-white text-stone-800 text-sm focus:ring-2 focus:ring-[#1F4D36] outline-none"
-                  >
-                    <option value="Nutraceuticals & Dietary Supplements">Nutraceuticals & Dietary Supplements (Capsules / Tablets)</option>
-                    <option value="Functional Beverages & Instant Drinks">Functional Beverages & Instant Drink Mixes</option>
-                    <option value="Bakery, Confectionery & Pastry">Bakery, Confectionery & Pastry Glazes</option>
-                    <option value="Snacks, Seasonings & Dry Rubs">Snacks, Seasonings & Dry Rubs</option>
-                    <option value="Infant Nutrition & Baby Foods">Infant Nutrition & Baby Foods</option>
-                    <option value="Pet Food & Animal Wellness">Pet Food & Animal Wellness</option>
-                    <option value="Cosmetics & Natural Skincare">Cosmetics & Natural Skincare</option>
-                    <option value="Private Label Repackaging">Private Label Repackaging for Retail</option>
-                  </select>
-                </div>
-
-                <div>
-                  <label className="block text-xs font-semibold text-stone-700 uppercase tracking-wider mb-2">
-                    Required Quality Certifications & Documents
-                  </label>
-                  <div className="grid grid-cols-2 md:grid-cols-3 gap-2.5">
-                    {[
-                      'COA with Batch',
-                      'Technical Data Sheet (TDS)',
-                      'Material Safety Data (MSDS)',
-                      'ISO 22000 Certified',
-                      'HACCP Certificate',
-                      'Halal Certified',
-                      'Kosher Pareve',
-                      'Organic NPOP/NOP',
-                      'Heavy Metal / Pesticide Test'
-                    ].map((item) => (
-                      <label key={item} className="flex items-center gap-2 text-xs text-stone-700 cursor-pointer bg-stone-50 p-2 rounded-lg border border-stone-200 hover:bg-stone-100">
+                    {formData.product === CUSTOM_PRODUCT && (
+                      <label className={`${labelClass} sm:col-span-2`}>
+                        Describe your product idea *
                         <input
-                          type="checkbox"
-                          checked={formData.complianceNeeds.includes(item)}
-                          onChange={() => handleCheckbox(item)}
-                          className="rounded text-[#1F4D36] focus:ring-[#1F4D36]"
+                          name="customProduct"
+                          type="text"
+                          required
+                          value={formData.customProduct}
+                          onChange={handleChange}
+                          placeholder="Ingredient, blend or product concept"
+                          className={inputClass}
                         />
-                        <span className="truncate">{item}</span>
                       </label>
-                    ))}
+                    )}
+                    <label className={labelClass}>
+                      Estimated order volume
+                      <select name="quantity" value={formData.quantity} onChange={handleChange} className={inputClass}>
+                        <option>Not decided</option>
+                        <option>Under 250 kg</option>
+                        <option>250–500 kg</option>
+                        <option>500 kg–1 MT</option>
+                        <option>1–5 MT</option>
+                        <option>Over 5 MT</option>
+                      </select>
+                    </label>
+                    <label className={labelClass}>
+                      Packaging preference
+                      <select name="packaging" value={formData.packaging} onChange={handleChange} className={inputClass}>
+                        <option>Need guidance</option>
+                        <option>Bulk packaging</option>
+                        <option>Private label / retail pack</option>
+                        <option>Other / discuss</option>
+                      </select>
+                    </label>
                   </div>
-                </div>
+                  <p className="border-l-2 border-[#d4ad49] bg-white/70 px-4 py-3 text-xs leading-5 text-[#657067]">
+                    No need to decide technical specifications yet. We will discuss those against the ingredient and intended use.
+                  </p>
+                </section>
+              )}
 
-                <div>
-                  <label className="block text-xs font-semibold text-stone-700 uppercase tracking-wider mb-1.5">
-                    Custom Specifications / Message (Optional)
-                  </label>
-                  <textarea
-                    name="message"
-                    rows={2}
-                    value={formData.message}
-                    onChange={handleChange}
-                    placeholder="Enter any specific bulk density requirements, moisture ceilings, target CIF pricing, or sample delivery address..."
-                    className="w-full px-3.5 py-2 rounded-lg border border-stone-300 bg-white text-stone-800 text-sm focus:ring-2 focus:ring-[#1F4D36] outline-none"
-                  ></textarea>
-                </div>
+              {step === 2 && (
+                <section aria-labelledby="use-step-title" className="space-y-5">
+                  <div>
+                    <p className="text-[9px] font-black uppercase tracking-[0.15em] text-[#9b7a32]">02 / Application & destination</p>
+                    <h3 id="use-step-title" className="mt-1 text-xl font-black tracking-[-0.03em]">Where will it be used?</h3>
+                  </div>
+                  <div className="grid gap-4 sm:grid-cols-2">
+                    <label className={`${labelClass} sm:col-span-2`}>
+                      Intended application
+                      <textarea
+                        name="intendedUse"
+                        rows={3}
+                        value={formData.intendedUse}
+                        onChange={handleChange}
+                        placeholder="For example: seasoning blend, beverage, bakery or personal-care formulation"
+                        className={`${inputClass} resize-y`}
+                      />
+                    </label>
+                    <label className={labelClass}>
+                      Destination country *
+                      <select name="country" value={formData.country} onChange={handleChange} required className={inputClass}>
+                        <option value="">Choose a destination</option>
+                        <option>India</option>
+                        <option>United States</option>
+                        <option>Germany</option>
+                        <option>United Kingdom</option>
+                        <option>United Arab Emirates</option>
+                        <option>Canada</option>
+                        <option>Australia</option>
+                        <option>Netherlands</option>
+                        <option>Japan</option>
+                        <option>South Korea</option>
+                        <option>Other</option>
+                      </select>
+                    </label>
+                    <label className={labelClass}>
+                      City or port (optional)
+                      <span className="relative mt-2 block">
+                        <MapPin className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-[#9b7a32]" />
+                        <input name="destinationPort" type="text" value={formData.destinationPort} onChange={handleChange} placeholder="City, seaport or airport" className={`${inputClass} mt-0 pl-9`} />
+                      </span>
+                    </label>
+                  </div>
+                  <fieldset>
+                    <legend className={`${labelClass} mb-2`}>Requirements to discuss (optional)</legend>
+                    <div className="grid gap-2 sm:grid-cols-2">
+                      {[
+                        'Batch quality summary',
+                        'Microbiological or contaminant testing',
+                        'Destination-market documents',
+                        'Other quality requirement'
+                      ].map((item) => (
+                        <label key={item} className="flex cursor-pointer items-start gap-2 border border-[#183126]/10 bg-white/70 p-3 text-xs leading-5 text-[#536056] hover:border-[#9b7a32]/50">
+                          <input
+                            type="checkbox"
+                            checked={formData.complianceNeeds.includes(item)}
+                            onChange={() => handleCheckbox(item)}
+                            className="mt-0.5 accent-[#183126]"
+                          />
+                          <span>{item}</span>
+                        </label>
+                      ))}
+                    </div>
+                  </fieldset>
+                </section>
+              )}
+
+              {step === 3 && (
+                <section aria-labelledby="contact-step-title" className="space-y-5">
+                  <div>
+                    <p className="text-[9px] font-black uppercase tracking-[0.15em] text-[#9b7a32]">03 / Your details</p>
+                    <h3 id="contact-step-title" className="mt-1 text-xl font-black tracking-[-0.03em]">Who should we follow up with?</h3>
+                  </div>
+                  <div className="grid gap-4 sm:grid-cols-2">
+                    <label className={labelClass}>
+                      Your name *
+                      <span className="relative mt-2 block">
+                        <User className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-[#9b7a32]" />
+                        <input name="fullName" type="text" autoComplete="name" required value={formData.fullName} onChange={handleChange} placeholder="Full name" className={`${inputClass} mt-0 pl-9`} />
+                      </span>
+                    </label>
+                    <label className={labelClass}>
+                      Company or brand *
+                      <span className="relative mt-2 block">
+                        <Building2 className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-[#9b7a32]" />
+                        <input name="company" type="text" autoComplete="organization" required value={formData.company} onChange={handleChange} placeholder="Company name" className={`${inputClass} mt-0 pl-9`} />
+                      </span>
+                    </label>
+                    <label className={labelClass}>
+                      Business email *
+                      <span className="relative mt-2 block">
+                        <Mail className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-[#9b7a32]" />
+                        <input name="email" type="email" autoComplete="email" required value={formData.email} onChange={handleChange} placeholder="name@company.com" className={`${inputClass} mt-0 pl-9`} />
+                      </span>
+                    </label>
+                    <label className={labelClass}>
+                      Phone or WhatsApp *
+                      <span className="relative mt-2 block">
+                        <Phone className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-[#9b7a32]" />
+                        <input name="phone" type="tel" autoComplete="tel" required value={formData.phone} onChange={handleChange} placeholder="Include country code" className={`${inputClass} mt-0 pl-9`} />
+                      </span>
+                    </label>
+                    <label className={`${labelClass} sm:col-span-2`}>
+                      Anything else we should know? (optional)
+                      <textarea
+                        name="message"
+                        rows={3}
+                        value={formData.message}
+                        onChange={handleChange}
+                        placeholder="Share a target specification, timing or other context"
+                        className={`${inputClass} resize-y`}
+                      />
+                    </label>
+                  </div>
+                </section>
+              )}
+
+              {validationMessage && (
+                <p role="alert" className="mt-5 border border-red-200 bg-red-50 px-4 py-3 text-xs font-medium text-red-800">{validationMessage}</p>
+              )}
+
+              <div className="mt-7 flex items-center justify-between gap-4 border-t border-[#183126]/15 pt-5">
+                {step > 1 ? (
+                  <button type="button" onClick={() => { setValidationMessage(''); setStep((currentStep) => currentStep - 1); }} className="inline-flex items-center gap-2 px-2 py-2 text-[9px] font-black uppercase tracking-[0.12em] text-[#657067] hover:text-[#183126]">
+                    <ArrowLeft className="h-4 w-4" /> Back
+                  </button>
+                ) : <span />}
+                {step < 3 ? (
+                  <button type="button" onClick={handleContinue} className="inline-flex items-center gap-3 bg-[#183126] px-5 py-3 text-[9px] font-black uppercase tracking-[0.12em] text-white hover:bg-[#2b4939]">
+                    Continue <ArrowRight className="h-4 w-4 text-[#d4ad49]" />
+                  </button>
+                ) : (
+                  <button type="submit" className="inline-flex items-center gap-3 bg-[#d4ad49] px-5 py-3 text-[9px] font-black uppercase tracking-[0.12em] text-[#183126] hover:bg-[#e2c36d]">
+                    {isSample ? 'Send sample inquiry' : 'Send product brief'} <Send className="h-4 w-4" />
+                  </button>
+                )}
               </div>
-            )}
-
-            {/* Navigation buttons */}
-            <div className="flex items-center justify-between border-t border-stone-200 mt-6 pt-4">
-              {step > 1 ? (
-                <button
-                  type="button"
-                  onClick={() => setStep(step - 1)}
-                  className="flex items-center gap-1.5 px-4 py-2 rounded-lg text-sm font-medium text-stone-600 hover:text-stone-900 hover:bg-stone-100 transition-colors"
-                >
-                  <ChevronLeft className="w-4 h-4" /> Back
-                </button>
-              ) : (
-                <div></div>
-              )}
-
-              {step < 3 ? (
-                <button
-                  type="button"
-                  onClick={() => {
-                    if (step === 2 && (!formData.fullName || !formData.company || !formData.email || !formData.phone)) {
-                      alert('Please complete your name, company, email and phone to proceed.');
-                      return;
-                    }
-                    setStep(step + 1);
-                  }}
-                  className="flex items-center gap-1.5 px-5 py-2.5 rounded-lg text-sm font-semibold text-white bg-[#1F4D36] hover:bg-[#163a28] transition-colors"
-                >
-                  Continue <ChevronRight className="w-4 h-4" />
-                </button>
-              ) : (
-                <button
-                  type="submit"
-                  className="flex items-center gap-2 px-6 py-2.5 rounded-lg text-sm font-semibold text-white bg-[#C9972B] hover:bg-[#b58622] shadow-md hover:shadow-lg transition-all"
-                >
-                  <Send className="w-4 h-4" />
-                  {isSample ? 'Submit Sample Request' : 'Submit Commercial Quote Request'}
-                </button>
-              )}
             </div>
+
+            <aside className="hidden border-l border-[#183126]/15 bg-[#ebe7db] p-6 lg:flex lg:flex-col">
+              <p className="text-[9px] font-black uppercase tracking-[0.16em] text-[#9b7a32]">Your inquiry</p>
+              {chosenProduct ? (
+                <div className="mt-4">
+                  <img src={chosenProduct.image} alt={chosenProduct.imageAlt || chosenProduct.name} className="h-36 w-full object-cover" />
+                  {chosenProduct.imageCredit && (
+                    <a href={chosenProduct.imageCreditUrl} target="_blank" rel="noreferrer" className="mt-2 block text-[8px] text-[#657067] underline underline-offset-2">
+                      Photo: {chosenProduct.imageCredit}
+                    </a>
+                  )}
+                  <p className="mt-4 text-[9px] font-bold uppercase tracking-[0.12em] text-[#7d6c53]">{chosenProduct.category}</p>
+                  <p className="mt-1 text-sm font-black leading-5">{chosenProduct.name}</p>
+                </div>
+              ) : (
+                <div className="mt-4 flex min-h-36 items-center justify-center border border-dashed border-[#183126]/25 px-4 text-center text-xs leading-5 text-[#657067]">
+                  Your selected ingredient or product idea will appear here.
+                </div>
+              )}
+              <div className="mt-6 border-t border-[#183126]/15 pt-5">
+                <p className="text-[9px] font-black uppercase tracking-[0.14em] text-[#7d6c53]">What happens next</p>
+                <ol className="mt-3 space-y-3">
+                  {[
+                    'Review the ingredient and application',
+                    'Confirm specifications, volume and pack',
+                    'Agree any order-specific checks and documents'
+                  ].map((item, index) => (
+                    <li key={item} className="flex gap-3 text-xs leading-5 text-[#536056]">
+                      <span className="font-mono text-[9px] font-bold text-[#9b7a32]">0{index + 1}</span>{item}
+                    </li>
+                  ))}
+                </ol>
+              </div>
+              <div className="mt-auto flex items-start gap-2 border-t border-[#183126]/15 pt-5 text-[10px] leading-5 text-[#657067]">
+                <BadgeCheck className="mt-0.5 h-4 w-4 shrink-0 text-[#9b7a32]" />
+                <p>Facility credential: FSSAI license. Additional tests and supporting documents are confirmed per order.</p>
+              </div>
+            </aside>
           </form>
         )}
-      </div>
+      </section>
     </div>
   );
 }

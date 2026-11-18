@@ -16,17 +16,17 @@ export default function GreenPromoBanner({ onExploreProducts }) {
               </svg>
             </div>
             <h2 className="text-3xl sm:text-4xl font-extrabold text-white leading-tight mb-4">
-              Power Your Business<br/>
-              <span className="text-[#f0c060]">Naturally</span>
+              Working on a<br/>
+              <span className="text-[#f0c060]">product brief?</span>
             </h2>
             <p className="text-emerald-200 text-sm leading-relaxed mb-8 max-w-md">
-              Premium dehydrated powder solutions for food manufacturers, nutraceutical brands, bakeries & exporters. COA guaranteed, ISO certified, bulk export ready.
+              Tell us the ingredient, application, target volume and destination. We’ll confirm product fit, available documentation and quotation details for your order.
             </p>
             <button
               onClick={onExploreProducts}
               className="inline-flex items-center gap-2 bg-[#c8922b] hover:bg-[#f0c060] hover:text-stone-900 text-white font-bold text-sm px-7 py-3.5 rounded-lg transition-colors shadow-lg"
             >
-              Explore Now
+              Browse products
               <ArrowRight className="w-4 h-4"/>
             </button>
           </div>

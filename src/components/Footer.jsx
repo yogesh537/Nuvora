@@ -5,20 +5,21 @@ import { Mail, MapPin, MessageCircle, Phone, Send } from 'lucide-react';
 const quickLinks = [
   { label: 'Home', view: 'home' },
   { label: 'Products', view: 'products' },
-  { label: 'Manufacturing', view: 'manufacturing' },
-  { label: 'Quality & Certifications', view: 'quality' },
+  { label: 'About Us', view: 'about' },
+  { label: 'Industries', view: 'industries' },
+  { label: 'Quality Assurance', view: 'quality' },
 ];
 
 const customerCareLinks = [
   { label: 'Request a Quote', action: 'quote' },
   { label: 'WhatsApp Support', action: 'whatsapp' },
-  { label: 'Quality Documents', view: 'quality' },
+  { label: 'Quality & Testing', view: 'quality' },
   { label: 'Private Label', view: 'private-label' },
 ];
 
 const companyLinks = [
-  { label: 'About Nuvaro', view: 'home' },
-  { label: 'Our Manufacturing', view: 'manufacturing' },
+  { label: 'About Nuvaro', view: 'about' },
+  { label: 'Industries We Serve', view: 'industries' },
   { label: 'Private Label', view: 'private-label' },
   { label: 'Insights & Articles', view: 'blog' },
 ];
@@ -28,29 +29,6 @@ const powderLinks = [
   { label: 'Spice Powders', category: 'Spice Powders' },
   { label: 'Herbal & Botanical', category: 'Herbal & Botanical' },
   { label: 'Exotic Fruit', category: 'Exotic Fruit' },
-];
-
-const heritagePhotos = [
-  {
-    name: 'Taj Mahal',
-    image: '/images/footer/taj-mahal.jpg',
-    position: 'center 52%',
-  },
-  {
-    name: 'Hawa Mahal',
-    image: '/images/footer/hawa-mahal.jpg',
-    position: 'center 46%',
-  },
-  {
-    name: 'India Gate',
-    image: '/images/footer/india-gate.jpg',
-    position: 'center 62%',
-  },
-  {
-    name: 'Qutub Minar',
-    image: '/images/footer/qutub-minar.jpg',
-    position: 'center 48%',
-  },
 ];
 
 export default function Footer({ onNavigate, onSelectCategory }) {
@@ -104,13 +82,13 @@ export default function Footer({ onNavigate, onSelectCategory }) {
   );
 
   return (
-    <footer className="w-full overflow-hidden border-t-4 border-[#9b4f40] bg-[#fbf6ed] text-[#433b34]">
+    <footer className="w-full overflow-hidden border-t-4 border-[#1f4d36] bg-[#fbf6ed] text-[#433b34]">
       <div className="w-full">
         <div className="mx-auto grid w-full max-w-7xl gap-8 border-b border-[#e8ded0] px-5 py-7 sm:px-8 sm:py-9 lg:grid-cols-2 lg:items-center lg:gap-12 lg:px-12">
           <div>
             <button
               onClick={() => onNavigate('home')}
-              className="flex items-center gap-3 text-left focus:outline-none focus-visible:ring-2 focus-visible:ring-[#9b4f40]"
+              className="flex items-center gap-3 text-left focus:outline-none focus-visible:ring-2 focus-visible:ring-[#1f4d36]"
               aria-label="Nuvaro Agro home"
             >
               <span className="grid h-12 w-12 place-items-center rounded-full border border-[#d8c6ae] bg-[#f1e7d7] text-[#1f4d36]">
@@ -120,7 +98,7 @@ export default function Footer({ onNavigate, onSelectCategory }) {
                 </svg>
               </span>
               <span>
-                <span className="block font-serif text-2xl font-semibold tracking-tight text-[#6e332b]">Nuvaro Agro</span>
+                <span className="block font-serif text-2xl font-semibold tracking-tight text-[#183126]">Nuvaro Agro</span>
                 <span className="mt-0.5 block text-[9px] font-semibold uppercase tracking-[0.2em] text-[#83776c]">Dehydrated ingredients</span>
               </span>
             </button>
@@ -128,7 +106,7 @@ export default function Footer({ onNavigate, onSelectCategory }) {
               Rooted in nature, made for modern food and wellness brands. Discover premium vegetable, fruit, spice and botanical powders for your next formulation.
             </p>
             <div className="mt-4 flex flex-wrap gap-2">
-              {['ISO 22000', 'HACCP', 'FSSAI'].map((certification) => (
+              {['FSSAI Licensed Facility'].map((certification) => (
                 <span key={certification} className="rounded-full border border-[#e5d9c8] bg-white/70 px-2.5 py-1 text-[9px] font-semibold tracking-wide text-[#6f665d]">
                   {certification}
                 </span>
@@ -160,7 +138,7 @@ export default function Footer({ onNavigate, onSelectCategory }) {
                 />
                 <button
                   type="submit"
-                  className="inline-flex items-center justify-center gap-2 bg-[#1f4d36] px-5 py-3 text-[11px] font-semibold text-white transition-colors hover:bg-[#193e2c] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#9b4f40] focus-visible:ring-offset-2"
+                  className="inline-flex items-center justify-center gap-2 bg-[#1f4d36] px-5 py-3 text-[11px] font-semibold text-white transition-colors hover:bg-[#193e2c] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#C9972B] focus-visible:ring-offset-2"
                 >
                   Subscribe <Send className="h-3.5 w-3.5" />
                 </button>
@@ -186,15 +164,15 @@ export default function Footer({ onNavigate, onSelectCategory }) {
             <h3 className="mb-3 font-serif text-sm font-semibold text-[#40372f]">Connect With Us</h3>
             <div className="space-y-2.5 text-[11px] leading-5 text-[#6f665d]">
               <a href="mailto:export@nuvaroagro.com" className="flex items-center gap-2 transition-colors hover:text-[#1f4d36]">
-                <Mail className="h-3.5 w-3.5 shrink-0 text-[#9b4f40]" />
+                <Mail className="h-3.5 w-3.5 shrink-0 text-[#C9972B]" />
                 export@nuvaroagro.com
               </a>
               <a href="tel:+919820012345" className="flex items-center gap-2 transition-colors hover:text-[#1f4d36]">
-                <Phone className="h-3.5 w-3.5 shrink-0 text-[#9b4f40]" />
+                <Phone className="h-3.5 w-3.5 shrink-0 text-[#C9972B]" />
                 +91 98200 12345
               </a>
               <p className="flex items-start gap-2">
-                <MapPin className="mt-1 h-3.5 w-3.5 shrink-0 text-[#9b4f40]" />
+                <MapPin className="mt-1 h-3.5 w-3.5 shrink-0 text-[#C9972B]" />
                 Gujarat &amp; Maharashtra, India
               </p>
             </div>
@@ -214,27 +192,6 @@ export default function Footer({ onNavigate, onSelectCategory }) {
           © {new Date().getFullYear()} Nuvaro Agro Pvt Ltd. All rights reserved.
         </div>
 
-        <div className="grid h-36 grid-cols-4 overflow-hidden border-t border-[#e8ded0] sm:h-56">
-          {heritagePhotos.map(({ name, image, position }, index) => (
-            <figure
-              key={name}
-              className="group relative m-0 min-w-0 overflow-hidden border-r border-white/35 last:border-r-0"
-            >
-              <img
-                src={image}
-                alt=""
-                loading="lazy"
-                decoding="async"
-                className="footer-photo-motion h-full w-full object-cover transition-[filter] duration-700 group-hover:brightness-110"
-                style={{ objectPosition: position, animationDelay: `${index * -6}s`, animationDuration: `${28 + index * 3}s` }}
-              />
-              <span className="absolute inset-0 bg-gradient-to-t from-[#1f4d36]/80 via-[#1f4d36]/10 to-black/5 transition-colors group-hover:from-[#1f4d36]/60" />
-              <figcaption className="absolute bottom-2 left-2 font-serif text-[8px] font-semibold tracking-wide text-white drop-shadow sm:bottom-4 sm:left-4 sm:text-sm">
-                {name}
-              </figcaption>
-            </figure>
-          ))}
-        </div>
       </div>
     </footer>
   );

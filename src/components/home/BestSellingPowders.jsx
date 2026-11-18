@@ -170,7 +170,7 @@ export default function BestSellingPowders({ products, onSelectProduct, onOpenQu
             onClick={() => onSelectProduct(null)} // navigate to product list
             className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-[#1F4D36] hover:bg-[#163a28] text-white text-xs sm:text-sm font-bold shadow-md transition-all"
           >
-            <span>View All 12+ Dehydrated Powder Specifications</span>
+            <span>View All Dehydrated Powder Specifications</span>
             <ArrowRight className="w-4 h-4" />
           </button>
         </div>

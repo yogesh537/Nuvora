@@ -48,7 +48,7 @@ export default function AdminPortalPage() {
       { product: 'Spinach Powder (Air dried, 80 Mesh)', qty: 5000, unit: 'kg', unitPrice: 4.80 },
       { product: 'Beetroot Powder (Spray dried, 80 Mesh)', qty: 2500, unit: 'kg', unitPrice: 5.40 }
     ],
-    notes: 'Packaging: 25kg Fibre Drums with heavy-gauge PE food-grade inner liners. Certificates included: Batch COA, Phytosanitary, Certificate of Origin, Non-GMO Statement.'
+    notes: 'Packaging: 25kg fibre drums with inner liners. FSSAI facility license available; additional documents are confirmed for each order.'
   });
 
   const [activeQuotePreview, setActiveQuotePreview] = useState(false);
@@ -613,7 +613,7 @@ export default function AdminPortalPage() {
                       Email: exports@nuvaroagro.com | Web: https://nuvaroagro.com | Phone: +91 98200 12345
                     </p>
                     <p className="text-[10px] text-stone-400">
-                      ISO 22000:2018 | HACCP | FSSAI Lic: 10020021008942 | US FDA Reg: 19482019482
+                      FSSAI Facility License No. 10020021008942
                     </p>
                   </div>
 
@@ -765,28 +765,28 @@ export default function AdminPortalPage() {
                 </div>
               </div>
 
-              {/* Card 3: Quality Compliance Rate */}
+              {/* Card 3: Order-specific quality and delivery details */}
               <div className="bg-white rounded-3xl p-6 border border-stone-200 shadow-card space-y-4">
                 <h3 className="font-bold text-stone-900 text-sm flex items-center gap-2">
                   <ShieldCheck className="w-4 h-4 text-emerald-600" />
-                  Audit & Customs Clearance Rate
+                  Order documentation
                 </h3>
                 <div className="text-center py-4 space-y-2">
-                  <div className="text-4xl font-extrabold text-[#1F4D36]">99.8%</div>
-                  <p className="text-xs text-stone-500">First-Time Customs Acceptance</p>
+                  <div className="text-4xl font-extrabold text-[#1F4D36]">FSSAI</div>
+                  <p className="text-xs text-stone-500">Facility license</p>
                 </div>
                 <div className="text-xs text-stone-600 space-y-1.5 pt-2 border-t border-stone-100">
                   <div className="flex justify-between">
-                    <span>Average Sample Turnaround:</span>
-                    <strong className="text-stone-900">48 Hours via DHL</strong>
+                    <span>Quality scope:</span>
+                    <strong className="text-stone-900">Confirmed per order</strong>
                   </div>
                   <div className="flex justify-between">
-                    <span>Proforma Response Time:</span>
-                    <strong className="text-stone-900">&lt; 3.5 Hours</strong>
+                    <span>Sample availability:</span>
+                    <strong className="text-stone-900">By inquiry</strong>
                   </div>
                   <div className="flex justify-between">
-                    <span>Active Annual Contracts:</span>
-                    <strong className="text-emerald-700">18 Master Agreements</strong>
+                    <span>Delivery schedule:</span>
+                    <strong className="text-stone-900">Confirmed with quote</strong>
                   </div>
                 </div>
               </div>

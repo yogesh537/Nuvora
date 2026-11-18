@@ -1,26 +1,26 @@
 import React from 'react';
-import { FlaskConical, Headphones, Leaf, ShieldCheck } from 'lucide-react';
+import { products } from '../../data/products';
+
+const categories = new Set(products.map((product) => product.category));
 
 const highlights = [
-  { Icon: Leaf, title: 'Naturally sourced', detail: 'Pure botanical ingredients' },
-  { Icon: FlaskConical, title: 'Made for function', detail: 'Consistent specifications' },
-  { Icon: ShieldCheck, title: 'Quality assured', detail: 'Batch COA available' },
-  { Icon: Headphones, title: 'B2B support', detail: 'Here for your team' },
+  { value: products.length, label: 'Powders listed' },
+  { value: categories.size, label: 'Ingredient groups' },
+  { value: 'FSSAI', label: 'Facility license' },
+  { value: 'Per order', label: 'Quality scope' }
 ];
 
 export default function TrustHighlights() {
   return (
-    <section className="bg-[#F7F7F0] py-5">
-      <div className="mx-auto grid max-w-7xl grid-cols-2 gap-3 px-4 sm:px-8 md:grid-cols-4 md:gap-4">
-        {highlights.map(({ Icon, title, detail }) => (
-          <div key={title} className="flex items-center gap-3 rounded-xl border border-[#E8E8DE] bg-white p-3.5 sm:p-4">
-            <div className="grid h-9 w-9 shrink-0 place-items-center rounded-full bg-[#F0F2E9] text-[#1F4D36]">
-              <Icon className="h-4 w-4" />
-            </div>
-            <div>
-              <p className="text-[11px] font-semibold leading-tight text-stone-800 sm:text-xs">{title}</p>
-              <p className="mt-1 text-[9px] leading-tight text-stone-500 sm:text-[10px]">{detail}</p>
-            </div>
+    <section className="bg-[#183126] text-[#f4f1e8]" aria-label="Sourcing facts">
+      <div className="mx-auto grid max-w-[1440px] grid-cols-2 px-5 sm:px-8 lg:grid-cols-4 lg:px-12">
+        {highlights.map((item, index) => (
+          <div
+            key={item.label}
+            className={`flex min-h-[76px] items-center gap-3 border-white/15 py-4 ${index % 2 === 0 ? 'border-r pr-4' : 'pl-4'} ${index > 1 ? 'border-t lg:border-t-0' : ''} ${index > 0 && index % 2 === 0 ? 'lg:border-l lg:pl-6' : ''} ${index === 0 ? 'lg:pl-0 lg:pr-6' : ''} ${index === 3 ? 'lg:pl-6 lg:pr-0' : ''}`}
+          >
+            <span className="font-serif text-xl font-bold text-[#d4ad49] sm:text-2xl">{item.value}</span>
+            <span className="text-[9px] font-bold uppercase leading-4 tracking-[0.12em] text-white/70 sm:text-[10px]">{item.label}</span>
           </div>
         ))}
       </div>

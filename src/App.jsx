@@ -14,21 +14,12 @@ import CatalogueDownloadModal from './components/modals/CatalogueDownloadModal';
 import CompareModal from './components/modals/CompareModal';
 import QuickSpecModal from './components/modals/QuickSpecModal';
 
-// Homepage Sections
-import Hero from './components/home/Hero';
-import TrustHighlights from './components/home/TrustHighlights';
-import ShopByCategory from './components/home/ShopByCategory';
-import ProductCarouselSection from './components/home/ProductCarouselSection';
-import AboutAndImpactSection from './components/home/AboutAndImpactSection';
-import GreenPromoBanner from './components/home/GreenPromoBanner';
-import ClientTestimonials from './components/home/ClientTestimonials';
-import BlogPreview from './components/home/BlogPreview';
-import FAQSection from './components/home/FAQSection';
-
 // Other Dedicated Views
+import HomePage from './views/HomePage';
 import ProductListingPage from './views/ProductListingPage';
 import ProductDetailPage from './views/ProductDetailPage';
-import ManufacturingPage from './views/ManufacturingPage';
+import AboutPage from './views/AboutPage';
+import IndustriesPage from './views/IndustriesPage';
 import QualityCertificationsPage from './views/QualityCertificationsPage';
 import PrivateLabelPage from './views/PrivateLabelPage';
 import BlogPage from './views/BlogPage';
@@ -58,12 +49,6 @@ export default function App() {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
-  const handleSelectBlogPost = (post) => {
-    setSelectedBlogPost(post);
-    setCurrentView('blog');
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  };
-
   return (
     <LeadProvider>
       <CompareProvider>
@@ -77,26 +62,10 @@ export default function App() {
 
           <main className="flex-1">
             {currentView === 'home' && (
-              <>
-                <Hero onExploreProducts={handleSelectProduct} />
-                <TrustHighlights />
-                <ShopByCategory onSelectCategory={handleSelectCategory} />
-                <ProductCarouselSection
-                  products={products}
-                  onSelectProduct={handleSelectProduct}
-                />
-                <AboutAndImpactSection />
-                <GreenPromoBanner onExploreProducts={handleSelectProduct} />
-                <ClientTestimonials />
-                <BlogPreview
-                  onSelectBlogPost={handleSelectBlogPost}
-                  onViewAllBlogs={() => {
-                    setCurrentView('blog');
-                    window.scrollTo({ top: 0, behavior: 'smooth' });
-                  }}
-                />
-                <FAQSection />
-              </>
+              <HomePage
+                onSelectProduct={handleSelectProduct}
+                onSelectCategory={handleSelectCategory}
+              />
             )}
 
             {currentView === 'products' && (
@@ -117,16 +86,17 @@ export default function App() {
             )}
 
             {currentView === 'industries' && (
-              <div className="bg-[#FAF8F5] py-12">
-                <ProductCarouselSection
-                  products={products}
-                  onSelectProduct={handleSelectProduct}
-                />
-              </div>
+              <IndustriesPage
+                onExploreProducts={() => handleSelectProduct(null)}
+                onOpenQuote={() => document.dispatchEvent(new CustomEvent('openQuoteModal'))}
+              />
             )}
 
-            {currentView === 'manufacturing' && (
-              <ManufacturingPage onOpenQuote={() => setCurrentView('products')} />
+            {currentView === 'about' && (
+              <AboutPage
+                onExploreProducts={() => handleSelectProduct(null)}
+                onOpenQuote={() => document.dispatchEvent(new CustomEvent('openQuoteModal'))}
+              />
             )}
 
             {currentView === 'quality' && (
@@ -141,7 +111,7 @@ export default function App() {
               <BlogPage
                 selectedPost={selectedBlogPost}
                 onSelectPost={setSelectedBlogPost}
-                onBackToHome={() => setCurrentView('home')}
+                onSelectProduct={handleSelectProduct}
               />
             )}
 
@@ -165,7 +135,10 @@ export default function App() {
           <QuickSpecModal
             product={quickSpecProduct}
             onClose={() => setQuickSpecProduct(null)}
-            onRequestQuote={(p) => { setQuickSpecProduct(null); }}
+            onRequestQuote={(product) => {
+              setQuickSpecProduct(null);
+              document.dispatchEvent(new CustomEvent('openQuoteModal', { detail: product }));
+            }}
           />
         </div>
       </CompareProvider>

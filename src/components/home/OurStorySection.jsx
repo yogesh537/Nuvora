@@ -18,10 +18,10 @@ export default function OurStorySection() {
               a Better Future
             </h2>
             <p className="text-stone-500 text-sm leading-relaxed mb-4">
-              At Nuvaro Agro, we have good food science at our core. We source the finest organic produce and transform it into precision-dried powders using spray drying, continuous belt dehydration, and freeze drying technologies.
+              At Nuvaro Agro, we work with vegetable, fruit, spice and botanical ingredients and process them into powders for commercial formulations.
             </p>
             <p className="text-stone-500 text-sm leading-relaxed mb-6">
-              Every batch is FSSAI, ISO 22000, and HACCP certified — and comes with a full Certificate of Analysis. Our mission is to empower food brands worldwide with clean, traceable, high-performance ingredients.
+              Our facility holds an FSSAI license. Product specifications, quality checks and batch documents are discussed and confirmed for each order.
             </p>
             <div className="flex items-center gap-3 mb-6">
               {[
@@ -36,7 +36,7 @@ export default function OurStorySection() {
               ))}
             </div>
             <button
-              onClick={openQuoteModal}
+              onClick={() => openQuoteModal()}
               className="inline-flex items-center gap-2 bg-[#c8922b] hover:bg-[#b07d22] text-white font-bold text-sm px-6 py-3 rounded-lg transition-colors"
             >
               Shop Now <ArrowRight className="w-4 h-4"/>
@@ -55,10 +55,10 @@ export default function OurStorySection() {
             {/* Stats overlay */}
             <div className="absolute -bottom-5 -left-5 grid grid-cols-2 gap-2 bg-white p-4 rounded-2xl shadow-xl border border-stone-100">
               {[
-                { n: '500+', label: 'Happy Partners' },
-                { n: '9', label: 'Premium Powders' },
-                { n: '100%', label: 'Quality Assured' },
-                { n: '24/7', label: 'B2B Support' },
+                { n: '9', label: 'Products listed' },
+                { n: 'FSSAI', label: 'Facility license' },
+                { n: 'By order', label: 'Quality scope' },
+                { n: 'B2B', label: 'Product inquiries' },
               ].map(stat => (
                 <div key={stat.label} className="text-center px-3">
                   <div className="font-extrabold text-lg text-[#1a3d2b]">{stat.n}</div>

@@ -34,19 +34,19 @@ export default function ManufacturingTimeline({ onExploreManufacturing }) {
       num: "04",
       icon: SlidersHorizontal,
       title: "Micronizing & Sieving",
-      desc: "Precision stainless pin-mills and vibrating screens guarantee exact mesh distribution (60 - 120 mesh)."
+      desc: "Milling and screening are selected to meet the particle-size requirement agreed for the product."
     },
     {
       num: "05",
       icon: SearchCheck,
       title: "Metal Detection & QA",
-      desc: "11,000 Gauss rare-earth magnetic traps and inline metal detection (< 0.8mm Fe, Non-Fe, SS)."
+      desc: "Product-specific quality checks are reviewed against the agreed order specification."
     },
     {
       num: "06",
       icon: Box,
       title: "Cleanroom Nitrogen Packing",
-      desc: "Sealed under ISO Class 100,000 cleanroom air with nitrogen gas purge for 24-month stability."
+      desc: "Pack format, batch identification and seal details are confirmed before order dispatch."
     }
   ];
 
@@ -57,7 +57,7 @@ export default function ManufacturingTimeline({ onExploreManufacturing }) {
         {/* Section Heading */}
         <div className="text-center max-w-3xl mx-auto mb-16">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-100 text-[#1F4D36] text-xs font-bold uppercase tracking-wider mb-2">
-            GMP Certified Infrastructure
+            Process & Quality Checks
           </div>
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-[#1F4D36] tracking-tight">
             The Farm-to-Powder Process

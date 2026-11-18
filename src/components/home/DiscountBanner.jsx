@@ -18,7 +18,7 @@ export default function DiscountBanner() {
           </div>
         </div>
         <button
-          onClick={openQuoteModal}
+          onClick={() => openQuoteModal()}
           className="bg-[#c8922b] hover:bg-[#f0c060] hover:text-stone-900 text-white font-bold text-sm px-7 py-3 rounded-lg transition-colors shadow-lg shrink-0"
         >
           Shop Now →

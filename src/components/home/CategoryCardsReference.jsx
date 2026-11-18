@@ -34,11 +34,11 @@ const referenceCategories = [
     id: "Herbal & Ayurvedic Powders",
     title: "Herbal & Ayurvedic",
     subtitle: "Moringa, Amla, Ashwagandha",
-    badge: "Standardized & Organic",
+    badge: "Botanical Powders",
     accentColor: "text-green-700 bg-green-50",
     icon: Leaf,
     image: "https://images.unsplash.com/photo-1546868871-7041f2a55e12?auto=format&fit=crop&w=700&q=85",
-    description: "Pharmacopeia-grade botanical powders with guaranteed active marker levels."
+    description: "Botanical powders for wellness, beverage, food and personal-care formulations."
   },
   {
     id: "Spice Powders",

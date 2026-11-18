@@ -1,354 +1,247 @@
-import React, { useState, useMemo } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
+import { ArrowRight, ArrowUpRight, Layers, Search, X } from 'lucide-react';
 import { useLeads } from '../context/LeadContext';
 import { useCompare } from '../context/CompareContext';
-import { 
-  Search, 
-  Filter, 
-  Layers, 
-  FileText, 
-  ArrowRight, 
-  SlidersHorizontal, 
-  Check, 
-  X, 
-  Sparkles,
-  ShieldCheck,
-  ChevronRight
-} from 'lucide-react';
 
-export default function ProductListingPage({ 
-  products, 
-  selectedCategory, 
-  onSelectProduct, 
-  onOpenQuickSpec 
+export default function ProductListingPage({
+  products,
+  selectedCategory,
+  onSelectProduct,
+  onOpenQuickSpec
 }) {
   const { openQuoteModal } = useLeads();
   const { comparedProducts, addToCompare, removeFromCompare, setIsCompareOpen } = useCompare();
-
   const [search, setSearch] = useState('');
   const [categoryFilter, setCategoryFilter] = useState(selectedCategory || 'All');
-  const [processFilter, setProcessFilter] = useState('All');
-  const [meshFilter, setMeshFilter] = useState('All');
-  const [certFilter, setCertFilter] = useState('All');
-  const [sortBy, setSortBy] = useState('featured');
-  const [mobileFilterOpen, setMobileFilterOpen] = useState(false);
+  const [sortBy, setSortBy] = useState('name');
+  const categories = [...new Set(products.map((product) => product.category))];
 
-  // Filter products dynamically
+  useEffect(() => {
+    setCategoryFilter(selectedCategory || 'All');
+  }, [selectedCategory]);
+
   const filteredProducts = useMemo(() => {
-    return products.filter(p => {
-      // Search
-      const matchesSearch = 
-        p.name.toLowerCase().includes(search.toLowerCase()) ||
-        p.botanicalName.toLowerCase().includes(search.toLowerCase()) ||
-        p.category.toLowerCase().includes(search.toLowerCase()) ||
-        p.applications.some(a => a.toLowerCase().includes(search.toLowerCase()));
-
-      // Category
-      const matchesCategory = categoryFilter === 'All' || p.category === categoryFilter;
-
-      // Drying Process
-      const matchesProcess = processFilter === 'All' || p.process.toLowerCase().includes(processFilter.toLowerCase());
-
-      // Mesh
-      const matchesMesh = meshFilter === 'All' || p.meshSize.includes(meshFilter);
-
-      // Certification
-      const matchesCert = certFilter === 'All' || p.certifications.includes(certFilter);
-
-      return matchesSearch && matchesCategory && matchesProcess && matchesMesh && matchesCert;
-    }).sort((a, b) => {
-      if (sortBy === 'name') return a.name.localeCompare(b.name);
-      if (sortBy === 'rating') return b.rating - a.rating;
-      return (b.featured ? 1 : 0) - (a.featured ? 1 : 0);
-    });
-  }, [products, search, categoryFilter, processFilter, meshFilter, certFilter, sortBy]);
+    const query = search.trim().toLowerCase();
+    return products
+      .filter((product) => {
+        const searchableText = [
+          product.name,
+          product.botanicalName,
+          product.category,
+          ...(product.applications || [])
+        ].filter(Boolean).join(' ').toLowerCase();
+        return (!query || searchableText.includes(query))
+          && (categoryFilter === 'All' || product.category === categoryFilter);
+      })
+      .sort((a, b) => sortBy === 'category'
+        ? a.category.localeCompare(b.category) || a.name.localeCompare(b.name)
+        : a.name.localeCompare(b.name));
+  }, [products, search, categoryFilter, sortBy]);
 
   const resetFilters = () => {
     setSearch('');
     setCategoryFilter('All');
-    setProcessFilter('All');
-    setMeshFilter('All');
-    setCertFilter('All');
   };
-
-  const hasActiveFilters = categoryFilter !== 'All' || processFilter !== 'All' || meshFilter !== 'All' || certFilter !== 'All' || search !== '';
+  const hasActiveFilters = categoryFilter !== 'All' || search.trim() !== '';
 
   return (
-    <div className="bg-[#FAF7F0] min-h-screen py-8 md:py-12">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6">
-        
-        {/* Breadcrumb & Header */}
-        <div className="mb-8">
-          <div className="flex items-center gap-2 text-xs text-stone-500 mb-2">
-            <span>Home</span>
-            <ChevronRight className="w-3 h-3" />
-            <span className="text-[#1F4D36] font-semibold">Product Catalog & Specifications</span>
+    <div className="min-h-screen bg-[#f4f1e8] text-[#183126]">
+      <section className="relative overflow-hidden bg-[#183126] text-[#f4f1e8]">
+        <div className="pointer-events-none absolute -right-24 -top-32 h-96 w-96 rounded-full border border-white/10" />
+        <div className="pointer-events-none absolute -right-12 -top-20 h-72 w-72 rounded-full border border-[#d4ad49]/20" />
+        <div className="relative mx-auto grid max-w-[1440px] gap-8 px-5 py-14 sm:px-8 sm:py-16 lg:grid-cols-[1fr_auto] lg:items-end lg:px-12 lg:py-20">
+          <div>
+            <p className="text-[10px] font-black uppercase tracking-[0.2em] text-[#d4ad49]">Nuvaro Agro / Ingredient catalog</p>
+            <h1 className="mt-5 max-w-3xl text-5xl font-black leading-[0.9] tracking-[-0.06em] sm:text-6xl lg:text-7xl">
+              Find the right
+              <br />
+              <span className="font-serif font-medium italic text-[#d4ad49]">starting point.</span>
+            </h1>
+            <p className="mt-6 max-w-2xl text-sm leading-7 text-white/65 sm:text-base">
+              Explore the listed ingredients and example applications. Share your brief to discuss fit, specifications, packaging and order details.
+            </p>
           </div>
-
-          <div className="flex flex-col md:flex-row md:items-end justify-between gap-4">
+          <div className="flex items-center gap-8 border-t border-white/20 pt-5 lg:border-l lg:border-t-0 lg:pl-8 lg:pt-0">
             <div>
-              <h1 className="text-3xl sm:text-4xl font-extrabold text-[#1F4D36] tracking-tight">
-                Industrial Dehydrated Powder Portfolio
-              </h1>
-              <p className="text-stone-600 text-sm mt-1 max-w-2xl">
-                Download Certificates of Analysis (COA), Technical Data Sheets (TDS), and request bulk container quotations or free 100g lab testing samples.
-              </p>
+              <p className="text-3xl font-black">{String(products.length).padStart(2, '0')}</p>
+              <p className="mt-1 text-[9px] font-bold uppercase tracking-[0.14em] text-white/55">Listed ingredients</p>
             </div>
-
-            <div className="flex items-center gap-2">
-              <span className="text-xs bg-white px-3 py-1.5 rounded-lg border border-stone-200 font-semibold text-stone-700 shadow-2xs">
-                Showing <strong>{filteredProducts.length}</strong> of {products.length} Products
-              </span>
+            <div>
+              <p className="text-3xl font-black">{String(categories.length).padStart(2, '0')}</p>
+              <p className="mt-1 text-[9px] font-bold uppercase tracking-[0.14em] text-white/55">Product groups</p>
             </div>
           </div>
         </div>
+      </section>
 
-        {/* Filter Bar & Search */}
-        <div className="bg-white rounded-2xl p-4 border border-stone-200 shadow-sm mb-8 space-y-4">
-          <div className="flex flex-col md:flex-row gap-3 items-center justify-between">
-            {/* Search Input */}
-            <div className="relative w-full md:w-80">
-              <Search className="w-4 h-4 text-stone-400 absolute left-3.5 top-3" />
+      <section className="border-b border-[#183126]/15 bg-[#ebe7db]">
+        <div className="mx-auto flex max-w-[1440px] flex-wrap gap-x-6 gap-y-3 px-5 py-4 sm:px-8 lg:px-12">
+          {['All', ...categories].map((category) => (
+            <button
+              type="button"
+              key={category}
+              onClick={() => setCategoryFilter(category)}
+              aria-pressed={categoryFilter === category}
+              className={`border-b-2 pb-1 text-[10px] font-black uppercase tracking-[0.12em] ${categoryFilter === category ? 'border-[#9b7a32] text-[#183126]' : 'border-transparent text-[#657067] hover:text-[#183126]'}`}
+            >
+              {category === 'All' ? 'All ingredients' : category}
+            </button>
+          ))}
+        </div>
+      </section>
+
+      <section className="mx-auto max-w-[1440px] px-5 py-8 sm:px-8 lg:px-12 lg:py-12">
+        <div className="flex flex-col gap-5 border-b border-[#183126]/20 pb-5 md:flex-row md:items-end md:justify-between">
+          <div>
+            <label htmlFor="product-search" className="mb-2 block text-[9px] font-black uppercase tracking-[0.16em] text-[#657067]">
+              Search ingredients and uses
+            </label>
+            <div className="relative w-full sm:w-[min(100%,440px)]">
+              <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-[#7d6c53]" />
               <input
-                type="text"
+                id="product-search"
+                type="search"
                 value={search}
-                onChange={(e) => setSearch(e.target.value)}
-                placeholder="Search powder, botanical name, application..."
-                className="w-full pl-9 pr-4 py-2 rounded-xl border border-stone-200 bg-stone-50 text-xs sm:text-sm text-stone-800 focus:outline-none focus:ring-2 focus:ring-[#1F4D36] focus:bg-white transition-all"
+                onChange={(event) => setSearch(event.target.value)}
+                placeholder="Ingredient, botanical name or application"
+                className="w-full border border-[#183126]/20 bg-white py-3 pl-10 pr-10 text-xs text-[#183126] outline-none placeholder:text-[#8a8b81] focus:border-[#9b7a32]"
               />
               {search && (
                 <button
+                  type="button"
+                  aria-label="Clear search"
                   onClick={() => setSearch('')}
-                  className="absolute right-3 top-2.5 text-stone-400 hover:text-stone-600"
+                  className="absolute right-3 top-1/2 -translate-y-1/2 text-[#657067] hover:text-[#183126]"
                 >
-                  <X className="w-4 h-4" />
+                  <X className="h-4 w-4" />
                 </button>
               )}
             </div>
-
-            {/* Quick Filter Buttons & Sort */}
-            <div className="flex items-center gap-2 w-full md:w-auto overflow-x-auto pb-1 md:pb-0">
-              <button
-                onClick={() => setMobileFilterOpen(!mobileFilterOpen)}
-                className="md:hidden flex items-center gap-1.5 px-3 py-2 rounded-xl bg-stone-100 text-stone-700 text-xs font-semibold"
+          </div>
+          <div className="flex flex-wrap items-end gap-4">
+            <label className="text-[9px] font-black uppercase tracking-[0.16em] text-[#657067]">
+              Sort
+              <select
+                value={sortBy}
+                onChange={(event) => setSortBy(event.target.value)}
+                className="mt-2 block min-w-36 border border-[#183126]/20 bg-white px-3 py-3 text-xs font-medium normal-case tracking-normal text-[#183126] outline-none focus:border-[#9b7a32]"
               >
-                <SlidersHorizontal className="w-3.5 h-3.5" />
-                <span>Filters</span>
+                <option value="name">Name A–Z</option>
+                <option value="category">Product group</option>
+              </select>
+            </label>
+            {hasActiveFilters && (
+              <button type="button" onClick={resetFilters} className="pb-3 text-[10px] font-black uppercase tracking-[0.12em] text-[#8a493b] underline underline-offset-4">
+                Clear filters
               </button>
-
-              <select
-                value={categoryFilter}
-                onChange={(e) => setCategoryFilter(e.target.value)}
-                className="px-3 py-2 rounded-xl border border-stone-200 bg-stone-50 text-xs font-medium text-stone-700 outline-none"
-              >
-                <option value="All">All Categories</option>
-                <option value="Vegetable Powders">Vegetable Powders</option>
-                <option value="Fruit Powders">Fruit Powders</option>
-                <option value="Herbal & Ayurvedic Powders">Herbal & Ayurvedic</option>
-                <option value="Spice Powders">Spice Powders</option>
-              </select>
-
-              <select
-                value={processFilter}
-                onChange={(e) => setProcessFilter(e.target.value)}
-                className="px-3 py-2 rounded-xl border border-stone-200 bg-stone-50 text-xs font-medium text-stone-700 outline-none"
-              >
-                <option value="All">All Drying Methods</option>
-                <option value="Spray">Spray Dried</option>
-                <option value="Air">Air Dried</option>
-                <option value="Freeze">Freeze Dried</option>
-                <option value="Drum">Drum Dried</option>
-              </select>
-
-              <select
-                value={meshFilter}
-                onChange={(e) => setMeshFilter(e.target.value)}
-                className="px-3 py-2 rounded-xl border border-stone-200 bg-stone-50 text-xs font-medium text-stone-700 outline-none hidden sm:block"
-              >
-                <option value="All">All Mesh Sizes</option>
-                <option value="60 Mesh">60 Mesh</option>
-                <option value="80 Mesh">80 Mesh</option>
-                <option value="100 Mesh">100 Mesh Superfine</option>
-              </select>
-
-              <select
-                value={certFilter}
-                onChange={(e) => setCertFilter(e.target.value)}
-                className="px-3 py-2 rounded-xl border border-stone-200 bg-stone-50 text-xs font-medium text-stone-700 outline-none hidden sm:block"
-              >
-                <option value="All">All Certifications</option>
-                <option value="Organic NPOP">Organic Certified</option>
-                <option value="Halal">Halal</option>
-                <option value="Kosher">Kosher</option>
-                <option value="US FDA Reg">US FDA</option>
-                <option value="ISO 22000">ISO 22000</option>
-              </select>
-
-              {hasActiveFilters && (
-                <button
-                  onClick={resetFilters}
-                  className="px-3 py-2 rounded-xl text-xs font-semibold text-red-600 hover:bg-red-50 transition-colors whitespace-nowrap"
-                >
-                  Reset
-                </button>
-              )}
-            </div>
+            )}
           </div>
         </div>
 
-        {/* Product Cards Grid */}
+        <div className="flex items-center justify-between py-5">
+          <p className="text-xs text-[#657067]">
+            <strong className="text-[#183126]">{filteredProducts.length}</strong> {filteredProducts.length === 1 ? 'ingredient' : 'ingredients'}
+          </p>
+          <p className="hidden text-[9px] font-black uppercase tracking-[0.14em] text-[#7d6c53] md:block">Order specifications confirmed per inquiry</p>
+        </div>
+
         {filteredProducts.length === 0 ? (
-          <div className="bg-white rounded-2xl p-12 text-center border border-stone-200 shadow-sm max-w-md mx-auto">
-            <Filter className="w-12 h-12 text-stone-300 mx-auto mb-3" />
-            <h3 className="text-lg font-bold text-stone-800">No Powders Match Your Filter</h3>
-            <p className="text-xs text-stone-500 mt-1 mb-4">
-              Try resetting your search query or selecting 'All' drying methods.
-            </p>
-            <button
-              onClick={resetFilters}
-              className="px-4 py-2 rounded-lg bg-[#1F4D36] text-white text-xs font-semibold"
-            >
-              Clear All Filters
+          <div className="border-y border-[#183126]/20 py-16 text-center">
+            <h2 className="text-xl font-black">No ingredients match that search.</h2>
+            <p className="mt-2 text-sm text-[#657067]">Try another search or clear the selected product group.</p>
+            <button type="button" onClick={resetFilters} className="mt-5 border-b border-[#183126] pb-1 text-[10px] font-black uppercase tracking-[0.12em]">
+              Clear search and filters
             </button>
           </div>
         ) : (
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-            {filteredProducts.map((product) => {
-              const isCompared = comparedProducts.some(p => p.id === product.id);
-
+          <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3 lg:gap-6">
+            {filteredProducts.map((product, index) => {
+              const isCompared = comparedProducts.some((item) => item.id === product.id);
               return (
-                <div
-                  key={product.id}
-                  className="group bg-white rounded-2xl border border-stone-200 shadow-sm hover:shadow-elevated transition-all duration-300 flex flex-col justify-between overflow-hidden"
-                >
-                  <div>
-                    {/* Image Area */}
-                    <div className="relative h-48 bg-stone-100 overflow-hidden">
-                      <img
-                        src={product.image}
-                        alt={product.name}
-                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                      />
-                      
-                      {/* Process Badge */}
-                      <div className="absolute top-3 left-3 bg-[#1F4D36]/90 backdrop-blur-sm text-white text-[10px] font-bold px-2 py-0.5 rounded-full border border-emerald-400/30">
-                        {product.process}
-                      </div>
-
-                      {/* Compare Quick Toggle */}
-                      <button
-                        onClick={(e) => {
-                          e.stopPropagation();
-                          isCompared ? removeFromCompare(product.id) : addToCompare(product);
-                        }}
-                        className={`absolute top-3 right-3 p-1.5 rounded-lg text-xs font-semibold backdrop-blur-sm transition-all flex items-center gap-1 shadow-sm ${
-                          isCompared
-                            ? 'bg-[#C9972B] text-white'
-                            : 'bg-white/90 text-stone-700 hover:bg-white'
-                        }`}
-                        title="Add to side-by-side comparison"
+                <article key={product.id} className="group flex min-w-0 flex-col border border-[#183126]/15 bg-white/70 transition-shadow hover:shadow-[0_18px_45px_-30px_rgba(24,49,38,0.5)]">
+                  <div className="relative h-56 overflow-hidden bg-[#e6e2d7] sm:h-60">
+                    <img
+                      src={product.image}
+                      alt={product.imageAlt || ''}
+                      loading="lazy"
+                      className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-[1.035]"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#10231a]/65 via-transparent to-transparent" />
+                    <span className="absolute bottom-4 left-4 text-[9px] font-black uppercase tracking-[0.15em] text-white">
+                      {product.category} <span className="ml-2 font-mono text-white/65">{String(index + 1).padStart(2, '0')}</span>
+                    </span>
+                    {product.imageCredit && (
+                      <a
+                        href={product.imageCreditUrl}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="absolute right-3 top-3 max-w-[calc(100%-1.5rem)] border border-white/50 bg-[#183126]/85 px-2 py-1 text-right text-[7px] font-bold leading-3 text-white backdrop-blur-sm hover:bg-[#183126]"
                       >
-                        <Layers className="w-3.5 h-3.5" />
-                        <span className="text-[10px] hidden group-hover:inline">
-                          {isCompared ? 'Compared' : 'Compare'}
-                        </span>
-                      </button>
-
-                      {/* Spec Sheet Preview Button */}
+                        Photo: {product.imageCredit}
+                      </a>
+                    )}
+                  </div>
+                  <div className="flex flex-1 flex-col p-5 sm:p-6">
+                    <p className="text-[9px] font-bold italic tracking-wide text-[#7d6c53]">{product.botanicalName}</p>
+                    <h2 className="mt-2 text-xl font-black leading-tight tracking-[-0.035em]">{product.name}</h2>
+                    <p className="mt-3 text-xs leading-5 text-[#657067]">{product.description}</p>
+                    <div className="mt-5 border-t border-[#183126]/15 pt-4">
+                      <p className="text-[9px] font-black uppercase tracking-[0.14em] text-[#9b7a32]">Example uses to discuss</p>
+                      <p className="mt-2 text-xs leading-5 text-[#425047]">{product.applications?.slice(0, 2).join(' · ')}</p>
+                    </div>
+                    <div className="mt-auto flex flex-wrap items-center gap-2 pt-6">
                       <button
+                        type="button"
+                        onClick={() => onSelectProduct(product)}
+                        className="inline-flex min-h-10 flex-1 items-center justify-between gap-2 bg-[#183126] px-3.5 text-[9px] font-black uppercase tracking-[0.1em] text-white transition hover:bg-[#2b4939]"
+                      >
+                        View ingredient <ArrowUpRight className="h-4 w-4 text-[#d4ad49]" />
+                      </button>
+                      <button
+                        type="button"
+                        onClick={() => openQuoteModal(product)}
+                        aria-label={`Request a quote for ${product.name}`}
+                        className="grid h-10 w-10 place-items-center border border-[#183126]/20 text-[#183126] transition hover:border-[#9b7a32] hover:text-[#9b7a32]"
+                      >
+                        <ArrowRight className="h-4 w-4" />
+                      </button>
+                      <button
+                        type="button"
+                        aria-label={`${isCompared ? 'Remove' : 'Add'} ${product.name} ${isCompared ? 'from' : 'to'} comparison`}
+                        aria-pressed={isCompared}
+                        onClick={() => (isCompared ? removeFromCompare(product.id) : addToCompare(product))}
+                        className={`grid h-10 w-10 place-items-center border transition ${isCompared ? 'border-[#9b7a32] bg-[#d4ad49] text-[#183126]' : 'border-[#183126]/20 text-[#183126] hover:border-[#9b7a32]'}`}
+                      >
+                        <Layers className="h-4 w-4" />
+                      </button>
+                      <button
+                        type="button"
                         onClick={() => onOpenQuickSpec(product)}
-                        className="absolute bottom-2 right-2 bg-white/90 hover:bg-white text-stone-700 hover:text-[#1F4D36] text-[10px] font-bold px-2.5 py-1 rounded-md shadow-sm transition-colors flex items-center gap-1"
+                        className="w-full border-t border-[#183126]/15 pt-3 text-left text-[9px] font-black uppercase tracking-[0.1em] text-[#657067] hover:text-[#183126]"
                       >
-                        <FileText className="w-3 h-3 text-[#C9972B]" /> Spec Sheet
+                        Open product overview
                       </button>
                     </div>
-
-                    {/* Card Content */}
-                    <div className="p-4 space-y-3">
-                      <div>
-                        <div className="text-[11px] text-stone-500 italic">
-                          {product.botanicalName}
-                        </div>
-                        <h3 
-                          onClick={() => onSelectProduct(product)}
-                          className="font-bold text-base text-stone-900 group-hover:text-[#1F4D36] cursor-pointer transition-colors"
-                        >
-                          {product.name}
-                        </h3>
-                      </div>
-
-                      {/* Tech Spec Badges */}
-                      <div className="bg-[#F5F1E6]/70 rounded-xl p-2.5 space-y-1.5 text-[11px] border border-amber-200/40">
-                        <div className="flex justify-between items-center text-stone-600">
-                          <span>Mesh Size:</span>
-                          <span className="font-semibold text-stone-900">{product.meshSize}</span>
-                        </div>
-                        <div className="flex justify-between items-center text-stone-600">
-                          <span>Moisture:</span>
-                          <span className="font-semibold text-emerald-800">{product.moisture}</span>
-                        </div>
-                        <div className="flex justify-between items-center text-stone-600">
-                          <span>Minimum Order (MOQ):</span>
-                          <span className="font-bold text-stone-900">{product.moq}</span>
-                        </div>
-                        <div className="flex justify-between items-center text-stone-600">
-                          <span>HS Customs Code:</span>
-                          <span className="font-mono text-stone-700">{product.hsCode}</span>
-                        </div>
-                      </div>
-
-                      {/* Certifications row */}
-                      <div className="flex items-center gap-1 flex-wrap">
-                        {product.certifications.slice(0, 3).map((cert, i) => (
-                          <span key={i} className="text-[9px] font-medium bg-stone-100 text-stone-600 px-1.5 py-0.5 rounded border border-stone-200">
-                            {cert}
-                          </span>
-                        ))}
-                      </div>
-                    </div>
                   </div>
-
-                  {/* Card Bottom: B2B CTAs */}
-                  <div className="p-4 pt-0 space-y-2">
-                    <button
-                      onClick={() => openQuoteModal(product)}
-                      className="w-full py-2.5 px-3 rounded-xl bg-[#C9972B] hover:bg-[#b58622] text-white font-bold text-xs shadow-sm hover:shadow-md transition-all flex items-center justify-center gap-1.5"
-                    >
-                      <span>Request Quote</span>
-                      <ArrowRight className="w-3.5 h-3.5" />
-                    </button>
-
-                    <button
-                      onClick={() => onSelectProduct(product)}
-                      className="w-full py-1.5 text-center text-stone-500 hover:text-[#1F4D36] text-[11px] font-semibold transition-colors"
-                    >
-                      View Full Specifications &rarr;
-                    </button>
-                  </div>
-                </div>
+                </article>
               );
             })}
           </div>
         )}
 
-        {/* Floating Compare Pill on bottom */}
         {comparedProducts.length > 0 && (
-          <div className="fixed bottom-6 left-1/2 transform -translate-x-1/2 z-40 bg-[#1F4D36] text-white px-5 py-3 rounded-2xl shadow-2xl border border-emerald-600 flex items-center gap-4 animate-bounce">
-            <div className="flex items-center gap-2">
-              <span className="w-6 h-6 rounded-full bg-[#C9972B] text-white font-bold text-xs flex items-center justify-center">
-                {comparedProducts.length}
-              </span>
-              <span className="text-xs font-semibold">Powders Selected for Comparison</span>
-            </div>
+          <div className="fixed bottom-4 left-1/2 z-40 flex w-[calc(100%-2rem)] max-w-xl -translate-x-1/2 items-center justify-between gap-4 border border-white/20 bg-[#183126] px-4 py-3 text-white shadow-xl sm:bottom-6 sm:px-5">
+            <p className="text-xs"><strong>{comparedProducts.length}</strong> ingredients selected to compare</p>
             <button
+              type="button"
               onClick={() => setIsCompareOpen(true)}
-              className="px-3.5 py-1.5 rounded-lg bg-[#C9972B] hover:bg-[#b58622] text-white text-xs font-bold transition-colors"
+              className="inline-flex shrink-0 items-center gap-2 bg-[#d4ad49] px-3 py-2 text-[9px] font-black uppercase tracking-[0.08em] text-[#183126]"
             >
-              Compare Specifications Matrix
+              Compare <ArrowRight className="h-3.5 w-3.5" />
             </button>
           </div>
         )}
-
-      </div>
+      </section>
     </div>
   );
 }

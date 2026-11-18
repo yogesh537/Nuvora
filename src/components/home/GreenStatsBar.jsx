@@ -1,31 +1,32 @@
 import React from 'react';
-import { Users, Package, Sprout, ThumbsUp, Heart } from 'lucide-react';
+import { Package, Sprout, ThumbsUp, Heart } from 'lucide-react';
+import { products } from '../../data/products';
 
 export default function GreenStatsBar() {
   const stats = [
     {
-      icon: Users,
-      value: "35+",
-      label: "Export Countries",
-      sublabel: "Global Food & Nutra Buyers"
+      icon: Package,
+      value: String(products.length),
+      label: "Products listed",
+      sublabel: "Powders across ingredient categories"
     },
     {
       icon: Package,
-      value: "12,000 MT",
-      label: "Annual Capacity",
-      sublabel: "Spray, Freeze & Air Dried"
+      value: "FSSAI",
+      label: "Facility license",
+      sublabel: "License details available on request"
     },
     {
       icon: Sprout,
-      value: "1,200+",
-      label: "Contract Farmers",
-      sublabel: "Certified GAP & Traceable"
+      value: "Per order",
+      label: "Quality scope",
+      sublabel: "Checks and documents confirmed"
     },
     {
       icon: ThumbsUp,
-      value: "99.8%",
-      label: "Customs Acceptance",
-      sublabel: "Batch COA Compliant"
+      value: "B2B",
+      label: "Product support",
+      sublabel: "Specifications and packs discussed"
     }
   ];
 
@@ -44,7 +45,7 @@ export default function GreenStatsBar() {
         {/* Top Text with Heart Icon matching reference */}
         <div className="text-center mb-8">
           <p className="text-xs sm:text-sm font-semibold text-emerald-200/90 tracking-wide flex items-center justify-center gap-1.5">
-            <span>Trusted by Leading Food, Beverage & Nutraceutical Brands Worldwide</span>
+            <span>Ingredient sourcing and product support for commercial teams</span>
             <Heart className="w-3.5 h-3.5 text-[#C9972B] fill-[#C9972B]" />
           </p>
         </div>

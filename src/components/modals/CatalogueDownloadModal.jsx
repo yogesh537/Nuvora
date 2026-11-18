@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useLeads } from '../../context/LeadContext';
+import { products } from '../../data/products';
 import { X, Download, FileText, CheckCircle2, ShieldCheck, Mail, Building, User } from 'lucide-react';
 
 export default function CatalogueDownloadModal() {
@@ -24,69 +25,41 @@ export default function CatalogueDownloadModal() {
       email: formData.email,
       phone: 'Via Catalogue Form',
       country: 'Global Inquiry',
-      product: 'Full 2026 Export Product Catalogue (PDF)',
+      product: 'Product Overview',
       powderForm: 'All Technologies',
       quantity: 'Catalog Download',
       packaging: 'PDF',
       targetDate: 'Immediate',
       intendedUse: formData.industry,
       type: 'Catalogue Download',
-      notes: `Downloaded Nuvaro Agro 2026 Master Technical Catalogue & Price Guidance. Industry: ${formData.industry}`
+      notes: `Requested Nuvaro Agro product overview. Industry: ${formData.industry}`
     });
 
     setDownloaded(true);
   };
 
-  const handleSimulatedDownload = () => {
-    // Trigger download of a clean generated text/markdown technical summary file
-    const catalogContent = `
-========================================================================
-NUVARO AGRO PVT LTD - 2026 EXPORT PRODUCT CATALOGUE & SPECIFICATION GUIDE
-========================================================================
-Manufacturer & Exporter of Dehydrated Vegetable, Fruit, Herbal & Spice Powders
-Certifications: ISO 22000:2018 | HACCP | FSSAI Central License | Halal | Kosher | US FDA Reg.
-
-FACTORY & EXPORT DESK:
-Nuvaro Agro Pvt Ltd
-Agro-Processing Zone, Maharashtra - Gujarat Agri Corridor, India
-Email: exports@nuvaroagro.com | WhatsApp: +91 98200 12345
-Web: https://nuvaroagro.com
-
-------------------------------------------------------------------------
-INDEX OF STANDARD BOTANICAL & FOOD POWDERS:
-------------------------------------------------------------------------
-1. Spinach Powder (Spinacia oleracea) - 80 Mesh, Air Dried, Green, Protein 24-28%
-2. Beetroot Powder (Beta vulgaris) - 80 Mesh, Spray Dried, Ruby Red, Nitrates > 1.8%
-3. Tomato Powder (Solanum lycopersicum) - 60-80 Mesh, Spray Dried, Lycopene 45mg/100g
-4. Dehydrated Onion Powder (Allium cepa) - 80 Mesh, Air Dried, Pungent White
-5. Dehydrated Garlic Powder (Allium sativum) - 80-100 Mesh, Allicin > 4500 ppm
-6. Ginger Powder (Zingiber officinale) - 80 Mesh, Golden Tan, Gingerols > 1.5%
-7. Carrot Powder (Daucus carota) - 80 Mesh, Air/Drum Dried, Beta-Carotene 68,000 mcg
-8. Moringa Leaf Powder (Moringa oleifera) - 100 Mesh, Organic Certified, Protein > 28%
-9. Alphonso Mango Powder (Mangifera indica) - 60-80 Mesh, Pure Ratnagiri Fruit Solids
-10. Banana Powder (Musa acuminata) - 80 Mesh, Drum Dried, Pale Cream, Resistant Starch
-11. Amla Powder (Phyllanthus emblica) - 80-100 Mesh, Tannins > 30%, Vitamin C > 1800mg
-12. Turmeric Powder (Curcuma longa) - 100 Mesh, Steam Sterilized, Curcumin 3.2-5.0%
-
-PACKAGING CAPABILITIES:
-- 5kg / 10kg High Barrier Aluminum Foil Moisture-Lock Bags
-- 25kg Food-Grade Multi-wall Kraft Paper Bags with Heavy PE Liner
-- 25kg Fibre Drums with Tamper-Evident Seals
-- Private Label Retail Packaging (Jars, Stand-up Pouches, Sachet sticks)
-
-SHIPPING & LOGISTICS:
-- Sea Freight: FCL / LCL shipments through Nhava Sheva (JNPT) & Mundra Ports
-- Air Freight: Express courier samples via DHL/FedEx worldwide (3-5 days delivery)
-
-For customized mesh size, carrier-free blends, or official proforma quote:
-Email: exports@nuvaroagro.com
-========================================================================
-`;
+  const handleDownloadOverview = () => {
+    const catalogContent = [
+      'NUVARO AGRO — PRODUCT OVERVIEW',
+      'FSSAI Facility License No. 10020021008942',
+      '',
+      'Product-specific details below are indicative. Confirm specifications, test scope and order documents with Nuvaro Agro.',
+      '',
+      ...products.map((product) => [
+        product.name,
+        `Botanical name: ${product.botanicalName}`,
+        `Category: ${product.category}`,
+        `Color: ${product.color}`,
+        `Packaging options: ${product.packaging.join(', ')}`,
+        ''
+      ].join('\n')),
+      'Contact: export@nuvaroagro.com | +91 98200 12345'
+    ].join('\n');
     const blob = new Blob([catalogContent], { type: 'text/plain;charset=utf-8' });
     const url = URL.createObjectURL(blob);
     const link = document.createElement('a');
     link.href = url;
-    link.download = 'Nuvaro_Agro_2026_Export_Catalogue_and_Specifications.txt';
+    link.download = 'Nuvaro_Agro_Product_Overview.txt';
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
@@ -105,8 +78,8 @@ Email: exports@nuvaroagro.com
               <FileText className="w-6 h-6" />
             </div>
             <div>
-              <h3 className="text-lg font-bold">2026 Export Catalogue & Specs</h3>
-              <p className="text-xs text-stone-200">54-Page Technical Specification Guide (PDF)</p>
+              <h3 className="text-lg font-bold">Product Overview</h3>
+              <p className="text-xs text-stone-200">Product range and inquiry details (.txt)</p>
             </div>
           </div>
           <button 
@@ -122,26 +95,26 @@ Email: exports@nuvaroagro.com
             <div className="w-16 h-16 bg-emerald-100 text-[#1F4D36] rounded-full flex items-center justify-center mx-auto">
               <CheckCircle2 className="w-10 h-10" />
             </div>
-            <h4 className="text-xl font-bold text-stone-900">Your Catalogue is Ready!</h4>
+            <h4 className="text-xl font-bold text-stone-900">Your overview is ready</h4>
             <p className="text-stone-600 text-sm">
-              We have generated your customized technical specification guide for <strong>Nuvaro Agro Pvt Ltd</strong>.
+              Download the current product overview. Order-specific specifications and testing documents are confirmed separately.
             </p>
             <div className="pt-2">
               <button
-                onClick={handleSimulatedDownload}
+                onClick={handleDownloadOverview}
                 className="w-full flex items-center justify-center gap-2 px-6 py-3 rounded-xl bg-[#C9972B] hover:bg-[#b58622] text-white font-semibold text-sm shadow-md transition-all"
               >
-                <Download className="w-4 h-4" /> Download Official Technical Guide (.txt/PDF)
+                <Download className="w-4 h-4" /> Download product overview (.txt)
               </button>
             </div>
             <p className="text-xs text-stone-400">
-              A copy has also been registered for priority export quote assistance.
+              Your inquiry details have been saved for follow-up.
             </p>
           </div>
         ) : (
           <form onSubmit={handleSubmit} className="p-6 space-y-4">
             <p className="text-xs text-stone-600 leading-relaxed">
-              Enter your corporate email to immediately download our comprehensive technical data book with full chemical, physical, and microbiological limits for all 12+ powders.
+              Share your contact details to download the product overview. Specifications and testing scope can be confirmed for each order.
             </p>
 
             <div>
@@ -218,13 +191,13 @@ Email: exports@nuvaroagro.com
                 type="submit"
                 className="w-full flex items-center justify-center gap-2 px-6 py-3 rounded-xl bg-[#1F4D36] hover:bg-[#163a28] text-white font-semibold text-sm shadow-md transition-all"
               >
-                <Download className="w-4 h-4" /> Instant Access to 2026 Catalogue
+                <Download className="w-4 h-4" /> Get product overview
               </button>
             </div>
 
             <div className="flex items-center gap-2 justify-center text-[11px] text-stone-500 pt-1">
               <ShieldCheck className="w-3.5 h-3.5 text-emerald-600" />
-              <span>Direct factory pricing. No spam guarantee.</span>
+              <span>Contact details are used to follow up on your inquiry.</span>
             </div>
           </form>
         )}

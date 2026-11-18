@@ -21,18 +21,18 @@ export default function TrustBarReference() {
     },
     {
       icon: Truck,
-      title: "FREE SHIPPING",
-      desc: "On bulk export & FCL orders"
+      title: "SHIPPING OPTIONS",
+      desc: "Confirmed for each destination"
     },
     {
       icon: ShieldCheck,
-      title: "SECURE PAYMENT",
-      desc: "100% Safe & LC verified"
+      title: "PAYMENT TERMS",
+      desc: "Shared with each quotation"
     },
     {
       icon: RotateCcw,
-      title: "30-DAY RETURNS",
-      desc: "100% Batch COA guarantee"
+      title: "QUALITY SCOPE",
+      desc: "Confirmed for each order"
     }
   ];
 
