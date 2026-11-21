@@ -32,53 +32,62 @@ export default function HomePage({ onSelectProduct, onSelectCategory, onOpenQuic
   const { comparedProducts, addToCompare, removeFromCompare } = useCompare();
 
   // --- Hero Carousel Slides (Full HD Studio Assets) ---
+  // --- Hero Slides for Image Slideshow & Dynamic Highlight Text ---
   const heroSlides = [
     {
-      id: 'ginger-powder',
-      eyebrow: '100% PURE & STEAM STERILIZED',
-      titlePrefix: 'India’s Trusted Bulk Supplier of ',
-      titleHighlight: 'Dehydrated Powders',
-      subtitle: 'Pure vegetable, fruit, and spice powders with guaranteed volatile oil retention, zero artificial fillers, and global export certification.',
-      cta: 'View Products',
-      image: '/images/powders/ginger-powder.jpg',
-      alt: 'Sun-Dried Ginger Powder & Roots',
-      badge: 'Pure Ginger Root • 80-100 Mesh',
-      tags: ['Non-GMO', 'Steam Sterilized', 'High Gingerol']
-    },
-    {
-      id: 'beetroot-powder',
-      eyebrow: 'VIBRANT NATURAL COLORANT',
-      titlePrefix: 'Spice Powders, Flakes & Granules – ',
-      titleHighlight: 'All in Bulk',
-      subtitle: 'Authentic Indian farm harvests, dehydrated under precision low-temperature conditions and delivered in export container loads globally.',
-      cta: 'Dehydrated Powders',
-      image: '/images/powders/beetroot-powder.jpg',
-      alt: 'Vibrant Beetroot Powder',
-      badge: 'Vibrant Red • 80-100 Mesh',
-      tags: ['Rich in Betanin', 'Clean Label', '100% Soluble']
-    },
-    {
       id: 'onion-powder',
-      eyebrow: 'EXPORT GRADE ALLIUM SPECIALIST',
-      titlePrefix: 'Dehydrated Allium Flakes & ',
-      titleHighlight: 'Aromatic Powders',
-      subtitle: 'Crisp dehydrated white & red onion flakes, minced garlic, and fine powders engineered for seasonings, snack coatings, and culinary food manufacturing.',
-      cta: 'Explore Products',
+      highlight: 'Dehydrated Onion Flakes & Powder',
       image: '/images/powders/onion-powder.jpg',
       alt: 'Dehydrated Onion Flakes & Powder',
       badge: 'White & Red Onion • Zero Fillers',
-      tags: ['No Caking Agents', 'High Pungency', 'Steam Sterilized']
+    },
+    {
+      id: 'garlic-powder',
+      highlight: 'Dehydrated Garlic & Granules',
+      image: '/images/powders/garlic-powder.jpg',
+      alt: 'Dehydrated Garlic Powder & Granules',
+      badge: 'High Allicin Potency • 80-100 Mesh',
+    },
+    {
+      id: 'ginger-powder',
+      highlight: 'Aromatic Sun-Dried Ginger Powder',
+      image: '/images/powders/ginger-powder.jpg',
+      alt: 'Pure Ginger Root & Powder',
+      badge: 'High Gingerol • Steam Sterilized',
+    },
+    {
+      id: 'beetroot-powder',
+      highlight: 'Pure Vibrant Beetroot Powder',
+      image: '/images/powders/beetroot-powder.jpg',
+      alt: 'Vibrant Beetroot Powder',
+      badge: 'Rich in Betanin • 100% Natural',
+    },
+    {
+      id: 'rose-petal-powder',
+      highlight: 'Damask Rose Petal Powder',
+      image: '/images/powders/rose-petal-powder.jpg',
+      alt: 'Damask Rose Petal Powder & Flakes',
+      badge: 'Edible & Cosmetic • Shade Dried',
+    },
+    {
+      id: 'moringa-powder',
+      highlight: 'Certified Organic Moringa Powder',
+      image: '/images/powders/moringa-powder.jpg',
+      alt: 'Moringa Oleifera Leaf Powder',
+      badge: 'High Chlorophyll • Micro Milled',
     }
   ];
 
   const [heroSlide, setHeroSlide] = useState(0);
+  const [isHeroPaused, setIsHeroPaused] = useState(false);
 
   useEffect(() => {
+    if (isHeroPaused) return;
     const timer = setInterval(() => {
       setHeroSlide((prev) => (prev + 1) % heroSlides.length);
-    }, 6000);
+    }, 4500);
     return () => clearInterval(timer);
-  }, [heroSlides.length]);
+  }, [isHeroPaused, heroSlides.length]);
 
   const currentHero = heroSlides[heroSlide];
   const currentHeroProduct =
@@ -93,12 +102,12 @@ export default function HomePage({ onSelectProduct, onSelectCategory, onOpenQuic
 
   // --- 6 Trust Pillars ---
   const trustPillars = [
-    { title: 'Purely Grown', icon: Sprout },
-    { title: 'Naturally Trusted', icon: HeartHandshake },
-    { title: 'Rooted in Care', icon: Globe2 },
-    { title: 'Sustainably Yours', icon: Leaf },
-    { title: 'Ethically Nurtured', icon: Award },
-    { title: 'Timeless Quality', icon: Clock }
+    { title: 'Purely Grown', image: '/images/pillars/pillar-purely-grown.png', icon: Sprout },
+    { title: 'Naturally Trusted', image: '/images/pillars/pillar-naturally-trusted.png', icon: HeartHandshake },
+    { title: 'Rooted in Care', image: '/images/pillars/pillar-rooted-in-care.png', icon: Globe2 },
+    { title: 'Sustainably Yours', image: '/images/pillars/pillar-sustainably-yours.png', icon: Leaf },
+    { title: 'Ethically Nurtured', image: '/images/pillars/pillar-ethically-nurtured.png', icon: Award },
+    { title: 'Timeless Quality', image: '/images/pillars/pillar-timeless-quality.png', icon: Clock }
   ];
 
   // --- Recent Products Carousel Items (Full HD Photos) ---
@@ -283,7 +292,7 @@ export default function HomePage({ onSelectProduct, onSelectCategory, onOpenQuic
       {/* =========================================================================
           HERO SECTION: CLEAN LUXURIOUS WHITE THEME WITH YELLOW/GREEN ACCENTS
           ========================================================================= */}
-      <section className="relative w-full bg-gradient-to-b from-stone-50/70 via-white to-white text-stone-900 py-14 sm:py-20 lg:py-24 overflow-hidden border-b border-stone-200/80">
+      <section className="relative w-full bg-gradient-to-b from-stone-50/70 via-white to-white text-stone-900 py-8 sm:py-10 lg:py-12 overflow-hidden border-b border-stone-200/80">
         
         {/* Soft Ambient Radiance Blurs (Zero Dark Green Overlay, Clean Light Atmosphere) */}
         <div className="pointer-events-none absolute left-10 top-10 -z-10 h-96 w-96 rounded-full bg-emerald-500/5 blur-3xl" />
@@ -306,38 +315,29 @@ export default function HomePage({ onSelectProduct, onSelectCategory, onOpenQuic
         </div>
 
         <div className="relative z-10 mx-auto w-full max-w-[1440px] px-6 sm:px-12 lg:px-16">
-          <div className="grid grid-cols-1 lg:grid-cols-[1.15fr_0.85fr] items-center gap-12 lg:gap-14 xl:gap-20">
+          <div className="grid grid-cols-1 lg:grid-cols-[1.15fr_0.85fr] items-center gap-8 lg:gap-10 xl:gap-14">
             
             {/* Left Content */}
             <div className="flex flex-col justify-center">
-              
-              {/* Eyebrow Pill */}
-              <div className="inline-flex items-center gap-2 mb-4">
-                <span className="inline-flex items-center gap-1.5 rounded-full border border-emerald-600/20 bg-emerald-50 px-3.5 py-1 text-xs font-bold uppercase tracking-widest text-[#0B7337] shadow-2xs">
-                  <span className="h-2 w-2 rounded-full bg-[#0B7337] animate-pulse" />
-                  {currentHero.eyebrow}
-                </span>
-                <span className="hidden sm:inline-block text-xs font-semibold text-stone-500">
-                  • Direct Factory Bulk Supply
-                </span>
-              </div>
 
-              {/* Main Headline - Clean, modern Poppins typography */}
-              <h1 className="text-[34px] sm:text-[46px] md:text-[52px] lg:text-[56px] xl:text-[60px] font-bold leading-[1.18] tracking-tight text-stone-900 transition-all duration-500">
-                {currentHero.titlePrefix}
-                <span className="text-[#0B7337] underline decoration-[#FBBF24] decoration-4 underline-offset-8">
-                  {currentHero.titleHighlight}
+              {/* Main Headline - Stable Base with Animated Highlight Text */}
+              <h1 className="text-[32px] sm:text-[44px] md:text-[50px] lg:text-[54px] xl:text-[58px] font-bold leading-[1.15] tracking-tight text-stone-900 min-h-[75px] sm:min-h-[70px] lg:min-h-[85px]">
+                India’s Trusted Bulk Supplier of{' '}
+                <span className="inline-block text-[#0B7337] underline decoration-[#FBBF24] decoration-4 underline-offset-8">
+                  <span key={currentHero.highlight} className="inline-block animate-text-in">
+                    {currentHero.highlight}
+                  </span>
                 </span>
               </h1>
 
-              {/* Subtitle */}
-              <p className="mt-5 sm:mt-6 text-sm sm:text-base md:text-lg text-stone-600 leading-relaxed font-normal max-w-xl transition-all duration-500">
-                {currentHero.subtitle}
+              {/* Subtitle - Persistent & Authoritative */}
+              <p className="mt-3 sm:mt-4 text-sm sm:text-base md:text-lg text-stone-600 leading-relaxed font-normal max-w-xl">
+                Authentic Indian farm harvests, dehydrated under precision low-temperature conditions. 100% pure, steam-sterilized, and delivered in commercial export container loads worldwide.
               </p>
 
-              {/* Key Quality Tags */}
-              <div className="mt-5 flex flex-wrap items-center gap-2">
-                {currentHero.tags.map((tag) => (
+              {/* Key Quality Tags - Persistent */}
+              <div className="mt-3.5 sm:mt-4 flex flex-wrap items-center gap-2">
+                {['100% Pure & Non-GMO', 'Steam Sterilized', 'Zero Chemical Additives', 'FSSAI Certified'].map((tag) => (
                   <span
                     key={tag}
                     className="inline-flex items-center gap-1 rounded-md bg-stone-100 border border-stone-200/80 px-2.5 py-1 text-xs font-semibold text-stone-700"
@@ -349,26 +349,26 @@ export default function HomePage({ onSelectProduct, onSelectCategory, onOpenQuic
               </div>
 
               {/* CTA Buttons */}
-              <div className="mt-8 sm:mt-10 flex flex-wrap items-center gap-4">
+              <div className="mt-5 sm:mt-6 flex flex-wrap items-center gap-3.5">
                 <button
                   type="button"
                   onClick={() => onSelectProduct(null)}
-                  className="rounded-full bg-[#FBBF24] hover:bg-[#F59E0B] px-8 sm:px-10 py-3.5 text-sm sm:text-base font-bold text-stone-950 shadow-md shadow-amber-500/15 transition-all duration-300 hover:scale-102 hover:shadow-lg active:scale-95 focus:outline-none"
+                  className="rounded-full bg-[#FBBF24] hover:bg-[#F59E0B] px-8 sm:px-10 py-3 sm:py-3.5 text-sm sm:text-base font-bold text-stone-950 shadow-md shadow-amber-500/15 transition-all duration-300 hover:scale-102 hover:shadow-lg active:scale-95 focus:outline-none"
                 >
-                  {currentHero.cta}
+                  Explore Products
                 </button>
                 <button
                   type="button"
                   onClick={() => openQuoteModal(currentHeroProduct)}
-                  className="rounded-full border-2 border-[#0B7337] bg-white hover:bg-emerald-50 px-7 py-3.5 text-sm sm:text-base font-bold text-[#0B7337] shadow-2xs hover:shadow transition-all duration-300 hover:scale-102 active:scale-95"
+                  className="rounded-full border-2 border-[#0B7337] bg-white hover:bg-emerald-50 px-7 py-3 sm:py-3.5 text-sm sm:text-base font-bold text-[#0B7337] shadow-2xs hover:shadow transition-all duration-300 hover:scale-102 active:scale-95"
                 >
                   Request Bulk Quote
                 </button>
               </div>
 
               {/* Slide Indicators & Navigation Controls */}
-              <div className="mt-10 sm:mt-12 flex items-center gap-4">
-                <div className="flex items-center gap-2.5">
+              <div className="mt-6 sm:mt-7 flex items-center gap-4">
+                <div className="flex items-center gap-2">
                   {heroSlides.map((_, idx) => {
                     const isActive = idx === heroSlide;
                     return (
@@ -377,13 +377,13 @@ export default function HomePage({ onSelectProduct, onSelectCategory, onOpenQuic
                         type="button"
                         onClick={() => setHeroSlide(idx)}
                         aria-label={`Slide ${idx + 1}`}
-                        className="py-2 focus:outline-none"
+                        className="py-1.5 focus:outline-none"
                       >
                         <div
                           className={`h-1.5 rounded-full transition-all duration-500 ${
                             isActive
-                              ? 'w-14 sm:w-16 bg-[#FBBF24] shadow-xs'
-                              : 'w-7 sm:w-8 bg-stone-200 hover:bg-stone-300'
+                              ? 'w-10 sm:w-12 bg-[#FBBF24] shadow-xs'
+                              : 'w-4 sm:w-5 bg-stone-200 hover:bg-stone-300'
                           }`}
                         />
                       </button>
@@ -408,36 +408,51 @@ export default function HomePage({ onSelectProduct, onSelectCategory, onOpenQuic
                   >
                     <ChevronRight className="h-4 w-4" />
                   </button>
+                  <span className="text-xs font-mono font-medium text-stone-400 ml-1.5">
+                    0{heroSlide + 1} / 0{heroSlides.length}
+                  </span>
                 </div>
               </div>
 
             </div>
 
-            {/* Right Sliding Showcase Card (Full HD Photo in Crisp Framing) */}
-            <div className="relative flex justify-center lg:justify-end">
+            {/* Right Sliding Showcase Card - Slideshow of Images */}
+            <div
+              className="relative flex justify-center lg:justify-end"
+              onMouseEnter={() => setIsHeroPaused(true)}
+              onMouseLeave={() => setIsHeroPaused(false)}
+            >
               <div
                 onClick={() => onSelectProduct(currentHeroProduct)}
                 className="group relative cursor-pointer overflow-hidden rounded-3xl border border-stone-200/90 bg-white p-3 shadow-[0_20px_50px_rgba(0,0,0,0.06)] transition-all duration-500 hover:shadow-2xl hover:border-emerald-300 w-full max-w-[480px] aspect-[4/3.2]"
               >
-                <div className="relative h-full w-full overflow-hidden rounded-2xl bg-stone-50">
-                  <img
-                    key={currentHero.image}
-                    src={currentHero.image}
-                    alt={currentHero.alt}
-                    className="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-106"
-                    loading="eager"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-stone-950/80 via-stone-950/20 to-transparent flex items-end p-5">
+                <div className="relative h-full w-full overflow-hidden rounded-2xl bg-stone-950">
+                  {heroSlides.map((slide, idx) => (
+                    <img
+                      key={slide.id}
+                      src={slide.image}
+                      alt={slide.alt}
+                      className={`absolute inset-0 h-full w-full object-cover transition-all duration-700 ease-in-out ${
+                        idx === heroSlide
+                          ? 'opacity-100 scale-100'
+                          : 'opacity-0 scale-105 pointer-events-none'
+                      }`}
+                      loading={idx === 0 ? "eager" : "lazy"}
+                    />
+                  ))}
+
+                  {/* Ambient Gradient & Product Badge Overlay */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-stone-950/85 via-stone-950/20 to-transparent flex items-end p-5 z-10 pointer-events-none">
                     <div className="flex items-center justify-between w-full">
                       <div>
-                        <span className="inline-block rounded-full bg-[#FBBF24] px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-wider text-stone-950 mb-1">
+                        <span className="inline-block rounded-full bg-[#FBBF24] px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-wider text-stone-950 mb-1 shadow-2xs">
                           {currentHero.badge}
                         </span>
                         <h4 className="text-base sm:text-lg font-bold text-white drop-shadow-sm">
                           {currentHero.alt}
                         </h4>
                       </div>
-                      <span className="rounded-full bg-white text-stone-950 p-2.5 font-bold shadow-md group-hover:bg-[#FBBF24] group-hover:text-stone-950 transition-colors">
+                      <span className="rounded-full bg-white text-stone-950 p-2.5 font-bold shadow-md group-hover:bg-[#FBBF24] group-hover:text-stone-950 transition-colors pointer-events-auto">
                         <ArrowRight className="h-4 w-4" />
                       </span>
                     </div>
@@ -453,7 +468,7 @@ export default function HomePage({ onSelectProduct, onSelectCategory, onOpenQuic
       {/* =========================================================================
           SECTION 1: 6 TRUST PILLARS (Clean White Row)
           ========================================================================= */}
-      <section className="border-b border-stone-100 bg-white py-10 sm:py-12">
+      <section className="border-b border-stone-100 bg-white py-6 sm:py-8">
         <div className="mx-auto max-w-[1440px] px-6 sm:px-12">
           <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-6 sm:gap-8">
             {trustPillars.map((pillar) => {
@@ -461,12 +476,21 @@ export default function HomePage({ onSelectProduct, onSelectCategory, onOpenQuic
               return (
                 <div
                   key={pillar.title}
-                  className="group flex flex-col items-center text-center cursor-default transition-all duration-300 hover:-translate-y-1.5"
+                  className="flex flex-col items-center text-center cursor-default"
                 >
-                  <div className="flex h-16 w-16 sm:h-18 sm:w-18 items-center justify-center rounded-full border border-emerald-600/20 bg-emerald-50/80 text-[#0B7337] transition-all duration-300 group-hover:border-[#0B7337] group-hover:bg-[#0B7337] group-hover:text-white group-hover:scale-110 shadow-xs">
-                    <Icon className="h-7 w-7 transition-transform duration-300 group-hover:scale-110" />
+                  <div className="relative flex h-14 w-14 sm:h-16 sm:w-16 items-center justify-center">
+                    {pillar.image ? (
+                      <img
+                        src={pillar.image}
+                        alt={pillar.title}
+                        className="h-full w-full object-contain"
+                        loading="lazy"
+                      />
+                    ) : (
+                      <Icon className="h-8 w-8 text-[#0B7337]" />
+                    )}
                   </div>
-                  <span className="mt-3.5 text-xs sm:text-sm font-bold uppercase tracking-wider text-stone-800 group-hover:text-[#0B7337] transition-colors">
+                  <span className="mt-2.5 text-xs sm:text-sm font-bold uppercase tracking-wider text-stone-800">
                     {pillar.title}
                   </span>
                 </div>
