@@ -52,7 +52,7 @@ export default function App() {
   return (
     <LeadProvider>
       <CompareProvider>
-        <div className="min-h-screen flex flex-col bg-[#FAF8F5] text-stone-800 font-sans selection:bg-[#183D28] selection:text-white">
+        <div className="min-h-screen flex flex-col font-sans bg-[#FAF9F6] text-stone-900 selection:bg-[#D5AA37] selection:text-stone-950">
 
           <Navbar
             currentView={currentView}
@@ -65,6 +65,7 @@ export default function App() {
               <HomePage
                 onSelectProduct={handleSelectProduct}
                 onSelectCategory={handleSelectCategory}
+                onOpenQuickSpec={(p) => setQuickSpecProduct(p)}
               />
             )}
 
@@ -103,7 +104,7 @@ export default function App() {
               <QualityCertificationsPage />
             )}
 
-            {currentView === 'private-label' && (
+            {(currentView === 'private-label' || currentView === 'privatelabel') && (
               <PrivateLabelPage />
             )}
 

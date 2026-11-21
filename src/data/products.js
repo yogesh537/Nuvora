@@ -1,139 +1,203 @@
 export const products = [
   {
-    id: 'onion-powder',
-    name: 'Dehydrated Onion Powder',
-    botanicalName: 'Allium cepa',
-    category: 'Spice Powders',
-    description: 'A savory onion ingredient for seasoning, soup, sauce and other food formulation briefs.',
+    id: 'beetroot-powder',
+    name: 'Pure Beetroot Powder',
+    botanicalName: 'Beta vulgaris',
+    category: 'Vegetable Powders',
+    forms: ['Fine Powder (80-100 Mesh)', 'Granules (20-40 Mesh)'],
+    meshSize: '80-100 Mesh (Fine Sifted)',
+    purity: '100% Pure, Zero Artificial Colorants',
+    colorProfile: 'Intense Ruby Magenta / Deep Red',
+    description: 'Vibrant, nutrient-dense dehydrated beetroot powder with high natural betanin content for clean-label food coloring, beverages, bakery and functional nutraceutical blends.',
     applications: [
-      'Snack seasonings and savory coatings',
-      'Soups, sauces and broth blends',
-      'Marinades and dry seasoning mixes'
+      'Natural food & beverage coloring',
+      'Smoothies, drink mixes & hydration sticks',
+      'Artisanal bakery, pasta & confectionery',
+      'Pre-workout & functional dietary formulations'
     ],
-    image: 'https://images.unsplash.com/photo-1618512496248-a07fe83aa8cb?auto=format&fit=crop&w=1000&q=85',
-    imageAlt: 'Red and yellow onions'
+    image: '/images/powders/beetroot-powder.jpg',
+    imageAlt: 'Vibrant red beetroot powder conical heap with fresh beetroots and glass spice jar',
+    featured: true
   },
   {
-    id: 'ginger-powder',
-    name: 'Ginger Powder',
-    botanicalName: 'Zingiber officinale',
+    id: 'onion-powder',
+    name: 'Dehydrated Onion Powder & Flakes',
+    botanicalName: 'Allium cepa',
     category: 'Spice Powders',
-    description: 'A ginger ingredient for beverage, bakery and spice blend development.',
+    forms: ['Fine Powder (80-100 Mesh)', 'Dehydrated Flakes', 'Minced / Granules (16-40 Mesh)', 'Chopped (3-5mm)'],
+    meshSize: '80-100 Mesh (Powder) / 8-24 Mesh (Flakes)',
+    purity: '100% Pure White & Red Onion, No Caking Agents',
+    colorProfile: 'Creamy White / Pale Golden',
+    description: 'Industrial-grade dehydrated onion processed from fresh selected bulbs. Available in fine powder, crispy flakes, chopped and minced granules for savory formulations and seasoning lines.',
     applications: [
-      'Tea and beverage blends',
-      'Bakery and confectionery',
-      'Seasoning and spice blends'
+      'Snack seasonings, chips coatings & noodle tastemakers',
+      'Soups, bouillons, sauces and broth bases',
+      'Dry marinades, rubs & meat processing blends',
+      'Ready-to-eat meals and instant food formulations'
     ],
-    image: 'https://thumb.wikimedia.org/wikipedia/commons/thumb/f/fb/Fresh_ginger_rhizome_01.jpg/960px-Fresh_ginger_rhizome_01.jpg',
-    imageAlt: 'Fresh ginger rhizomes',
-    imageCredit: 'Friday Musa · CC BY-SA 4.0',
-    imageCreditUrl: 'https://commons.wikimedia.org/wiki/File:Fresh_ginger_rhizome_01.jpg'
+    image: '/images/powders/onion-powder.jpg',
+    imageAlt: 'Fine cream-colored onion powder, golden dehydrated onion flakes and raw onions',
+    featured: true
   },
   {
     id: 'garlic-powder',
-    name: 'Dehydrated Garlic Powder',
+    name: 'Dehydrated Garlic Powder & Granules',
     botanicalName: 'Allium sativum',
     category: 'Spice Powders',
-    description: 'A garlic ingredient for savory food, seasoning and sauce applications.',
+    forms: ['Fine Powder (80-100 Mesh)', 'Granules (16-40 Mesh)', 'Minced Garlic', 'Toasted Flakes'],
+    meshSize: '80-100 Mesh (Powder) / 16-40 Mesh (Granules)',
+    purity: '100% Pure Garlic, High Allicin Potency',
+    colorProfile: 'Warm Pale Cream / Light Sand',
+    description: 'Pungent, high-potency dehydrated garlic delivering consistent allicin flavor profiles across bulk spice shakers, savory coatings, gourmet dips, and processed foods.',
     applications: [
-      'Savory seasonings and coatings',
-      'Sauces, dips and marinades',
-      'Soup and broth blends'
+      'Spice shakers, BBQ rubs & dry table seasonings',
+      'Garlic bread coatings, dips, mayonnaise & dressings',
+      'Processed meats, sausages and canned foods',
+      'Industrial sauce, pasta sauce & culinary premixes'
     ],
-    image: 'https://images.unsplash.com/photo-1540148426945-6cf22a6b2383?auto=format&fit=crop&w=1000&q=85',
-    imageAlt: 'Whole garlic bulbs'
+    image: '/images/powders/garlic-powder.jpg',
+    imageAlt: 'Fine garlic powder and coarse garlic granules with fresh whole garlic bulb',
+    featured: true
   },
   {
-    id: 'beetroot-powder',
-    name: 'Beetroot Powder',
-    botanicalName: 'Beta vulgaris',
-    category: 'Vegetable Powders',
-    description: 'A beetroot ingredient for color, flavor and product development discussions.',
+    id: 'turmeric-powder',
+    name: 'Pure Golden Turmeric Powder',
+    botanicalName: 'Curcuma longa',
+    category: 'Spice Powders',
+    forms: ['Ultra-Fine Powder (100 Mesh)', 'High Curcumin Grade (3-5%)'],
+    meshSize: '100 Mesh Ultra-Fine Micronized',
+    purity: '100% Pure Rhizome, Zero Adulteration, Steam Treated',
+    colorProfile: 'Brilliant Golden Yellow / Deep Amber',
+    description: 'Export-certified premium golden turmeric powder ground from steam-sterilized whole rhizomes. High natural curcumin content with vibrant color stability and aromatic warmth.',
     applications: [
-      'Bakery and confectionery',
-      'Beverage and smoothie blends',
-      'Savory and plant-based formulations'
+      'Curry powders, spice masalas & ethnic seasoning blends',
+      'Golden milk, herbal tea & dietary wellness premixes',
+      'Natural yellow food colorant in dairy & bakery',
+      'Nutraceutical capsules & functional food formulations'
     ],
-    image: 'https://images.unsplash.com/photo-1593105544559-ecb03bf76f82?auto=format&fit=crop&w=1000&q=85',
-    imageAlt: 'Fresh beetroot with green leaves'
+    image: '/images/powders/turmeric-powder.jpg',
+    imageAlt: 'Conical mound of glowing golden turmeric powder with fresh sliced turmeric root',
+    featured: true
+  },
+  {
+    id: 'ginger-powder',
+    name: 'Ginger Powder & Granules',
+    botanicalName: 'Zingiber officinale',
+    category: 'Spice Powders',
+    forms: ['Fine Powder (80-100 Mesh)', 'Granules / Crushed (20-40 Mesh)'],
+    meshSize: '80-100 Mesh',
+    purity: '100% Pure Sun-Dried Ginger, High Gingerol',
+    colorProfile: 'Pale Golden Sand / Warm Buff',
+    description: 'Aromatic, warm, pungent dehydrated ginger powder with high volatile oil and gingerol yield. Perfect for bakery items, beverages, spice teas, chai concentrates and confectioneries.',
+    applications: [
+      'Chai latte mixes, herbal infusions & beverage syrups',
+      'Gingerbread, cookies, bakery & confectionery',
+      'Curry blends, savory marinades & Asian sauces',
+      'Ayurvedic and digestive health formulations'
+    ],
+    image: '/images/powders/ginger-powder.jpg',
+    imageAlt: 'Fine pale golden ginger powder with fresh knobby ginger root',
+    featured: true
+  },
+  {
+    id: 'green-chilli-powder',
+    name: 'Green Chilli Powder & Flakes',
+    botanicalName: 'Capsicum annuum',
+    category: 'Spice Powders',
+    forms: ['Fine Powder (80 Mesh)', 'Crushed Green Chilli Flakes (8-16 Mesh)'],
+    meshSize: '80 Mesh (Powder) / 8-16 Mesh (Crushed Flakes)',
+    purity: '100% Dehydrated Green Chillies, Clean Pungency',
+    colorProfile: 'Vibrant Olive Green',
+    description: 'Intensely flavorful dehydrated green chilli powder and crushed flakes providing fresh green pungency and vibrant natural color without added artificial dyes.',
+    applications: [
+      'Snack dusting, extruded puffs & potato crisps',
+      'Green chutneys, instant dips & savory seasonings',
+      'Pickling blends, noodle seasonings & instant ramen',
+      'Salsa, Mexican & Indian recipe bases'
+    ],
+    image: '/images/powders/green-chilli-powder.jpg',
+    imageAlt: 'Vibrant olive green chilli powder and crushed flakes with fresh green chillies',
+    featured: true
   },
   {
     id: 'moringa-powder',
     name: 'Moringa Leaf Powder',
     botanicalName: 'Moringa oleifera',
     category: 'Herbal & Botanical',
-    description: 'A leaf-based botanical ingredient for beverage, food and wellness product briefs.',
+    forms: ['Micro-Milled Powder (100-120 Mesh)'],
+    meshSize: '100-120 Mesh Ultra-Fine',
+    purity: '100% Shade-Dried Moringa Oleifera Leaves',
+    colorProfile: 'Brilliant Emerald Green',
+    description: 'Certified organic shade-dried moringa leaf powder with maximum chlorophyll and antioxidant retention. Ideal for green superfood blends, wellness capsules, and nutritional powders.',
     applications: [
-      'Greens and beverage blends',
-      'Soups and savory mixes',
-      'Botanical product formulations'
+      'Green drink mixes, superfood smoothies & juices',
+      'Fortified nutritional snacks, pasta & energy bars',
+      'Nutraceutical tablets, dietary capsules & botanicals',
+      'Organic teas and herbal wellness infusions'
     ],
-    image: 'https://thumb.wikimedia.org/wikipedia/commons/thumb/8/89/Starr-060921-9047-Moringa_oleifera-leaves_and_flowers-Kahului-Maui_%2824747655882%29.jpg/960px-Starr-060921-9047-Moringa_oleifera-leaves_and_flowers-Kahului-Maui_%2824747655882%29.jpg',
-    imageAlt: 'Moringa oleifera leaves and flowers',
-    imageCredit: 'Forest and Kim Starr · CC BY 2.0',
-    imageCreditUrl: 'https://commons.wikimedia.org/wiki/File:Starr-060921-9047-Moringa_oleifera-leaves_and_flowers-Kahului-Maui_(24747655882).jpg'
+    image: '/images/powders/moringa-powder.jpg',
+    imageAlt: 'Conical heap of brilliant emerald green moringa powder with fresh sprigs',
+    featured: true
   },
   {
     id: 'rose-petal-powder',
     name: 'Rose Petal Powder',
     botanicalName: 'Rosa damascena',
     category: 'Herbal & Botanical',
-    description: 'A rose ingredient for personal-care, fragrance and product development discussions.',
+    forms: ['Fine Powder (80-100 Mesh)', 'Crushed Petals (10-20 Mesh)'],
+    meshSize: '80-100 Mesh',
+    purity: '100% Edible & Cosmetic Grade Damask Rose',
+    colorProfile: 'Dusty Crimson / Rose Pink',
+    description: 'Fragrant, shade-dried Damask rose petal powder with gentle floral aroma. Formulated for luxury cosmetics, skincare face packs, artisanal desserts, and gourmet herbal teas.',
     applications: [
-      'Personal-care and mask formulations',
-      'Botanical blends',
-      'Product concepts requiring a floral ingredient'
+      'Cosmetic clay masks, ubtan & botanical skincare',
+      'Gourmet desserts, floral syrups & baking glazes',
+      'Artisanal tea blends and relaxation beverages',
+      'Natural body dusting and aromatherapy compounds'
     ],
-    image: 'https://thumb.wikimedia.org/wikipedia/commons/thumb/5/56/Red_Rose_Petals_%284386388455%29.jpg/960px-Red_Rose_Petals_%284386388455%29.jpg',
-    imageAlt: 'Red rose petals',
-    imageCredit: 'THOR · CC BY 2.0',
-    imageCreditUrl: 'https://commons.wikimedia.org/wiki/File:Red_Rose_Petals_(4386388455).jpg'
-  },
-  {
-    id: 'jackfruit-powder',
-    name: 'Green Jackfruit Powder',
-    botanicalName: 'Artocarpus heterophyllus',
-    category: 'Exotic Fruit',
-    description: 'A green jackfruit ingredient for flour blend, bakery and savory product development briefs.',
-    applications: [
-      'Flour and baking blends',
-      'Savory and plant-based formulations',
-      'Product concepts using fruit ingredients'
-    ],
-    image: 'https://thumb.wikimedia.org/wikipedia/commons/thumb/f/fd/A_cluster_of_large%2C_green%2C_unripe_jackfruits_hangs_from_the_sturdy_trunk_of_a_tree%2C_surrounded_by_green_leaves._01.jpg/960px-A_cluster_of_large%2C_green%2C_unripe_jackfruits_hangs_from_the_sturdy_trunk_of_a_tree%2C_surrounded_by_green_leaves._01.jpg',
-    imageAlt: 'Green unripe jackfruits growing on a tree',
-    imageCredit: 'A S M Jobaer · CC BY-SA 4.0',
-    imageCreditUrl: 'https://commons.wikimedia.org/wiki/File:A_cluster_of_large,_green,_unripe_jackfruits_hangs_from_the_sturdy_trunk_of_a_tree,_surrounded_by_green_leaves._01.jpg'
+    image: '/images/powders/rose-petal-powder.jpg',
+    imageAlt: 'Dusty pink rose petal powder on dark slate with dried crimson petals',
+    featured: true
   },
   {
     id: 'spinach-powder',
-    name: 'Spinach Powder',
+    name: 'Pure Spinach Powder',
     botanicalName: 'Spinacia oleracea',
     category: 'Vegetable Powders',
-    description: 'A spinach ingredient for savory, bakery and green blend product development.',
+    forms: ['Fine Powder (80-100 Mesh)'],
+    meshSize: '80-100 Mesh',
+    purity: '100% Dehydrated Tender Spinach Leaves',
+    colorProfile: 'Deep Forest Green',
+    description: 'Chlorophyll-rich spinach powder produced via low-temperature dehydration. Imparts rich green color and mild vegetable flavor to pasta doughs, extruded snacks, and instant soups.',
     applications: [
-      'Soups, noodles and savory mixes',
-      'Bakery and pasta formulations',
-      'Green beverage and food blends'
+      'Green pasta, ravioli & bakery dough coloring',
+      'Instant soups, vegetable broths & savory mixes',
+      'Plant-based meat analogs & savory extrusion',
+      'Daily green wellness drink blends'
     ],
-    image: 'https://images.unsplash.com/photo-1576045057995-568f588f82fb?auto=format&fit=crop&w=1000&q=85',
-    imageAlt: 'Fresh spinach leaves'
+    image: '/images/powders/spinach-powder.jpg',
+    imageAlt: 'Rich forest green spinach powder in a neat mound with fresh spinach leaves',
+    featured: true
   },
   {
-    id: 'green-chilli-powder',
-    name: 'Green Chilli Powder',
-    botanicalName: 'Capsicum annuum',
-    category: 'Spice Powders',
-    description: 'A green chilli ingredient for seasoning, snack and savory product briefs.',
+    id: 'jackfruit-powder',
+    name: 'Green Jackfruit Flour & Powder',
+    botanicalName: 'Artocarpus heterophyllus',
+    category: 'Exotic Fruit',
+    forms: ['Flour (60-80 Mesh)', 'Resistant Starch Grade'],
+    meshSize: '60-80 Mesh',
+    purity: '100% Mature Unripe Raw Green Jackfruit',
+    colorProfile: 'Pale Ivory Cream',
+    description: 'Low-glycemic raw green jackfruit flour high in soluble dietary fiber and prebiotic resistant starch. Formulated as a functional wheat flour substitute in rotis, breads, and diabetic-friendly foods.',
     applications: [
-      'Seasonings and snack coatings',
-      'Sauces and savory blends',
-      'Chutney and spice mixes'
+      'Low-GI flour blends for breads, rotis & baked goods',
+      'Dietary fiber fortification in snacks & cereals',
+      'Gluten-free baking premixes & nutritional bars',
+      'Plant-based savory binder in culinary burgers'
     ],
-    image: 'https://thumb.wikimedia.org/wikipedia/commons/thumb/f/fc/Chillis_03_%282272510712%29.jpg/960px-Chillis_03_%282272510712%29.jpg',
-    imageAlt: 'Green chilli peppers',
-    imageCredit: 'Michael Clarke · CC BY-SA 2.0',
-    imageCreditUrl: 'https://commons.wikimedia.org/wiki/File:Chillis_03_(2272510712).jpg'
+    image: '/images/powders/jackfruit-powder.jpg',
+    imageAlt: 'Fine ivory green jackfruit flour with raw jackfruit slices',
+    featured: true
   }
 ];
 
@@ -143,52 +207,42 @@ export const industriesList = [
   {
     name: 'Food & Beverage',
     eyebrow: 'Ingredient applications',
-    description: 'Explore listed powders for food and beverage concepts. Final product fit and specifications are confirmed for each brief.',
-    powders: ['Onion', 'Garlic', 'Beetroot', 'Spinach'],
-    image: productsById['onion-powder'].image,
-    imageAlt: productsById['onion-powder'].imageAlt,
-    imageCredit: productsById['onion-powder'].imageCredit,
-    imageCreditUrl: productsById['onion-powder'].imageCreditUrl
+    description: 'Dehydrated vegetable, spice and fruit powders engineered for instant solubility, clear broths, and clean-label natural coloration.',
+    powders: ['Onion', 'Garlic', 'Beetroot', 'Spinach', 'Turmeric'],
+    image: productsById['beetroot-powder'].image,
+    imageAlt: productsById['beetroot-powder'].imageAlt
   },
   {
-    name: 'Seasonings & Snacks',
+    name: 'Seasonings, Rubs & Snacks',
     eyebrow: 'Savory formulations',
-    description: 'Onion, garlic, ginger and green chilli are listed for discussion around savory blends and snack applications.',
-    powders: ['Onion', 'Garlic', 'Ginger', 'Green chilli'],
-    image: productsById['green-chilli-powder'].image,
-    imageAlt: productsById['green-chilli-powder'].imageAlt,
-    imageCredit: productsById['green-chilli-powder'].imageCredit,
-    imageCreditUrl: productsById['green-chilli-powder'].imageCreditUrl
+    description: 'Free-flowing onion, garlic, green chilli and ginger powders and flakes tailored for extruded snacks, chips, coatings and marinades.',
+    powders: ['Onion Flakes', 'Garlic Granules', 'Green Chilli', 'Ginger'],
+    image: productsById['onion-powder'].image,
+    imageAlt: productsById['onion-powder'].imageAlt
   },
   {
     name: 'Bakery & Confectionery',
     eyebrow: 'Product development',
-    description: 'Discuss how listed fruit, vegetable and botanical powders may fit a bakery or confectionery brief.',
+    description: 'Plant-derived colors and functional flours including beetroot, spinach, turmeric and green jackfruit resistant starch.',
     powders: ['Beetroot', 'Spinach', 'Green jackfruit', 'Ginger'],
-    image: productsById['beetroot-powder'].image,
-    imageAlt: productsById['beetroot-powder'].imageAlt,
-    imageCredit: productsById['beetroot-powder'].imageCredit,
-    imageCreditUrl: productsById['beetroot-powder'].imageCreditUrl
+    image: productsById['turmeric-powder'].image,
+    imageAlt: productsById['turmeric-powder'].imageAlt
   },
   {
     name: 'Beverage & Botanical',
     eyebrow: 'Formulation conversations',
-    description: 'Review ingredient options for beverage and botanical concepts with intended use and market requirements.',
+    description: 'Micronized botanical and herbal powders for instant tea premixes, smoothie sticks, and functional wellness drinks.',
     powders: ['Ginger', 'Moringa', 'Beetroot', 'Rose petal'],
     image: productsById['moringa-powder'].image,
-    imageAlt: productsById['moringa-powder'].imageAlt,
-    imageCredit: productsById['moringa-powder'].imageCredit,
-    imageCreditUrl: productsById['moringa-powder'].imageCreditUrl
+    imageAlt: productsById['moringa-powder'].imageAlt
   },
   {
-    name: 'Personal Care',
+    name: 'Personal Care & Cosmetics',
     eyebrow: 'Botanical ingredients',
-    description: 'Rose petal and moringa are listed as starting points for personal-care product discussions.',
+    description: 'Finely milled floral and herbal botanicals for face masks, bath powders, soaps, and clean-label cosmetic formulations.',
     powders: ['Rose petal', 'Moringa'],
     image: productsById['rose-petal-powder'].image,
-    imageAlt: productsById['rose-petal-powder'].imageAlt,
-    imageCredit: productsById['rose-petal-powder'].imageCredit,
-    imageCreditUrl: productsById['rose-petal-powder'].imageCreditUrl
+    imageAlt: productsById['rose-petal-powder'].imageAlt
   }
 ];
 
@@ -198,98 +252,90 @@ export const certificationsData = [
     title: 'Food Safety and Standards Authority of India',
     issuer: 'Food Safety and Standards Authority of India',
     validity: 'License No. 10020021008942',
-    scope: 'Food business license for the facility',
+    scope: 'Food business license for dehydrated powders & spices processing',
     badge: 'FSSAI Licensed Facility'
+  },
+  {
+    code: 'Steam Sterilized',
+    title: 'Clean Low-Bioburden Treatment',
+    issuer: 'Quality Control Laboratory',
+    validity: 'Batch Verified',
+    scope: 'Microbiological control without radiation or chemical fumigation',
+    badge: 'Zero Chemical Residue'
+  },
+  {
+    code: '100% Traceable',
+    title: 'Direct Farm-to-Facility Sourcing',
+    issuer: 'Nuvaro Agro Quality Network',
+    validity: 'Harvest Audited',
+    scope: 'Contract farming with strict pesticide limits and harvest tracking',
+    badge: 'Full Traceability'
   }
 ];
 
 const blogArticles = [
   {
     id: 1,
-    productId: 'jackfruit-powder',
-    title: 'Working with green jackfruit powder in food formulations',
-    slug: 'jackfruit-powder-food-formulations',
-    category: 'Food applications',
+    productId: 'beetroot-powder',
+    title: 'Using pure beetroot powder as a clean-label natural red colorant',
+    slug: 'beetroot-powder-natural-colorant',
+    category: 'Food formulations',
     readTime: '4 min read',
-    author: 'Nuvaro Agro',
-    excerpt: 'A practical starting point for discussing green jackfruit powder, intended use and the details to confirm for a food application.',
-    content: 'Begin with the role the ingredient needs to play in the recipe, then share the application, target volume and destination market. The listed product information can guide an initial conversation; final suitability, specifications and documentation should be confirmed for the specific order.'
+    author: 'Nuvaro Agro Technical Team',
+    excerpt: 'How food manufacturers achieve rich pink to deep crimson shades in bakery, snacks and beverages with stable dehydrated beetroot powder.',
+    content: 'Dehydrated beetroot powder is one of the most effective clean-label substitutes for artificial Red 40. Betanin pigments provide intense magenta hues that perform reliably in low-heat applications, frostings, plant-based meats, and instant beverage mixes. When ordering in bulk, confirm mesh size (80 vs 100 mesh) to ensure instant solubility and zero grittiness in liquid applications.'
   },
   {
     id: 2,
-    productId: 'rose-petal-powder',
-    title: 'Rose petal powder: uses and buying considerations',
-    slug: 'rose-petal-powder-uses-buying-considerations',
-    category: 'Botanical ingredients',
-    readTime: '4 min read',
-    author: 'Nuvaro Agro',
-    excerpt: 'Use the intended product format and application to guide a focused conversation about rose petal powder.',
-    content: 'Share whether the ingredient is being considered for a personal-care or other product concept. Confirm the required specification, pack format and any quality checks or documents before placing an order. Application suitability should be reviewed for the intended use.'
+    productId: 'onion-powder',
+    title: 'Flakes vs Powder: Choosing the right onion cut for industrial food manufacturing',
+    slug: 'onion-flakes-vs-powder-guide',
+    category: 'Sourcing guide',
+    readTime: '5 min read',
+    author: 'Nuvaro Agro Sourcing Desk',
+    excerpt: 'A comprehensive comparative guide between dehydrated onion flakes, chopped, minced granules, and fine powder for recipe developers.',
+    content: 'The format of dehydrated onion directly dictates sensory mouthfeel and release timing. While 80-100 mesh onion powder disperses instantaneously across snack seasonings and bouillons, 8-24 mesh onion flakes reconstitute upon hydration to yield genuine onion texture in soups, ready meals, and canned sauces. Review your production equipment flow to avoid moisture clumping.'
   },
   {
     id: 3,
-    productId: 'ginger-powder',
-    title: 'How to frame a processing brief for spice powders',
-    slug: 'processing-brief-spice-powders',
-    category: 'Sourcing guide',
+    productId: 'garlic-powder',
+    title: 'Maximizing allicin retention in bulk dehydrated garlic powder and granules',
+    slug: 'garlic-powder-allicin-retention',
+    category: 'Quality & processing',
     readTime: '4 min read',
-    author: 'Nuvaro Agro',
-    excerpt: 'The useful details to share before discussing product fit, specifications and order requirements.',
-    content: 'A clear brief names the ingredient, intended application, target quantity and delivery destination. Add any preferred sensory or handling characteristics and identify documents or testing requirements to discuss. Processing options and final specifications are reviewed for the individual product and order.'
+    author: 'Nuvaro Agro Lab',
+    excerpt: 'Why controlled low-temperature dehydration produces garlic powder with superior pungent aroma and longer shelf stability.',
+    content: 'Allicin precursor alliin is highly sensitive to excessive processing heat. Our low-temperature dehydration protocols preserve enzymatically active compounds so that when the garlic powder meets moisture in customer formulations, authentic freshly crushed garlic aroma bursts forth. Storage in nitrogen-flushed multi-wall moisture barrier bags ensures minimum 24-month aroma retention.'
   },
   {
     id: 4,
-    productId: 'onion-powder',
-    title: 'A buyer’s checklist for an ingredient enquiry',
-    slug: 'buyer-checklist-ingredient-enquiry',
-    category: 'Sourcing guide',
-    readTime: '3 min read',
+    productId: 'turmeric-powder',
+    title: 'Sourcing high-curcumin golden turmeric for spice blends and nutraceuticals',
+    slug: 'sourcing-high-curcumin-turmeric',
+    category: 'Export standards',
+    readTime: '4 min read',
     author: 'Nuvaro Agro',
-    excerpt: 'A short checklist to help purchasing and product teams send a brief that can be reviewed efficiently.',
-    content: 'Include the product or concept, the application, an approximate order quantity and destination. If you have a target specification, packaging preference or required documents, include those too. Unknown details are fine to mark as undecided; they can be clarified during the conversation.'
+    excerpt: 'Key parameters to verify when buying bulk turmeric: curcumin percentage, steam treatment, and heavy metal testing.',
+    content: 'Industrial turmeric procurement requires verification beyond just visual yellow color. We provide comprehensive COA documentation detailing curcumin assay (3% to 5%+), moisture content below 8%, and strict heavy metal clearance compliant with EU and US FDA import tolerances.'
   },
   {
     id: 5,
-    productId: 'beetroot-powder',
-    title: 'From sample idea to a useful product trial',
-    slug: 'planning-a-product-trial',
-    category: 'Product development',
-    readTime: '4 min read',
-    author: 'Nuvaro Agro',
-    excerpt: 'Plan an ingredient discussion around the formulation, evaluation criteria and next decision.',
-    content: 'Before requesting a sample, outline the recipe or process in which the ingredient will be evaluated and the characteristics your team needs to review. Confirm sample availability, quantity, shipping and any accompanying documents for the request. Decide how the results will inform the next commercial discussion.'
-  },
-  {
-    id: 6,
-    productId: 'garlic-powder',
-    title: 'Packaging details to confirm before a bulk order',
-    slug: 'packaging-details-bulk-order',
-    category: 'Packaging & supply',
+    productId: 'moringa-powder',
+    title: 'Moringa leaf powder: shade drying versus mechanical hot air drying',
+    slug: 'moringa-powder-drying-comparison',
+    category: 'Botanical ingredients',
     readTime: '3 min read',
-    author: 'Nuvaro Agro',
-    excerpt: 'Align on pack format, labeling and destination requirements before an order is agreed.',
-    content: 'Share the expected order size, handling needs and destination market. Discuss suitable pack formats, inner protection and label information, then confirm the final details in the order documents. Availability and any private-label requirements depend on the product and project.'
-  },
-  {
-    id: 7,
-    productId: 'spinach-powder',
-    title: 'Matching a powder to its intended application',
-    slug: 'matching-powder-to-application',
-    category: 'Product development',
-    readTime: '4 min read',
-    author: 'Nuvaro Agro',
-    excerpt: 'Start with how an ingredient will be used, then agree what product details need to be reviewed.',
-    content: 'The same ingredient may be evaluated differently across recipes and processes. Describe when and how it is added, the finished product you are making and the market it will serve. Use that context to agree which specification points, quality checks and supporting documents should be reviewed.'
+    author: 'Nuvaro Agro Botanical Desk',
+    excerpt: 'The critical difference that gentle shade drying makes to moringa chlorophyll intensity and nutritional integrity.',
+    content: 'Direct exposure to high heat degrades the vivid chlorophyll pigment and heat-sensitive vitamins in moringa leaves. Our shade-drying facility preserves a bright emerald green hue that dissolves cleanly into green smoothie powders and capsule formulations without bitter burnt undertones.'
   }
 ];
 
 export const blogPostsData = blogArticles.map((article) => {
-  const product = productsById[article.productId];
+  const product = productsById[article.productId] || products[0];
   return {
     ...article,
     image: product.image,
-    imageAlt: product.imageAlt,
-    imageCredit: product.imageCredit,
-    imageCreditUrl: product.imageCreditUrl
+    imageAlt: product.imageAlt
   };
 });

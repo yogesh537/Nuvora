@@ -1,3 +1,5 @@
+import containerQueries from '@tailwindcss/container-queries';
+
 /** @type {import('tailwindcss').Config} */
 export default {
   content: [
@@ -7,6 +9,39 @@ export default {
   theme: {
     extend: {
       colors: {
+        border: "hsl(var(--border) / <alpha-value>)",
+        input: "hsl(var(--input) / <alpha-value>)",
+        ring: "hsl(var(--ring) / <alpha-value>)",
+        background: "hsl(var(--background) / <alpha-value>)",
+        foreground: "hsl(var(--foreground) / <alpha-value>)",
+        primary: {
+          DEFAULT: "hsl(var(--primary) / <alpha-value>)",
+          foreground: "hsl(var(--primary-foreground) / <alpha-value>)",
+        },
+        secondary: {
+          DEFAULT: "hsl(var(--secondary) / <alpha-value>)",
+          foreground: "hsl(var(--secondary-foreground) / <alpha-value>)",
+        },
+        destructive: {
+          DEFAULT: "hsl(var(--destructive) / <alpha-value>)",
+          foreground: "hsl(var(--destructive-foreground) / <alpha-value>)",
+        },
+        muted: {
+          DEFAULT: "hsl(var(--muted) / <alpha-value>)",
+          foreground: "hsl(var(--muted-foreground) / <alpha-value>)",
+        },
+        accent: {
+          DEFAULT: "hsl(var(--accent) / <alpha-value>)",
+          foreground: "hsl(var(--accent-foreground) / <alpha-value>)",
+        },
+        popover: {
+          DEFAULT: "hsl(var(--popover) / <alpha-value>)",
+          foreground: "hsl(var(--popover-foreground) / <alpha-value>)",
+        },
+        card: {
+          DEFAULT: "hsl(var(--card) / <alpha-value>)",
+          foreground: "hsl(var(--card-foreground) / <alpha-value>)",
+        },
         forest: {
           50: '#f0f7f3',
           100: '#dceee3',
@@ -16,17 +51,9 @@ export default {
           500: '#3e846e',
           600: '#2b6957',
           700: '#235446',
-          800: '#1F4D36', // primary brand deep forest green
+          800: '#1F4D36',
           900: '#193e2c',
           950: '#0d2218',
-        },
-        cream: {
-          50: '#fdfbf7',
-          100: '#F5F1E6', // primary background cream
-          200: '#eae2cd',
-          300: '#dcd0ad',
-          400: '#cbb789',
-          500: '#bc9f6b',
         },
         gold: {
           50: '#fcf8ec',
@@ -34,7 +61,7 @@ export default {
           200: '#eedba0',
           300: '#e3c26b',
           400: '#d9a93e',
-          500: '#C9972B', // primary mustard gold button/accent
+          500: '#C9972B',
           600: '#ad7a21',
           700: '#8a5b1d',
           800: '#72481e',
@@ -53,5 +80,5 @@ export default {
       }
     },
   },
-  plugins: [],
+  plugins: [containerQueries],
 }

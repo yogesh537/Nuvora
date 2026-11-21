@@ -3,14 +3,57 @@
 @tailwind utilities;
 
 @layer base {
+  :root {
+    --background: 40 20% 98%;
+    --foreground: 20 14% 10%;
+    --card: 0 0% 100%;
+    --card-foreground: 20 14% 10%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 20 14% 10%;
+    --primary: 43 65% 52%;
+    --primary-foreground: 20 14% 10%;
+    --secondary: 40 10% 95%;
+    --secondary-foreground: 20 14% 10%;
+    --muted: 40 10% 94%;
+    --muted-foreground: 25 5% 45%;
+    --accent: 40 15% 94%;
+    --accent-foreground: 20 14% 10%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 30 10% 88%;
+    --input: 30 10% 88%;
+    --ring: 43 65% 52%;
+    --radius: 0.75rem;
+  }
+
+  * {
+    border-color: hsl(var(--border));
+  }
+
   body {
-    @apply bg-white text-stone-800 font-sans antialiased;
+    background-color: hsl(var(--background));
+    color: hsl(var(--foreground));
+    font-family: Poppins, Inter, system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
     font-feature-settings: "cv02", "cv03", "cv04", "cv11";
   }
 
   ::selection {
-    background-color: #1F4D36;
-    color: #ffffff;
+    background-color: #D5AA37;
+    color: #111111;
+  }
+}
+
+@layer utilities {
+  .bg-background {
+    background-color: hsl(var(--background));
+  }
+  .text-foreground {
+    color: hsl(var(--foreground));
+  }
+  .border-border {
+    border-color: hsl(var(--border));
   }
 }
 

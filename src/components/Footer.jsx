@@ -61,7 +61,12 @@ export default function Footer({ onNavigate, onSelectCategory }) {
       {links.map(({ label, view, action, category }) => (
         <li key={label}>
           {action === 'whatsapp' ? (
-            <a href="https://wa.me/919820012345" target="_blank" rel="noreferrer" className="text-[11px] leading-5 text-[#6f665d] transition-colors hover:text-[#1f4d36]">
+            <a
+              href="https://wa.me/919820012345"
+              target="_blank"
+              rel="noreferrer"
+              className="text-xs text-stone-600 transition-colors hover:text-stone-900"
+            >
               {label}
             </a>
           ) : (
@@ -71,7 +76,7 @@ export default function Footer({ onNavigate, onSelectCategory }) {
                 else if (category) onSelectCategory(category);
                 else onNavigate(view);
               }}
-              className="text-left text-[11px] leading-5 text-[#6f665d] transition-colors hover:text-[#1f4d36] focus:outline-none focus-visible:text-[#1f4d36]"
+              className="text-left text-xs text-stone-600 transition-colors hover:text-stone-900 focus:outline-none"
             >
               {label}
             </button>
@@ -82,50 +87,65 @@ export default function Footer({ onNavigate, onSelectCategory }) {
   );
 
   return (
-    <footer className="w-full overflow-hidden border-t-4 border-[#1f4d36] bg-[#fbf6ed] text-[#433b34]">
+    <footer className="w-full overflow-hidden border-t border-stone-200 bg-[#FBF9F5] text-stone-800">
       <div className="w-full">
-        <div className="mx-auto grid w-full max-w-7xl gap-8 border-b border-[#e8ded0] px-5 py-7 sm:px-8 sm:py-9 lg:grid-cols-2 lg:items-center lg:gap-12 lg:px-12">
+        {/* Top bar with logo and newsletter */}
+        <div className="mx-auto grid w-full max-w-7xl gap-8 border-b border-stone-200 px-6 py-8 sm:px-12 lg:grid-cols-2 lg:items-center lg:gap-12">
           <div>
             <button
               onClick={() => onNavigate('home')}
-              className="flex items-center gap-3 text-left focus:outline-none focus-visible:ring-2 focus-visible:ring-[#1f4d36]"
+              className="flex items-center gap-3 text-left focus:outline-none"
               aria-label="Nuvaro Agro home"
             >
-              <span className="grid h-12 w-12 place-items-center rounded-full border border-[#d8c6ae] bg-[#f1e7d7] text-[#1f4d36]">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-                  <path d="M11 20A7 7 0 0 1 4 13c0-4.5 4.5-8 7-9 2.5 1 7 4.5 7 9a7 7 0 0 1-7 7Z" />
-                  <path d="M11 20v-9" />
-                </svg>
-              </span>
-              <span>
-                <span className="block font-serif text-2xl font-semibold tracking-tight text-[#183126]">Nuvaro Agro</span>
-                <span className="mt-0.5 block text-[9px] font-semibold uppercase tracking-[0.2em] text-[#83776c]">Dehydrated ingredients</span>
-              </span>
+              <div className="relative flex h-11 w-11 items-center justify-center overflow-hidden rounded-full border border-stone-200 bg-white">
+                <img
+                  src="/images/logo-exact.png"
+                  alt="Nuvaro Agro Logo"
+                  className="h-full w-full object-contain"
+                  onError={(e) => {
+                    e.target.src = '/images/logo-trans.png';
+                  }}
+                />
+              </div>
+              <div>
+                <span className="block text-xl font-bold tracking-tight text-stone-900">
+                  Nuvaro Agro
+                </span>
+                <span className="block text-[9px] font-semibold uppercase tracking-[0.16em] text-stone-500">
+                  Bulk Spice Powders &amp; Flakes
+                </span>
+              </div>
             </button>
-            <p className="mt-4 max-w-lg text-[11px] leading-5 text-[#756b62] sm:text-xs">
-              Rooted in nature, made for modern food and wellness brands. Discover premium vegetable, fruit, spice and botanical powders for your next formulation.
+            <p className="mt-4 max-w-lg text-xs leading-relaxed text-stone-600">
+              Direct factory supply of dehydrated vegetable, spice, and botanical powders for industrial food manufacturers, snack seasoning makers, and wellness brands globally.
             </p>
             <div className="mt-4 flex flex-wrap gap-2">
-              {['FSSAI Licensed Facility'].map((certification) => (
-                <span key={certification} className="rounded-full border border-[#e5d9c8] bg-white/70 px-2.5 py-1 text-[9px] font-semibold tracking-wide text-[#6f665d]">
-                  {certification}
-                </span>
-              ))}
+              <span className="rounded-full border border-stone-200 bg-white px-3 py-1 text-[10px] font-semibold text-stone-700">
+                FSSAI License No. 10020021008942
+              </span>
+              <span className="rounded-full border border-stone-200 bg-white px-3 py-1 text-[10px] font-semibold text-stone-700">
+                Steam Sterilized
+              </span>
+              <span className="rounded-full border border-stone-200 bg-white px-3 py-1 text-[10px] font-semibold text-stone-700">
+                100% Traceable
+              </span>
             </div>
           </div>
 
           <div>
-            <h2 className="font-serif text-lg font-semibold text-[#40372f]">Notes from the field</h2>
-            <p className="mt-1 text-[11px] leading-5 text-[#756b62]">
-              Product updates, harvest news and ingredient insights, delivered occasionally.
+            <h2 className="text-base font-bold text-stone-900">Subscribe for Monthly Harvest &amp; Price Updates</h2>
+            <p className="mt-1 text-xs text-stone-600">
+              Get raw ingredient market updates, crop projections, and commercial FOB price schedules.
             </p>
             {subscribed ? (
-              <p role="status" className="mt-4 rounded-lg border border-[#bfcdb5] bg-[#eef2e8] px-4 py-3 text-xs font-medium text-[#1f4d36]">
-                Thank you. You are subscribed to our trade bulletin.
+              <p role="status" className="mt-4 rounded-lg border border-amber-200 bg-amber-50 px-4 py-3 text-xs font-semibold text-amber-900">
+                Thank you! You are subscribed to our monthly trade bulletin.
               </p>
             ) : (
               <form onSubmit={handleSubscribe} className="mt-4 flex flex-col gap-2 sm:flex-row">
-                <label className="sr-only" htmlFor="footer-newsletter-email">Email address</label>
+                <label className="sr-only" htmlFor="footer-newsletter-email">
+                  Email address
+                </label>
                 <input
                   id="footer-newsletter-email"
                   type="email"
@@ -133,12 +153,12 @@ export default function Footer({ onNavigate, onSelectCategory }) {
                   required
                   value={email}
                   onChange={(event) => setEmail(event.target.value)}
-                  placeholder="Enter your email address"
-                  className="min-w-0 flex-1 border border-[#ded2c2] bg-white px-3.5 py-3 text-[11px] text-[#433b34] outline-none transition placeholder:text-[#a49a8e] focus:border-[#1f4d36] focus:ring-2 focus:ring-[#1f4d36]/10"
+                  placeholder="Enter corporate email address"
+                  className="min-w-0 flex-1 rounded-lg border border-stone-300 bg-white px-3.5 py-2.5 text-xs text-stone-800 outline-none transition placeholder:text-stone-400 focus:border-[#D5AA37] focus:ring-1 focus:ring-[#D5AA37]"
                 />
                 <button
                   type="submit"
-                  className="inline-flex items-center justify-center gap-2 bg-[#1f4d36] px-5 py-3 text-[11px] font-semibold text-white transition-colors hover:bg-[#193e2c] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#C9972B] focus-visible:ring-offset-2"
+                  className="inline-flex items-center justify-center gap-2 rounded-lg bg-[#D5AA37] px-5 py-2.5 text-xs font-bold text-stone-950 transition hover:bg-[#C59B2E]"
                 >
                   Subscribe <Send className="h-3.5 w-3.5" />
                 </button>
@@ -147,33 +167,34 @@ export default function Footer({ onNavigate, onSelectCategory }) {
           </div>
         </div>
 
-        <div className="mx-auto grid w-full max-w-7xl grid-cols-2 gap-x-6 gap-y-8 px-5 py-7 sm:px-8 sm:py-8 md:grid-cols-4 md:gap-6 lg:px-12">
+        {/* Link Columns */}
+        <div className="mx-auto grid w-full max-w-7xl grid-cols-2 gap-x-6 gap-y-8 px-6 py-8 sm:px-12 md:grid-cols-4">
           <div>
-            <h3 className="mb-3 font-serif text-sm font-semibold text-[#40372f]">Quick Links</h3>
+            <h3 className="mb-3 text-xs font-bold uppercase tracking-wider text-stone-900">Quick Links</h3>
             {renderLinks(quickLinks)}
           </div>
           <div>
-            <h3 className="mb-3 font-serif text-sm font-semibold text-[#40372f]">Customer Care</h3>
+            <h3 className="mb-3 text-xs font-bold uppercase tracking-wider text-stone-900">Customer Care</h3>
             {renderLinks(customerCareLinks)}
           </div>
           <div>
-            <h3 className="mb-3 font-serif text-sm font-semibold text-[#40372f]">Company Links</h3>
-            {renderLinks(companyLinks)}
+            <h3 className="mb-3 text-xs font-bold uppercase tracking-wider text-stone-900">Powder Groups</h3>
+            {renderLinks(powderLinks)}
           </div>
           <div>
-            <h3 className="mb-3 font-serif text-sm font-semibold text-[#40372f]">Connect With Us</h3>
-            <div className="space-y-2.5 text-[11px] leading-5 text-[#6f665d]">
-              <a href="mailto:export@nuvaroagro.com" className="flex items-center gap-2 transition-colors hover:text-[#1f4d36]">
-                <Mail className="h-3.5 w-3.5 shrink-0 text-[#C9972B]" />
+            <h3 className="mb-3 text-xs font-bold uppercase tracking-wider text-stone-900">Connect With Us</h3>
+            <div className="space-y-2.5 text-xs text-stone-600">
+              <a href="mailto:export@nuvaroagro.com" className="flex items-center gap-2 transition hover:text-stone-900">
+                <Mail className="h-3.5 w-3.5 shrink-0 text-[#D5AA37]" />
                 export@nuvaroagro.com
               </a>
-              <a href="tel:+919820012345" className="flex items-center gap-2 transition-colors hover:text-[#1f4d36]">
-                <Phone className="h-3.5 w-3.5 shrink-0 text-[#C9972B]" />
+              <a href="tel:+919820012345" className="flex items-center gap-2 transition hover:text-stone-900">
+                <Phone className="h-3.5 w-3.5 shrink-0 text-[#D5AA37]" />
                 +91 98200 12345
               </a>
               <p className="flex items-start gap-2">
-                <MapPin className="mt-1 h-3.5 w-3.5 shrink-0 text-[#C9972B]" />
-                Gujarat &amp; Maharashtra, India
+                <MapPin className="mt-0.5 h-3.5 w-3.5 shrink-0 text-[#D5AA37]" />
+                Processing Facility: Gujarat &amp; Maharashtra, India
               </p>
             </div>
             <a
@@ -181,17 +202,18 @@ export default function Footer({ onNavigate, onSelectCategory }) {
               target="_blank"
               rel="noreferrer"
               aria-label="Message Nuvaro Agro on WhatsApp"
-              className="mt-4 inline-grid h-9 w-9 place-items-center rounded-full border border-[#e2d6c7] bg-white text-[#1f4d36] transition-colors hover:border-[#1f4d36] hover:bg-[#1f4d36] hover:text-white"
+              className="mt-4 inline-flex items-center gap-2 rounded-lg border border-stone-300 bg-white px-3 py-1.5 text-xs font-medium text-stone-800 transition hover:border-[#D5AA37]"
             >
-              <MessageCircle className="h-4 w-4" />
+              <MessageCircle className="h-4 w-4 text-emerald-600" />
+              Chat on WhatsApp
             </a>
           </div>
         </div>
 
-        <div className="border-t border-[#e8ded0] px-5 py-4 text-center text-[10px] text-[#81766b] sm:px-8">
-          © {new Date().getFullYear()} Nuvaro Agro Pvt Ltd. All rights reserved.
+        {/* Bottom copyright */}
+        <div className="border-t border-stone-200 px-6 py-4 text-center text-xs text-stone-500">
+          © {new Date().getFullYear()} Nuvaro Agro Pvt Ltd. All rights reserved. • High Purity Dehydrated Powders, Flakes &amp; Granules
         </div>
-
       </div>
     </footer>
   );
