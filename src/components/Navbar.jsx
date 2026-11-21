@@ -354,24 +354,16 @@ export default function Navbar({ currentView, setCurrentView, onSelectCategory }
     <button
       type="button"
       onClick={() => go('home')}
-      className="flex items-center gap-2.5 rounded-md outline-none focus-visible:ring-2 focus-visible:ring-ring text-left"
+      className="flex items-center gap-2 outline-none focus-visible:ring-2 focus-visible:ring-ring text-left group"
       aria-label="Nuvaro Agro Global Home"
     >
-      <div className="relative flex h-8 w-8 sm:h-9 sm:w-9 items-center justify-center overflow-hidden rounded-full border border-white/20 bg-white/10 p-0.5 shadow-sm transition-transform duration-300 hover:scale-105">
+      <div className="flex flex-col items-start justify-center">
         <img
-          src="/images/logo-exact.png"
-          alt="Nuvaro Agro Logo"
-          className="h-full w-full object-contain"
-          onError={(e) => {
-            e.target.src = '/images/logo-trans.png';
-          }}
+          src="/images/nuvaro-logo-white.png"
+          alt="Nuvaro"
+          className="h-7 sm:h-8 w-auto object-contain transition-transform duration-300 group-hover:scale-102"
         />
-      </div>
-      <div className="flex flex-col">
-        <span className="text-base font-extrabold tracking-tight text-white transition-colors hover:text-[#FBBF24] leading-none">
-          NUVARO
-        </span>
-        <span className="text-[9px] font-semibold uppercase tracking-widest text-[#FBBF24] leading-tight">
+        <span className="text-[8px] sm:text-[9px] font-bold uppercase tracking-[0.22em] text-[#FBBF24] leading-tight pl-0.5">
           Agro Global
         </span>
       </div>

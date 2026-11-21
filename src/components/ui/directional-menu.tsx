@@ -1291,23 +1291,14 @@ export function DirectionalMenuDemo(props: Partial<typeof demoSettings>) {
   const demoLogo = (
     <a
       href="#"
-      aria-label="Acme home"
+      aria-label="Nuvaro home"
       className="flex items-center gap-2.5 rounded-md outline-none focus-visible:ring-2 focus-visible:ring-ring"
     >
-      <svg viewBox="0 0 28 28" className="h-7 w-7" aria-hidden="true">
-        <rect width="28" height="28" rx="8" className="fill-foreground" />
-        <path
-          d="M9 9l5 5-5 5M15 9l5 5-5 5"
-          fill="none"
-          strokeWidth="2"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          className="stroke-background"
-        />
-      </svg>
-      <span className="hidden text-base font-semibold tracking-tight text-foreground @3xl:inline">
-        Acme
-      </span>
+      <img
+        src="/images/nuvaro-logo-black.png"
+        alt="Nuvaro"
+        className="h-7 w-auto object-contain"
+      />
     </a>
   );
 

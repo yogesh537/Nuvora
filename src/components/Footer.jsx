@@ -94,25 +94,17 @@ export default function Footer({ onNavigate, onSelectCategory }) {
           <div>
             <button
               onClick={() => onNavigate('home')}
-              className="flex items-center gap-3 text-left focus:outline-none"
+              className="flex items-center gap-3 text-left focus:outline-none group"
               aria-label="Nuvaro Agro home"
             >
-              <div className="relative flex h-11 w-11 items-center justify-center overflow-hidden rounded-full border border-stone-200 bg-white">
+              <div className="flex flex-col items-start justify-center">
                 <img
-                  src="/images/logo-exact.png"
-                  alt="Nuvaro Agro Logo"
-                  className="h-full w-full object-contain"
-                  onError={(e) => {
-                    e.target.src = '/images/logo-trans.png';
-                  }}
+                  src="/images/nuvaro-logo-black.png"
+                  alt="Nuvaro Logo"
+                  className="h-8 sm:h-9 w-auto object-contain transition-transform duration-300 group-hover:scale-102"
                 />
-              </div>
-              <div>
-                <span className="block text-xl font-bold tracking-tight text-stone-900">
-                  Nuvaro Agro
-                </span>
-                <span className="block text-[9px] font-semibold uppercase tracking-[0.16em] text-stone-500">
-                  Bulk Spice Powders &amp; Flakes
+                <span className="block text-[9px] font-bold uppercase tracking-[0.2em] text-[#B58A27] mt-1 pl-0.5">
+                  Agro Global • Dehydrated Ingredients
                 </span>
               </div>
             </button>
