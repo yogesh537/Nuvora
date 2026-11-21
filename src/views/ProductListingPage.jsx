@@ -47,39 +47,40 @@ export default function ProductListingPage({
 
   return (
     <div className="min-h-screen bg-[#FAF9F6] text-stone-900 font-sans">
-      {/* Botanical Green Banner (Exact Match to Screenshot Image 7) */}
-      <section className="relative w-full bg-[#102B1D] text-white py-14 sm:py-20 overflow-hidden border-b border-emerald-950">
-        <div
-          className="absolute inset-0 z-0 bg-cover bg-center opacity-45 mix-blend-luminosity"
-          style={{ backgroundImage: `url('/images/hero-green-bg.jpg')` }}
-        />
-        <div className="absolute inset-0 z-0 bg-gradient-to-r from-[#0C2216]/95 via-[#0F2D1F]/80 to-transparent" />
+      {/* White Clean Category Banner with Green/Yellow Accents */}
+      <section className="relative w-full bg-gradient-to-b from-stone-50 via-white to-stone-50/60 text-stone-900 py-12 sm:py-16 overflow-hidden border-b border-stone-200/80">
+        {/* Soft Ambient Radiance */}
+        <div className="pointer-events-none absolute left-1/4 top-0 -z-10 h-64 w-96 rounded-full bg-emerald-500/5 blur-3xl" />
+        <div className="pointer-events-none absolute right-1/4 top-10 -z-10 h-64 w-80 rounded-full bg-amber-400/5 blur-3xl" />
 
-        {/* Floating Green Leaf on Left (from Screenshot Image 7) */}
-        <div className="pointer-events-none absolute left-4 sm:left-10 top-1/2 -translate-y-1/2 z-10 w-12 sm:w-16 opacity-90 select-none animate-float">
+        {/* Floating Green Leaf on Left */}
+        <div className="pointer-events-none absolute left-4 sm:left-10 top-1/2 -translate-y-1/2 z-10 w-12 sm:w-16 opacity-85 select-none animate-float">
           <img
             src="/images/leaf-left-exact.png"
             alt=""
-            className="w-full h-auto drop-shadow-[0_8px_20px_rgba(0,0,0,0.5)]"
+            className="w-full h-auto drop-shadow-md"
             onError={(e) => {
               e.target.src = '/images/leaf-left-trans.png';
             }}
           />
         </div>
 
-        {/* Dot Matrix Pattern on Right (from Screenshot Image 7) */}
-        <div className="absolute right-12 top-1/2 -translate-y-1/2 z-0 h-36 w-36 bg-[radial-gradient(#ffffff_1.5px,transparent_1.5px)] [background-size:12px_12px] opacity-20 hidden md:block" />
+        {/* Subtle Dot Matrix Pattern */}
+        <div className="absolute right-12 top-1/2 -translate-y-1/2 z-0 h-32 w-32 bg-[radial-gradient(#107C41_1.5px,transparent_1.5px)] [background-size:14px_14px] opacity-15 hidden md:block" />
 
         <div className="relative z-10 mx-auto max-w-[1440px] px-6 sm:px-12 text-center">
-          <h1 className="text-3xl sm:text-5xl md:text-6xl font-black tracking-tight text-white capitalize">
-            {categoryFilter === 'All' ? 'Dehydrated-Vegetables-Powder' : categoryFilter.replace(/\s+/g, '-')}
+          <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-widest text-[#0B7337] bg-emerald-50 border border-emerald-200/80 mb-3">
+            Pure &amp; Lab-Certified
+          </span>
+          <h1 className="text-3xl sm:text-4xl md:text-5xl font-black tracking-tight text-stone-900 capitalize">
+            {categoryFilter === 'All' ? 'Dehydrated Vegetable & Spice Powders' : categoryFilter}
           </h1>
 
-          <div className="mt-4 flex items-center justify-center gap-2 text-xs sm:text-sm font-medium text-emerald-200/90">
+          <div className="mt-4 flex items-center justify-center gap-2 text-xs sm:text-sm font-medium text-stone-600">
             <span>Home</span>
-            <span>-</span>
-            <span className="text-[#EAB308] font-semibold">
-              {categoryFilter === 'All' ? 'Dehydrated-Vegetables-Powder' : categoryFilter.replace(/\s+/g, '-')}
+            <span>/</span>
+            <span className="text-[#0B7337] font-semibold">
+              {categoryFilter === 'All' ? 'All Products' : categoryFilter}
             </span>
           </div>
         </div>
@@ -96,8 +97,8 @@ export default function ProductListingPage({
                 onClick={() => setCategoryFilter(category)}
                 className={`rounded-full px-4 py-1.5 text-xs font-bold transition-all ${
                   categoryFilter === category
-                    ? 'bg-stone-900 text-white shadow-xs'
-                    : 'bg-stone-100 text-stone-700 hover:bg-stone-200 hover:text-stone-900 border border-stone-200'
+                    ? 'bg-[#0B7337] text-white shadow-xs'
+                    : 'bg-stone-100 text-stone-700 hover:bg-emerald-50 hover:text-[#0B7337] border border-stone-200'
                 }`}
               >
                 {category === 'All' ? 'All Powders' : category}

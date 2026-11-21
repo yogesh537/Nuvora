@@ -36,7 +36,7 @@ export default function ProductDetailPage({ product, onBack, onOpenQuickSpec }) 
             <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-stone-900 tracking-tight">
               {product.name}
             </h1>
-            <p className="mt-2 text-base italic text-stone-500 font-serif">
+            <p className="mt-2 text-base italic text-stone-500 font-medium">
               {product.botanicalName}
             </p>
 

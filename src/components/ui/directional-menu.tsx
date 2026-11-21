@@ -831,7 +831,14 @@ function DirectionalMegaMenu({
                   aria-expanded={isOpen && expandedIndex === index}
                   aria-controls={panelId}
                   onMouseEnter={() => onItemEnter(index)}
-                  onClick={() => requestSwitch(index)}
+                  onClick={(e) => {
+                    if (item.onClick) {
+                      e.preventDefault();
+                      item.onClick(e);
+                    } else {
+                      requestSwitch(index);
+                    }
+                  }}
                   style={color ? { color } : undefined}
                   className={`${triggerClassName} ${stateClassName}`}
                 >

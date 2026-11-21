@@ -63,7 +63,7 @@ export default function PrivateLabelPage() {
             <h1 className="mt-6 max-w-3xl text-5xl font-black leading-[0.9] tracking-[-0.06em] sm:text-6xl lg:text-7xl">
               From your
               <br />
-              <span className="font-serif font-medium italic text-[#d4ad49]">concept to pack.</span>
+              <span className="font-medium italic text-[#d4ad49]">concept to pack.</span>
             </h1>
             <p className="mt-7 max-w-xl text-sm leading-7 text-white/70">
               Tell us what you are developing. We will review the ingredient, specification and packaging requirements with you before confirming the scope.

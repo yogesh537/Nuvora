@@ -16,7 +16,7 @@ export default function IndustriesPage({ onExploreProducts, onOpenQuote }) {
               <h1 className="mt-16 max-w-5xl text-[clamp(3.8rem,8vw,8.4rem)] font-black leading-[0.78] tracking-[-0.075em]">
                 Built for
                 <br />
-                <span className="font-serif font-medium italic text-[#9b7a32]">real</span> systems.
+                <span className="font-medium italic text-[#9b7a32]">real</span> systems.
               </h1>
               <div className="mt-12 flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
                 <p className="max-w-lg border-l border-[#183126]/30 pl-5 text-sm leading-7 text-[#5d665f]">
@@ -103,7 +103,7 @@ export default function IndustriesPage({ onExploreProducts, onOpenQuote }) {
                     <p className="text-[9px] font-black uppercase tracking-[0.18em] text-[#9b7a32]">{industry.eyebrow}</p>
                     <h3 className="mt-3 text-2xl font-black tracking-[-0.03em] sm:text-3xl">{industry.name}</h3>
                   </div>
-                  <span className="font-serif text-xl italic text-[#9b7a32]">{String(index + 1).padStart(2, '0')}</span>
+                  <span className="text-xl italic text-[#9b7a32]">{String(index + 1).padStart(2, '0')}</span>
                 </div>
                 <p className="mt-5 max-w-2xl text-sm leading-6 text-[#5d665f]">{industry.description}</p>
               </div>

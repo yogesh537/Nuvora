@@ -21,6 +21,7 @@ import ProductDetailPage from './views/ProductDetailPage';
 import AboutPage from './views/AboutPage';
 import IndustriesPage from './views/IndustriesPage';
 import QualityCertificationsPage from './views/QualityCertificationsPage';
+import CertificatesPage from './views/CertificatesPage';
 import PrivateLabelPage from './views/PrivateLabelPage';
 import BlogPage from './views/BlogPage';
 import AdminPortalPage from './views/AdminPortalPage';
@@ -100,8 +101,8 @@ export default function App() {
               />
             )}
 
-            {currentView === 'quality' && (
-              <QualityCertificationsPage />
+            {(currentView === 'certificates' || currentView === 'quality') && (
+              <CertificatesPage />
             )}
 
             {(currentView === 'private-label' || currentView === 'privatelabel') && (

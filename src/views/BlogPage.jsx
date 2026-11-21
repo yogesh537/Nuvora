@@ -143,7 +143,7 @@ export default function BlogPage({ selectedPost, onSelectPost, onSelectProduct }
             <h1 className="mt-5 max-w-3xl text-5xl font-black leading-[0.9] tracking-[-0.06em] sm:text-6xl lg:text-7xl">
               Better questions
               <br />
-              <span className="font-serif font-medium italic text-[#d4ad49]">make better briefs.</span>
+              <span className="font-medium italic text-[#d4ad49]">make better briefs.</span>
             </h1>
           </div>
           <p className="max-w-lg text-sm leading-7 text-white/65">
