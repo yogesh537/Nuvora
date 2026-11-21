@@ -138,23 +138,23 @@ export default function AdminPortalPage() {
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 mt-6 pt-6 border-t border-emerald-800/80">
             <div className="bg-white/10 p-3 rounded-xl">
               <span className="text-stone-300 text-[10px] uppercase font-bold">Total Inquiries</span>
-              <div className="text-xl font-extrabold text-white">{leads.length}</div>
+              <div className="text-xl font-bold text-white">{leads.length}</div>
             </div>
             <div className="bg-white/10 p-3 rounded-xl">
               <span className="text-stone-300 text-[10px] uppercase font-bold">New & Pending</span>
-              <div className="text-xl font-extrabold text-[#C9972B]">
+              <div className="text-xl font-bold text-[#C9972B]">
                 {leads.filter(l => l.status === 'New').length}
               </div>
             </div>
             <div className="bg-white/10 p-3 rounded-xl">
               <span className="text-stone-300 text-[10px] uppercase font-bold">Contracts Won</span>
-              <div className="text-xl font-extrabold text-emerald-300">
+              <div className="text-xl font-bold text-emerald-300">
                 {leads.filter(l => l.status === 'Won').length}
               </div>
             </div>
             <div className="bg-white/10 p-3 rounded-xl">
               <span className="text-stone-300 text-[10px] uppercase font-bold">Quotation Pipeline</span>
-              <div className="text-xl font-extrabold text-white">
+              <div className="text-xl font-bold text-white">
                 ${leads.filter(l => l.status === 'Quoted' || l.status === 'Won').length * 38},500
               </div>
             </div>
@@ -600,7 +600,7 @@ export default function AdminPortalPage() {
                 {/* Official Letterhead Header */}
                 <div className="border-b-2 border-[#1F4D36] pb-6 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
                   <div>
-                    <h2 className="text-2xl font-extrabold text-[#1F4D36] tracking-tight">
+                    <h2 className="text-2xl font-bold text-[#1F4D36] tracking-tight">
                       NUVARO AGRO PVT LTD
                     </h2>
                     <p className="text-[11px] text-stone-600 font-medium">
@@ -772,7 +772,7 @@ export default function AdminPortalPage() {
                   Order documentation
                 </h3>
                 <div className="text-center py-4 space-y-2">
-                  <div className="text-4xl font-extrabold text-[#1F4D36]">FSSAI</div>
+                  <div className="text-4xl font-bold text-[#1F4D36]">FSSAI</div>
                   <p className="text-xs text-stone-500">Facility license</p>
                 </div>
                 <div className="text-xs text-stone-600 space-y-1.5 pt-2 border-t border-stone-100">

@@ -35,24 +35,19 @@ export default function Navbar({ currentView, setCurrentView, onSelectCategory }
   function ProductsPanel() {
     const PRODUCT_CATEGORIES = [
       {
-        label: "Dehydrated Vegetable Powders",
-        desc: "Beetroot, Spinach, Tomato, Carrot, and Cabbage powders & flakes.",
-        cat: "Vegetable Powders",
-      },
-      {
-        label: "Pure Spice & Allium Powders",
-        desc: "Turmeric (high curcumin), Ginger, Garlic, Red & Pink Onion powders.",
+        label: "Dehydrated Allium & Spice Powders",
+        desc: "Onion, Garlic, and Ginger powders, flakes, and minced granules.",
         cat: "Spice Powders",
       },
       {
-        label: "Herbal & Botanical Powders",
-        desc: "Moringa Oleifera, Rose Petal, Neem, and pure botanical extracts.",
-        cat: "Herbal & Botanical",
+        label: "Pure Vegetable Powders",
+        desc: "Pure Beetroot powder (80-100 mesh) with high natural betanin content.",
+        cat: "Vegetable Powders",
       },
       {
-        label: "Exotic Flours & Granules",
-        desc: "Low-GI Green Jackfruit Flour, Onion Granules & Minced Flakes.",
-        cat: "Specialty Powders",
+        label: "Herbal & Botanical Powders",
+        desc: "Shade-dried Moringa Oleifera leaf powder and Damask Rose Petal powder.",
+        cat: "Herbal & Botanical",
       },
     ];
 
@@ -60,16 +55,16 @@ export default function Navbar({ currentView, setCurrentView, onSelectCategory }
       {
         alt: "Beetroot Powder Preview",
         src: "/images/powders/beetroot-powder.jpg",
-        fallback: "/images/card-red-onion.jpg",
+        fallback: "/images/powders/beetroot-powder.jpg",
         title: "Beetroot Powder",
         badge: "Vibrant Red • 80-100 Mesh",
       },
       {
-        alt: "Green Jackfruit Flour Preview",
-        src: "/images/powders/green-jackfruit-flour.jpg",
-        fallback: "/images/card-ginger.jpg",
-        title: "Green Jackfruit Flour",
-        badge: "Low GI • 100% Raw Fruit",
+        alt: "Dehydrated Onion Flakes Preview",
+        src: "/images/powders/onion-powder.jpg",
+        fallback: "/images/powders/onion-powder.jpg",
+        title: "Dehydrated Onion",
+        badge: "Flakes & Fine Powder",
       },
     ];
 
@@ -271,7 +266,7 @@ export default function Navbar({ currentView, setCurrentView, onSelectCategory }
                     <span className="text-[10px] font-bold uppercase tracking-wider text-[#0B7337] block">
                       Official License
                     </span>
-                    <span className="text-sm font-extrabold text-stone-900 block">
+                    <span className="text-sm font-bold text-stone-900 block">
                       FSSAI Central Authority
                     </span>
                   </div>
@@ -286,7 +281,7 @@ export default function Navbar({ currentView, setCurrentView, onSelectCategory }
                 <span className="text-[10px] font-bold uppercase tracking-wider text-stone-400 block">
                   Registration &amp; Central License Number
                 </span>
-                <span className="text-base sm:text-lg font-mono font-black text-stone-900 tracking-wider">
+                <span className="text-base sm:text-lg font-mono font-bold text-stone-900 tracking-wider">
                   10020021008942
                 </span>
               </div>

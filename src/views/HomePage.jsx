@@ -58,16 +58,16 @@ export default function HomePage({ onSelectProduct, onSelectCategory, onOpenQuic
       tags: ['Rich in Betanin', 'Clean Label', '100% Soluble']
     },
     {
-      id: 'jackfruit-powder',
-      eyebrow: 'CLINICALLY PROVEN LOW-GI',
-      titlePrefix: 'Superfood Flours & ',
-      titleHighlight: 'Exotic Essentials',
-      subtitle: 'Raw green jackfruit prebiotic flour, crisp onion flakes, minced garlic, and farm-fresh dried alliums shipped to 40+ countries.',
-      cta: 'Explore Catalog',
-      image: '/images/powders/jackfruit-powder.jpg',
-      alt: 'Green Jackfruit Prebiotic Flour',
-      badge: 'Low GI • 100% Raw Fruit',
-      tags: ['Prebiotic Fiber', 'Gluten Free', 'Non-GMO']
+      id: 'onion-powder',
+      eyebrow: 'EXPORT GRADE ALLIUM SPECIALIST',
+      titlePrefix: 'Dehydrated Allium Flakes & ',
+      titleHighlight: 'Aromatic Powders',
+      subtitle: 'Crisp dehydrated white & red onion flakes, minced garlic, and fine powders engineered for seasonings, snack coatings, and culinary food manufacturing.',
+      cta: 'Explore Products',
+      image: '/images/powders/onion-powder.jpg',
+      alt: 'Dehydrated Onion Flakes & Powder',
+      badge: 'White & Red Onion • Zero Fillers',
+      tags: ['No Caking Agents', 'High Pungency', 'Steam Sterilized']
     }
   ];
 
@@ -105,25 +105,16 @@ export default function HomePage({ onSelectProduct, onSelectCategory, onOpenQuic
   const recentProducts = [
     {
       id: 'onion-powder',
-      name: 'Onion Granules',
+      name: 'Onion Granules & Flakes',
       category: 'Spice Powders',
-      format: '16-40 Mesh Granules',
+      format: '16-40 Mesh Granules & Flakes',
       rating: 5,
       image: '/images/powders/onion-powder.jpg',
       fallback: '/images/card_pink_onion_flakes_hd.jpg'
     },
     {
-      id: 'carrot-powder',
-      name: 'Carrot Flakes',
-      category: 'Vegetable Powders',
-      format: 'Dehydrated Carrot Slices',
-      rating: 5,
-      image: '/images/card_carrot_flakes_hd.jpg',
-      fallback: '/images/card-carrot-flakes-exact.jpg'
-    },
-    {
       id: 'garlic-powder',
-      name: 'Garlic Minced',
+      name: 'Garlic Minced & Granules',
       category: 'Spice Powders',
       format: 'Minced & Granules',
       rating: 5,
@@ -132,13 +123,13 @@ export default function HomePage({ onSelectProduct, onSelectCategory, onOpenQuic
       isGreenText: true
     },
     {
-      id: 'pink-onion-flakes',
-      name: 'Pink Onion Flakes',
+      id: 'ginger-powder',
+      name: 'Ginger Powder',
       category: 'Spice Powders',
-      format: 'Crisp Dehydrated Flakes',
+      format: '80-100 Mesh Sun-Dried',
       rating: 5,
-      image: '/images/card_pink_onion_flakes_hd.jpg',
-      fallback: '/images/card-pink-flakes-exact.jpg'
+      image: '/images/powders/ginger-powder.jpg',
+      fallback: '/images/powders/ginger-powder.jpg'
     },
     {
       id: 'beetroot-powder',
@@ -150,13 +141,22 @@ export default function HomePage({ onSelectProduct, onSelectCategory, onOpenQuic
       fallback: '/images/powders/beetroot-powder.jpg'
     },
     {
-      id: 'jackfruit-powder',
-      name: 'Green Jackfruit Flour',
-      category: 'Specialty Powders',
-      format: 'Prebiotic Raw Fruit Flour',
+      id: 'rose-petal-powder',
+      name: 'Rose Petal Powder',
+      category: 'Herbal & Botanical',
+      format: 'Damask Rose Damascena',
       rating: 5,
-      image: '/images/powders/jackfruit-powder.jpg',
-      fallback: '/images/powders/jackfruit-powder.jpg'
+      image: '/images/powders/rose-petal-powder.jpg',
+      fallback: '/images/powders/rose-petal-powder.jpg'
+    },
+    {
+      id: 'moringa-powder',
+      name: 'Moringa Leaf Powder',
+      category: 'Herbal & Botanical',
+      format: '100-120 Mesh Shade-Dried',
+      rating: 5,
+      image: '/images/powders/moringa-powder.jpg',
+      fallback: '/images/powders/moringa-powder.jpg'
     }
   ];
 
@@ -206,7 +206,7 @@ export default function HomePage({ onSelectProduct, onSelectCategory, onOpenQuic
   // --- Trending Products Spotlight (Full HD Spotlight Image) ---
   const trendingList = [
     {
-      id: 'red-onion-flakes',
+      id: 'onion-powder',
       title: 'Red Onion Flakes',
       rating: 5,
       description: 'Bursting with flavor, Red Onion Flakes are made from high-quality red onions, carefully dehydrated to retain their natural sweetness and tangy taste. These flakes are perfect for adding depth to gravies, sauces, and spice mixes, delivering the essence of fresh onions with extended shelf life and zero preparation hassle.',
@@ -230,12 +230,12 @@ export default function HomePage({ onSelectProduct, onSelectCategory, onOpenQuic
       category: 'Spice Powders'
     },
     {
-      id: 'jackfruit-powder',
-      title: 'Green Jackfruit Flour',
+      id: 'moringa-powder',
+      title: 'Moringa Leaf Powder',
       rating: 5,
-      description: 'A clinically proven low glycemic index superfood flour ground from mature, unripe green jackfruits. Naturally rich in insoluble prebiotic fiber and resistant starch.',
-      image: '/images/powders/jackfruit-powder.jpg',
-      category: 'Specialty Powders'
+      description: 'Certified organic shade-dried moringa leaf powder with maximum chlorophyll and antioxidant retention. Ideal for green superfood blends, wellness capsules, and nutritional powders.',
+      image: '/images/powders/moringa-powder.jpg',
+      category: 'Herbal & Botanical'
     }
   ];
   const [selectedTrending, setSelectedTrending] = useState(0);
@@ -271,32 +271,6 @@ export default function HomePage({ onSelectProduct, onSelectCategory, onOpenQuic
 
   const toggleFaq = (idx) => {
     setOpenFaqIndex((prev) => (prev === idx ? -1 : idx));
-  };
-
-  // --- Catalog Filters ---
-  const [selectedCategory, setSelectedCategory] = useState('All');
-  const [searchQuery, setSearchQuery] = useState('');
-
-  const categories = ['All', ...new Set(products.map((p) => p.category))];
-
-  const filteredProducts = useMemo(() => {
-    return products.filter((p) => {
-      const matchCategory = selectedCategory === 'All' || p.category === selectedCategory;
-      const query = searchQuery.trim().toLowerCase();
-      const matchSearch =
-        !query ||
-        p.name.toLowerCase().includes(query) ||
-        p.botanicalName?.toLowerCase().includes(query) ||
-        p.category?.toLowerCase().includes(query);
-      return matchCategory && matchSearch;
-    });
-  }, [selectedCategory, searchQuery]);
-
-  const scrollToCatalog = () => {
-    const el = document.getElementById('products-catalog');
-    if (el) {
-      el.scrollIntoView({ behavior: 'smooth' });
-    }
   };
 
   const scrollToTop = () => {
@@ -348,8 +322,8 @@ export default function HomePage({ onSelectProduct, onSelectCategory, onOpenQuic
                 </span>
               </div>
 
-              {/* Main Headline - Crystal clear with no phantom text */}
-              <h1 className="text-[34px] sm:text-[46px] md:text-[52px] lg:text-[56px] xl:text-[60px] font-black leading-[1.12] tracking-tight text-stone-900 transition-all duration-500">
+              {/* Main Headline - Clean, modern Poppins typography */}
+              <h1 className="text-[34px] sm:text-[46px] md:text-[52px] lg:text-[56px] xl:text-[60px] font-bold leading-[1.18] tracking-tight text-stone-900 transition-all duration-500">
                 {currentHero.titlePrefix}
                 <span className="text-[#0B7337] underline decoration-[#FBBF24] decoration-4 underline-offset-8">
                   {currentHero.titleHighlight}
@@ -378,7 +352,7 @@ export default function HomePage({ onSelectProduct, onSelectCategory, onOpenQuic
               <div className="mt-8 sm:mt-10 flex flex-wrap items-center gap-4">
                 <button
                   type="button"
-                  onClick={scrollToCatalog}
+                  onClick={() => onSelectProduct(null)}
                   className="rounded-full bg-[#FBBF24] hover:bg-[#F59E0B] px-8 sm:px-10 py-3.5 text-sm sm:text-base font-bold text-stone-950 shadow-md shadow-amber-500/15 transition-all duration-300 hover:scale-102 hover:shadow-lg active:scale-95 focus:outline-none"
                 >
                   {currentHero.cta}
@@ -456,7 +430,7 @@ export default function HomePage({ onSelectProduct, onSelectCategory, onOpenQuic
                   <div className="absolute inset-0 bg-gradient-to-t from-stone-950/80 via-stone-950/20 to-transparent flex items-end p-5">
                     <div className="flex items-center justify-between w-full">
                       <div>
-                        <span className="inline-block rounded-full bg-[#FBBF24] px-2.5 py-0.5 text-[10px] font-extrabold uppercase tracking-wider text-stone-950 mb-1">
+                        <span className="inline-block rounded-full bg-[#FBBF24] px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-wider text-stone-950 mb-1">
                           {currentHero.badge}
                         </span>
                         <h4 className="text-base sm:text-lg font-bold text-white drop-shadow-sm">
@@ -563,7 +537,7 @@ export default function HomePage({ onSelectProduct, onSelectCategory, onOpenQuic
                     <span className="block text-[11px] font-bold uppercase tracking-wider text-stone-900/80">
                       Call Us Anytime
                     </span>
-                    <span className="block text-base sm:text-lg font-black text-stone-950 tracking-tight">
+                    <span className="block text-base sm:text-lg font-bold text-stone-950 tracking-tight">
                       +91 8888006532
                     </span>
                   </div>
@@ -578,7 +552,7 @@ export default function HomePage({ onSelectProduct, onSelectCategory, onOpenQuic
                 <span>ABOUT US</span>
               </div>
 
-              <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-stone-900 tracking-tight leading-[1.18]">
+              <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-stone-900 tracking-tight leading-[1.25]">
                 Leading Dehydrated Vegetable &amp; Fruit Powder Wholesale Supplier in India
               </h2>
 
@@ -593,7 +567,7 @@ export default function HomePage({ onSelectProduct, onSelectCategory, onOpenQuic
               <div className="mt-8 flex flex-wrap items-center gap-4">
                 <button
                   type="button"
-                  onClick={scrollToCatalog}
+                  onClick={() => onSelectProduct(null)}
                   className="inline-flex items-center gap-2 rounded-xl bg-[#0B7337] hover:bg-[#085e2c] px-6 py-3.5 text-xs sm:text-sm font-bold text-white transition-all shadow-sm hover:shadow"
                 >
                   <span>View Product Range</span>
@@ -634,7 +608,7 @@ export default function HomePage({ onSelectProduct, onSelectCategory, onOpenQuic
               </span>
             </div>
 
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-stone-900 tracking-tight">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-stone-900 tracking-tight">
               Recent Products
             </h2>
           </div>
@@ -672,7 +646,7 @@ export default function HomePage({ onSelectProduct, onSelectCategory, onOpenQuic
                       </div>
 
                       {/* Product Name */}
-                      <h3 className={`text-base font-extrabold ${item.isGreenText ? 'text-[#0B7337]' : 'text-stone-900'} group-hover:text-[#0B7337] transition-colors`}>
+                      <h3 className={`text-base font-semibold ${item.isGreenText ? 'text-[#0B7337]' : 'text-stone-900'} group-hover:text-[#0B7337] transition-colors`}>
                         {item.name}
                       </h3>
 
@@ -758,7 +732,7 @@ export default function HomePage({ onSelectProduct, onSelectCategory, onOpenQuic
               </span>
             </div>
 
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-stone-900 tracking-tight">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-stone-900 tracking-tight">
               A Journey of Trust &amp; Excellence
             </h2>
           </div>
@@ -820,7 +794,7 @@ export default function HomePage({ onSelectProduct, onSelectCategory, onOpenQuic
             <span className="text-xs font-bold uppercase tracking-widest text-[#0B7337]">
               TRENDING PRODUCTS
             </span>
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-stone-900 tracking-tight mt-1">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-stone-900 tracking-tight mt-1">
               Top Selling Products
             </h2>
           </div>
@@ -852,7 +826,7 @@ export default function HomePage({ onSelectProduct, onSelectCategory, onOpenQuic
                   ))}
                 </div>
 
-                <h3 className="text-2xl sm:text-3xl font-extrabold text-stone-900 tracking-tight">
+                <h3 className="text-2xl sm:text-3xl font-bold text-stone-900 tracking-tight">
                   {trendingList[selectedTrending].title}
                 </h3>
 
@@ -911,7 +885,7 @@ export default function HomePage({ onSelectProduct, onSelectCategory, onOpenQuic
               <span className="text-xs font-bold uppercase tracking-widest text-[#0B7337]">
                 FAQS
               </span>
-              <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-stone-900 tracking-tight mt-1 mb-8">
+              <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-stone-900 tracking-tight mt-1 mb-8">
                 Frequently Asked Questions
               </h2>
 
@@ -972,160 +946,6 @@ export default function HomePage({ onSelectProduct, onSelectCategory, onOpenQuic
       </section>
 
       {/* =========================================================================
-          SECTION 7: BULK POWDER CATALOG & FORMAT FILTERS
-          ========================================================================= */}
-      <section id="products-catalog" className="border-b border-stone-100 bg-white py-16 sm:py-24">
-        <div className="mx-auto max-w-[1440px] px-6 sm:px-12">
-          
-          <div className="mb-10 flex flex-col justify-between gap-4 border-b border-stone-200 pb-6 md:flex-row md:items-end">
-            <div>
-              <span className="text-xs font-bold uppercase tracking-widest text-[#0B7337]">
-                EXPORT INGREDIENTS
-              </span>
-              <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold tracking-tight text-stone-900 mt-1">
-                Dehydrated Powder &amp; Flakes Catalog
-              </h2>
-              <p className="mt-2 text-xs sm:text-sm text-stone-600 max-w-xl">
-                Select any ingredient to view full technical specifications, COA parameters, and packaging options.
-              </p>
-            </div>
-
-            {/* Category tabs */}
-            <div className="flex flex-wrap items-center gap-2">
-              {categories.map((cat) => (
-                <button
-                  key={cat}
-                  onClick={() => setSelectedCategory(cat)}
-                  className={`rounded-full px-4 py-1.5 text-xs font-bold transition-all ${
-                    selectedCategory === cat
-                      ? 'bg-[#0B7337] text-white shadow-xs'
-                      : 'bg-stone-100 border border-stone-200 text-stone-700 hover:bg-emerald-50 hover:text-[#0B7337]'
-                  }`}
-                >
-                  {cat === 'All' ? 'All Ingredients' : cat}
-                </button>
-              ))}
-            </div>
-          </div>
-
-          {/* Cards Grid */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-            {filteredProducts.map((product) => {
-              const isCompared = comparedProducts.some((p) => p.id === product.id);
-
-              return (
-                <div
-                  key={product.id}
-                  className="group flex flex-col justify-between overflow-hidden rounded-2xl border border-stone-200 bg-white shadow-xs transition-all duration-300 hover:-translate-y-1.5 hover:shadow-xl hover:border-emerald-300"
-                >
-                  <div>
-                    {/* Powder Photo */}
-                    <div
-                      onClick={() => onSelectProduct(product)}
-                      className="relative aspect-[4/3] w-full cursor-pointer overflow-hidden bg-stone-100"
-                    >
-                      <img
-                        src={product.image}
-                        alt={product.name}
-                        loading="lazy"
-                        className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-106"
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-t from-stone-950/75 via-transparent to-transparent" />
-                      
-                      <span className="absolute top-3 left-3 rounded-full bg-stone-900/80 backdrop-blur-sm px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-wider text-white">
-                        {product.category}
-                      </span>
-
-                      {product.meshSize && (
-                        <span className="absolute top-3 right-3 rounded-md bg-white/95 backdrop-blur-sm px-2 py-0.5 text-[10px] font-mono font-semibold text-stone-900">
-                          {product.meshSize.split('(')[0].trim()}
-                        </span>
-                      )}
-
-                      <div className="absolute inset-x-3 bottom-3 flex items-end justify-between text-white">
-                        <div>
-                          <p className="text-[10px] italic text-white/80">{product.botanicalName}</p>
-                          <p className="text-xs font-bold text-[#FBBF24]">{product.purity || '100% Pure'}</p>
-                        </div>
-                        <span className="flex h-7 w-7 items-center justify-center rounded-full bg-white/20 text-white backdrop-blur-sm group-hover:bg-[#FBBF24] group-hover:text-stone-950 transition-colors">
-                          <ArrowUpRight className="h-4 w-4 font-bold" />
-                        </span>
-                      </div>
-                    </div>
-
-                    {/* Content */}
-                    <div className="p-5">
-                      <h3
-                        onClick={() => onSelectProduct(product)}
-                        className="cursor-pointer text-base font-extrabold text-stone-900 hover:text-[#0B7337] transition-colors line-clamp-1"
-                      >
-                        {product.name}
-                      </h3>
-                      <p className="mt-2 text-xs leading-relaxed text-stone-600 line-clamp-2">
-                        {product.description}
-                      </p>
-
-                      {product.forms && (
-                        <div className="mt-3.5 border-t border-stone-100 pt-3">
-                          <span className="text-[10px] font-bold uppercase tracking-wider text-stone-400 block mb-1">
-                            Available Formats:
-                          </span>
-                          <div className="flex flex-wrap gap-1">
-                            {product.forms.map((f) => (
-                              <span key={f} className="rounded bg-stone-100 px-2 py-0.5 text-[10px] font-medium text-stone-700">
-                                {f.split('(')[0].trim()}
-                              </span>
-                            ))}
-                          </div>
-                        </div>
-                      )}
-                    </div>
-                  </div>
-
-                  {/* Actions Footer */}
-                  <div className="border-t border-stone-100 bg-stone-50/70 p-3 flex items-center gap-2">
-                    <button
-                      type="button"
-                      onClick={() => onSelectProduct(product)}
-                      className="flex-1 rounded-lg bg-[#0B7337] py-2 text-center text-xs font-bold text-white transition hover:bg-[#085e2c] flex items-center justify-center gap-1 shadow-2xs"
-                    >
-                      <span>View Details</span>
-                      <ArrowRight className="h-3.5 w-3.5" />
-                    </button>
-                    <button
-                      type="button"
-                      onClick={() => onOpenQuickSpec(product)}
-                      title="Quick Specs Sheet"
-                      className="rounded-lg border border-stone-300 bg-white p-2 text-stone-600 hover:border-[#0B7337] hover:text-[#0B7337] transition"
-                    >
-                      <FileText className="h-4 w-4" />
-                    </button>
-                    <button
-                      type="button"
-                      onClick={() => openQuoteModal(product)}
-                      title="Request Quote"
-                      className="rounded-lg border border-amber-300 bg-amber-50 p-2 text-amber-800 hover:bg-amber-100 transition"
-                    >
-                      <ArrowUpRight className="h-4 w-4" />
-                    </button>
-                    <button
-                      type="button"
-                      title={isCompared ? 'Remove from compare' : 'Add to compare'}
-                      onClick={() => (isCompared ? removeFromCompare(product.id) : addToCompare(product))}
-                      className={`rounded-lg border p-2 transition ${isCompared ? 'border-amber-500 bg-amber-400 text-stone-950' : 'border-stone-300 bg-white text-stone-600 hover:border-stone-900'}`}
-                    >
-                      <Layers className="h-4 w-4" />
-                    </button>
-                  </div>
-                </div>
-              );
-            })}
-          </div>
-
-        </div>
-      </section>
-
-      {/* =========================================================================
           SECTION 8: DIRECT BULK QUOTATION STRIP (Clean White Theme Container)
           ========================================================================= */}
       <section className="bg-white py-16 sm:py-20">
@@ -1135,7 +955,7 @@ export default function HomePage({ onSelectProduct, onSelectCategory, onOpenQuic
               <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-widest text-[#0B7337] bg-white border border-emerald-200 shadow-2xs">
                 Direct Factory Pricing
               </span>
-              <h2 className="text-3xl sm:text-4xl font-black text-stone-900 mt-3 tracking-tight">
+              <h2 className="text-3xl sm:text-4xl font-bold text-stone-900 mt-3 tracking-tight">
                 Request a Custom Bulk Sourcing Quotation
               </h2>
               <p className="mt-3 text-sm sm:text-base text-stone-600 leading-relaxed">
@@ -1147,7 +967,7 @@ export default function HomePage({ onSelectProduct, onSelectCategory, onOpenQuic
               <button
                 type="button"
                 onClick={() => openQuoteModal()}
-                className="rounded-full bg-[#FBBF24] hover:bg-[#F59E0B] px-8 py-3.5 text-center text-xs sm:text-sm font-extrabold uppercase tracking-wider text-stone-950 shadow-md shadow-amber-500/15 transition active:scale-95"
+                className="rounded-full bg-[#FBBF24] hover:bg-[#F59E0B] px-8 py-3.5 text-center text-xs sm:text-sm font-bold uppercase tracking-wider text-stone-950 shadow-md shadow-amber-500/15 transition active:scale-95"
               >
                 Request Quotation
               </button>

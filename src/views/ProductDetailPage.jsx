@@ -33,7 +33,7 @@ export default function ProductDetailPage({ product, onBack, onOpenQuickSpec }) 
               <span>Bulk Commercial Supply</span>
             </div>
 
-            <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-stone-900 tracking-tight">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-stone-900 tracking-tight">
               {product.name}
             </h1>
             <p className="mt-2 text-base italic text-stone-500 font-medium">
@@ -65,7 +65,7 @@ export default function ProductDetailPage({ product, onBack, onOpenQuickSpec }) 
               <button
                 type="button"
                 onClick={() => openQuoteModal(product)}
-                className="inline-flex items-center gap-2.5 rounded-xl bg-[#D5AA37] px-7 py-3.5 text-xs sm:text-sm font-extrabold uppercase tracking-wider text-stone-950 shadow-sm transition hover:bg-[#C59B2E] active:scale-95"
+                className="inline-flex items-center gap-2.5 rounded-xl bg-[#D5AA37] px-7 py-3.5 text-xs sm:text-sm font-bold uppercase tracking-wider text-stone-950 shadow-sm transition hover:bg-[#C59B2E] active:scale-95"
               >
                 <span>Request Bulk Quote</span>
                 <ArrowRight className="h-4 w-4" />
@@ -111,7 +111,7 @@ export default function ProductDetailPage({ product, onBack, onOpenQuickSpec }) 
         <div>
           <div className="border-b border-stone-200 pb-4">
             <span className="text-xs font-bold uppercase tracking-widest text-amber-800">Formulation Guide</span>
-            <h2 className="mt-1 text-2xl font-extrabold text-stone-900">Recommended Industrial Applications</h2>
+            <h2 className="mt-1 text-2xl font-bold text-stone-900">Recommended Industrial Applications</h2>
             <p className="mt-2 text-xs sm:text-sm text-stone-600">
               Formulated for food processors, snack seasonings, and wellness beverage blenders. Custom granulometry is available upon request.
             </p>

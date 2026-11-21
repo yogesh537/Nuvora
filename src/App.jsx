@@ -7,6 +7,7 @@ import { products } from './data/products';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import FloatingWhatsApp from './components/FloatingWhatsApp';
+import PageLoader from './components/PageLoader';
 
 // Modals
 import QuoteRequestModal from './components/modals/QuoteRequestModal';
@@ -54,6 +55,7 @@ export default function App() {
     <LeadProvider>
       <CompareProvider>
         <div className="min-h-screen flex flex-col font-sans bg-[#FAF9F6] text-stone-900 selection:bg-[#D5AA37] selection:text-stone-950">
+          <PageLoader />
 
           <Navbar
             currentView={currentView}

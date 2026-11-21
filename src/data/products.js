@@ -1,25 +1,5 @@
 export const products = [
   {
-    id: 'beetroot-powder',
-    name: 'Pure Beetroot Powder',
-    botanicalName: 'Beta vulgaris',
-    category: 'Vegetable Powders',
-    forms: ['Fine Powder (80-100 Mesh)', 'Granules (20-40 Mesh)'],
-    meshSize: '80-100 Mesh (Fine Sifted)',
-    purity: '100% Pure, Zero Artificial Colorants',
-    colorProfile: 'Intense Ruby Magenta / Deep Red',
-    description: 'Vibrant, nutrient-dense dehydrated beetroot powder with high natural betanin content for clean-label food coloring, beverages, bakery and functional nutraceutical blends.',
-    applications: [
-      'Natural food & beverage coloring',
-      'Smoothies, drink mixes & hydration sticks',
-      'Artisanal bakery, pasta & confectionery',
-      'Pre-workout & functional dietary formulations'
-    ],
-    image: '/images/powders/beetroot-powder.jpg',
-    imageAlt: 'Vibrant red beetroot powder conical heap with fresh beetroots and glass spice jar',
-    featured: true
-  },
-  {
     id: 'onion-powder',
     name: 'Dehydrated Onion Powder & Flakes',
     botanicalName: 'Allium cepa',
@@ -27,7 +7,7 @@ export const products = [
     forms: ['Fine Powder (80-100 Mesh)', 'Dehydrated Flakes', 'Minced / Granules (16-40 Mesh)', 'Chopped (3-5mm)'],
     meshSize: '80-100 Mesh (Powder) / 8-24 Mesh (Flakes)',
     purity: '100% Pure White & Red Onion, No Caking Agents',
-    colorProfile: 'Creamy White / Pale Golden',
+    colorProfile: 'Creamy White / Pale Golden / Pink',
     description: 'Industrial-grade dehydrated onion processed from fresh selected bulbs. Available in fine powder, crispy flakes, chopped and minced granules for savory formulations and seasoning lines.',
     applications: [
       'Snack seasonings, chips coatings & noodle tastemakers',
@@ -60,26 +40,6 @@ export const products = [
     featured: true
   },
   {
-    id: 'turmeric-powder',
-    name: 'Pure Golden Turmeric Powder',
-    botanicalName: 'Curcuma longa',
-    category: 'Spice Powders',
-    forms: ['Ultra-Fine Powder (100 Mesh)', 'High Curcumin Grade (3-5%)'],
-    meshSize: '100 Mesh Ultra-Fine Micronized',
-    purity: '100% Pure Rhizome, Zero Adulteration, Steam Treated',
-    colorProfile: 'Brilliant Golden Yellow / Deep Amber',
-    description: 'Export-certified premium golden turmeric powder ground from steam-sterilized whole rhizomes. High natural curcumin content with vibrant color stability and aromatic warmth.',
-    applications: [
-      'Curry powders, spice masalas & ethnic seasoning blends',
-      'Golden milk, herbal tea & dietary wellness premixes',
-      'Natural yellow food colorant in dairy & bakery',
-      'Nutraceutical capsules & functional food formulations'
-    ],
-    image: '/images/powders/turmeric-powder.jpg',
-    imageAlt: 'Conical mound of glowing golden turmeric powder with fresh sliced turmeric root',
-    featured: true
-  },
-  {
     id: 'ginger-powder',
     name: 'Ginger Powder & Granules',
     botanicalName: 'Zingiber officinale',
@@ -100,23 +60,43 @@ export const products = [
     featured: true
   },
   {
-    id: 'green-chilli-powder',
-    name: 'Green Chilli Powder & Flakes',
-    botanicalName: 'Capsicum annuum',
-    category: 'Spice Powders',
-    forms: ['Fine Powder (80 Mesh)', 'Crushed Green Chilli Flakes (8-16 Mesh)'],
-    meshSize: '80 Mesh (Powder) / 8-16 Mesh (Crushed Flakes)',
-    purity: '100% Dehydrated Green Chillies, Clean Pungency',
-    colorProfile: 'Vibrant Olive Green',
-    description: 'Intensely flavorful dehydrated green chilli powder and crushed flakes providing fresh green pungency and vibrant natural color without added artificial dyes.',
+    id: 'beetroot-powder',
+    name: 'Pure Beetroot Powder',
+    botanicalName: 'Beta vulgaris',
+    category: 'Vegetable Powders',
+    forms: ['Fine Powder (80-100 Mesh)', 'Granules (20-40 Mesh)'],
+    meshSize: '80-100 Mesh (Fine Sifted)',
+    purity: '100% Pure, Zero Artificial Colorants',
+    colorProfile: 'Intense Ruby Magenta / Deep Red',
+    description: 'Vibrant, nutrient-dense dehydrated beetroot powder with high natural betanin content for clean-label food coloring, beverages, bakery and functional nutraceutical blends.',
     applications: [
-      'Snack dusting, extruded puffs & potato crisps',
-      'Green chutneys, instant dips & savory seasonings',
-      'Pickling blends, noodle seasonings & instant ramen',
-      'Salsa, Mexican & Indian recipe bases'
+      'Natural food & beverage coloring',
+      'Smoothies, drink mixes & hydration sticks',
+      'Artisanal bakery, pasta & confectionery',
+      'Pre-workout & functional dietary formulations'
     ],
-    image: '/images/powders/green-chilli-powder.jpg',
-    imageAlt: 'Vibrant olive green chilli powder and crushed flakes with fresh green chillies',
+    image: '/images/powders/beetroot-powder.jpg',
+    imageAlt: 'Vibrant red beetroot powder conical heap with fresh beetroots and glass spice jar',
+    featured: true
+  },
+  {
+    id: 'rose-petal-powder',
+    name: 'Rose Petal Powder & Flakes',
+    botanicalName: 'Rosa damascena',
+    category: 'Herbal & Botanical',
+    forms: ['Fine Powder (80-100 Mesh)', 'Crushed Petals (10-20 Mesh)'],
+    meshSize: '80-100 Mesh',
+    purity: '100% Edible & Cosmetic Grade Damask Rose',
+    colorProfile: 'Dusty Crimson / Rose Pink',
+    description: 'Fragrant, shade-dried Damask rose petal powder with gentle floral aroma. Formulated for luxury cosmetics, skincare face packs, artisanal desserts, and gourmet herbal teas.',
+    applications: [
+      'Cosmetic clay masks, ubtan & botanical skincare',
+      'Gourmet desserts, floral syrups & baking glazes',
+      'Artisanal tea blends and relaxation beverages',
+      'Natural body dusting and aromatherapy compounds'
+    ],
+    image: '/images/powders/rose-petal-powder.jpg',
+    imageAlt: 'Dusty pink rose petal powder on dark slate with dried crimson petals',
     featured: true
   },
   {
@@ -138,66 +118,6 @@ export const products = [
     image: '/images/powders/moringa-powder.jpg',
     imageAlt: 'Conical heap of brilliant emerald green moringa powder with fresh sprigs',
     featured: true
-  },
-  {
-    id: 'rose-petal-powder',
-    name: 'Rose Petal Powder',
-    botanicalName: 'Rosa damascena',
-    category: 'Herbal & Botanical',
-    forms: ['Fine Powder (80-100 Mesh)', 'Crushed Petals (10-20 Mesh)'],
-    meshSize: '80-100 Mesh',
-    purity: '100% Edible & Cosmetic Grade Damask Rose',
-    colorProfile: 'Dusty Crimson / Rose Pink',
-    description: 'Fragrant, shade-dried Damask rose petal powder with gentle floral aroma. Formulated for luxury cosmetics, skincare face packs, artisanal desserts, and gourmet herbal teas.',
-    applications: [
-      'Cosmetic clay masks, ubtan & botanical skincare',
-      'Gourmet desserts, floral syrups & baking glazes',
-      'Artisanal tea blends and relaxation beverages',
-      'Natural body dusting and aromatherapy compounds'
-    ],
-    image: '/images/powders/rose-petal-powder.jpg',
-    imageAlt: 'Dusty pink rose petal powder on dark slate with dried crimson petals',
-    featured: true
-  },
-  {
-    id: 'spinach-powder',
-    name: 'Pure Spinach Powder',
-    botanicalName: 'Spinacia oleracea',
-    category: 'Vegetable Powders',
-    forms: ['Fine Powder (80-100 Mesh)'],
-    meshSize: '80-100 Mesh',
-    purity: '100% Dehydrated Tender Spinach Leaves',
-    colorProfile: 'Deep Forest Green',
-    description: 'Chlorophyll-rich spinach powder produced via low-temperature dehydration. Imparts rich green color and mild vegetable flavor to pasta doughs, extruded snacks, and instant soups.',
-    applications: [
-      'Green pasta, ravioli & bakery dough coloring',
-      'Instant soups, vegetable broths & savory mixes',
-      'Plant-based meat analogs & savory extrusion',
-      'Daily green wellness drink blends'
-    ],
-    image: '/images/powders/spinach-powder.jpg',
-    imageAlt: 'Rich forest green spinach powder in a neat mound with fresh spinach leaves',
-    featured: true
-  },
-  {
-    id: 'jackfruit-powder',
-    name: 'Green Jackfruit Flour & Powder',
-    botanicalName: 'Artocarpus heterophyllus',
-    category: 'Exotic Fruit',
-    forms: ['Flour (60-80 Mesh)', 'Resistant Starch Grade'],
-    meshSize: '60-80 Mesh',
-    purity: '100% Mature Unripe Raw Green Jackfruit',
-    colorProfile: 'Pale Ivory Cream',
-    description: 'Low-glycemic raw green jackfruit flour high in soluble dietary fiber and prebiotic resistant starch. Formulated as a functional wheat flour substitute in rotis, breads, and diabetic-friendly foods.',
-    applications: [
-      'Low-GI flour blends for breads, rotis & baked goods',
-      'Dietary fiber fortification in snacks & cereals',
-      'Gluten-free baking premixes & nutritional bars',
-      'Plant-based savory binder in culinary burgers'
-    ],
-    image: '/images/powders/jackfruit-powder.jpg',
-    imageAlt: 'Fine ivory green jackfruit flour with raw jackfruit slices',
-    featured: true
   }
 ];
 
@@ -207,26 +127,26 @@ export const industriesList = [
   {
     name: 'Food & Beverage',
     eyebrow: 'Ingredient applications',
-    description: 'Dehydrated vegetable, spice and fruit powders engineered for instant solubility, clear broths, and clean-label natural coloration.',
-    powders: ['Onion', 'Garlic', 'Beetroot', 'Spinach', 'Turmeric'],
+    description: 'Dehydrated vegetable, spice and botanical powders engineered for instant solubility, clear broths, and clean-label natural coloration.',
+    powders: ['Onion', 'Garlic', 'Beetroot', 'Ginger'],
     image: productsById['beetroot-powder'].image,
     imageAlt: productsById['beetroot-powder'].imageAlt
   },
   {
     name: 'Seasonings, Rubs & Snacks',
     eyebrow: 'Savory formulations',
-    description: 'Free-flowing onion, garlic, green chilli and ginger powders and flakes tailored for extruded snacks, chips, coatings and marinades.',
-    powders: ['Onion Flakes', 'Garlic Granules', 'Green Chilli', 'Ginger'],
+    description: 'Free-flowing onion, garlic, and ginger powders and flakes tailored for extruded snacks, chips, coatings and marinades.',
+    powders: ['Onion Flakes', 'Garlic Granules', 'Ginger'],
     image: productsById['onion-powder'].image,
     imageAlt: productsById['onion-powder'].imageAlt
   },
   {
     name: 'Bakery & Confectionery',
     eyebrow: 'Product development',
-    description: 'Plant-derived colors and functional flours including beetroot, spinach, turmeric and green jackfruit resistant starch.',
-    powders: ['Beetroot', 'Spinach', 'Green jackfruit', 'Ginger'],
-    image: productsById['turmeric-powder'].image,
-    imageAlt: productsById['turmeric-powder'].imageAlt
+    description: 'Plant-derived colors and functional powders including vibrant beetroot, ginger, and aromatic rose petal powders.',
+    powders: ['Beetroot', 'Ginger', 'Rose petal'],
+    image: productsById['ginger-powder'].image,
+    imageAlt: productsById['ginger-powder'].imageAlt
   },
   {
     name: 'Beverage & Botanical',
@@ -309,14 +229,14 @@ const blogArticles = [
   },
   {
     id: 4,
-    productId: 'turmeric-powder',
-    title: 'Sourcing high-curcumin golden turmeric for spice blends and nutraceuticals',
-    slug: 'sourcing-high-curcumin-turmeric',
+    productId: 'ginger-powder',
+    title: 'Aromatic ginger powder: volatile oils, gingerol assay and export standards',
+    slug: 'sourcing-high-gingerol-ginger-powder',
     category: 'Export standards',
     readTime: '4 min read',
-    author: 'Nuvaro Agro',
-    excerpt: 'Key parameters to verify when buying bulk turmeric: curcumin percentage, steam treatment, and heavy metal testing.',
-    content: 'Industrial turmeric procurement requires verification beyond just visual yellow color. We provide comprehensive COA documentation detailing curcumin assay (3% to 5%+), moisture content below 8%, and strict heavy metal clearance compliant with EU and US FDA import tolerances.'
+    author: 'Nuvaro Agro Sourcing Team',
+    excerpt: 'Key parameters to verify when procuring bulk ginger powder: gingerol percentage, steam treatment, and mesh consistency.',
+    content: 'Industrial ginger procurement requires testing beyond appearance. We provide comprehensive COA documentation detailing gingerol assay, moisture content below 8%, and strict heavy metal clearance compliant with EU and US FDA import tolerances.'
   },
   {
     id: 5,
@@ -328,6 +248,17 @@ const blogArticles = [
     author: 'Nuvaro Agro Botanical Desk',
     excerpt: 'The critical difference that gentle shade drying makes to moringa chlorophyll intensity and nutritional integrity.',
     content: 'Direct exposure to high heat degrades the vivid chlorophyll pigment and heat-sensitive vitamins in moringa leaves. Our shade-drying facility preserves a bright emerald green hue that dissolves cleanly into green smoothie powders and capsule formulations without bitter burnt undertones.'
+  },
+  {
+    id: 6,
+    productId: 'rose-petal-powder',
+    title: 'Damask rose petal powder: botanical extraction and purity considerations',
+    slug: 'damask-rose-petal-powder-purity',
+    category: 'Botanical ingredients',
+    readTime: '3 min read',
+    author: 'Nuvaro Agro Botanical Desk',
+    excerpt: 'How pesticide-free shade-dried Damask rose petals provide natural floral aroma and gentle soothing properties.',
+    content: 'Edible and cosmetic grade rose petal powder requires meticulous screening for pesticide residues. Our Damask rose harvests are dried under strict sanitary conditions to protect natural anthocyanins and delicate aromatics for premium skincare, teas, and confectionery glazes.'
   }
 ];
 

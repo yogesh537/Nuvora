@@ -72,7 +72,7 @@ export default function ProductListingPage({
           <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-widest text-[#0B7337] bg-emerald-50 border border-emerald-200/80 mb-3">
             Pure &amp; Lab-Certified
           </span>
-          <h1 className="text-3xl sm:text-4xl md:text-5xl font-black tracking-tight text-stone-900 capitalize">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-stone-900 capitalize">
             {categoryFilter === 'All' ? 'Dehydrated Vegetable & Spice Powders' : categoryFilter}
           </h1>
 
@@ -232,7 +232,7 @@ export default function ProductListingPage({
                     <div className="p-5">
                       <h2
                         onClick={() => onSelectProduct(product)}
-                        className="cursor-pointer text-base font-extrabold text-stone-900 hover:text-amber-800 transition-colors line-clamp-1"
+                        className="cursor-pointer text-base font-semibold text-stone-900 hover:text-amber-800 transition-colors line-clamp-1"
                       >
                         {product.name}
                       </h2>

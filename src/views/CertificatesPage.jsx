@@ -104,7 +104,7 @@ export default function CertificatesPage() {
             Statutory Food Safety Certification
           </span>
 
-          <h1 className="text-3xl sm:text-4xl md:text-5xl font-black tracking-tight text-stone-900">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-stone-900">
             FSSAI Central Food License &amp; Quality Scope
           </h1>
 
@@ -143,7 +143,7 @@ export default function CertificatesPage() {
                     <span className="text-[11px] font-bold uppercase tracking-widest text-[#0B7337] block">
                       Food Safety and Standards Authority of India
                     </span>
-                    <h3 className="text-xl sm:text-2xl font-black text-stone-900 tracking-tight">
+                    <h3 className="text-xl sm:text-2xl font-bold text-stone-900 tracking-tight">
                       Central License Certificate
                     </h3>
                     <span className="text-xs text-stone-500 font-medium">
@@ -153,7 +153,7 @@ export default function CertificatesPage() {
                 </div>
 
                 <div className="flex flex-col items-start sm:items-end">
-                  <span className="rounded-full bg-[#0B7337] text-white text-[11px] font-extrabold px-3 py-1 shadow-2xs">
+                  <span className="rounded-full bg-[#0B7337] text-white text-[11px] font-bold px-3 py-1 shadow-2xs">
                     Central Authority
                   </span>
                   <span className="text-[10px] text-stone-400 font-mono mt-1">
@@ -168,7 +168,7 @@ export default function CertificatesPage() {
                   <span className="text-[10px] font-bold uppercase tracking-wider text-stone-400 block mb-1">
                     Central License Number
                   </span>
-                  <span className="text-lg font-mono font-black text-stone-900 tracking-wider">
+                  <span className="text-lg font-mono font-bold text-stone-900 tracking-wider">
                     10020021008942
                   </span>
                 </div>
@@ -177,7 +177,7 @@ export default function CertificatesPage() {
                   <span className="text-[10px] font-bold uppercase tracking-wider text-stone-400 block mb-1">
                     Entity / Establishment
                   </span>
-                  <span className="text-base font-extrabold text-stone-900 block">
+                  <span className="text-base font-bold text-stone-900 block">
                     Nuvaro Agro Global Pvt. Ltd.
                   </span>
                 </div>
@@ -254,7 +254,7 @@ export default function CertificatesPage() {
               <span className="text-xs font-bold uppercase tracking-widest text-[#0B7337] block mb-2">
                 VERIFICATION &amp; TRACEABILITY
               </span>
-              <h3 className="text-xl font-extrabold text-stone-900 tracking-tight">
+              <h3 className="text-xl font-bold text-stone-900 tracking-tight">
                 Government Compliance Verification
               </h3>
               <p className="mt-2 text-xs sm:text-sm text-stone-600 leading-relaxed">
@@ -338,7 +338,7 @@ export default function CertificatesPage() {
             <span className="text-xs font-bold uppercase tracking-widest text-[#0B7337]">
               ANALYTICAL TESTING SCOPE
             </span>
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-stone-900 tracking-tight mt-1">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-stone-900 tracking-tight mt-1">
               FSSAI Quality &amp; Safety Test Parameters
             </h2>
             <p className="mt-2 text-xs sm:text-sm text-stone-600">
@@ -394,7 +394,7 @@ export default function CertificatesPage() {
             <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-widest text-[#0B7337] bg-white border border-emerald-200 shadow-2xs mb-3">
               Official Compliance Dossier
             </span>
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-black text-stone-900 tracking-tight">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-stone-900 tracking-tight">
               Request Verified FSSAI Certificate &amp; Batch COA
             </h2>
             <p className="mt-3 text-xs sm:text-sm text-stone-600 max-w-xl mx-auto leading-relaxed">

@@ -33,10 +33,10 @@ export default function AboutPage({ onExploreProducts, onOpenQuote }) {
       <section className="border-b border-stone-200 bg-white py-14 sm:py-20">
         <div className="mx-auto grid max-w-[1440px] gap-10 px-6 sm:px-12 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
           <div>
-            <div className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-amber-800 bg-amber-50 border border-amber-200 px-3 py-1 rounded-full mb-4">
+            <div className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-amber-800 bg-amber-50 border border-amber-200 px-3 py-1 rounded-full mb-4">
               <span>Direct Processor Supply</span>
             </div>
-            <h1 className="text-3xl sm:text-5xl md:text-6xl font-black tracking-tight text-stone-900 leading-[1.08]">
+            <h1 className="text-3xl sm:text-5xl md:text-6xl font-bold tracking-tight text-stone-900 leading-[1.08]">
               Dehydrated Ingredients
               <br />
               <span className="text-amber-700">Manufactured with Intent.</span>
@@ -49,7 +49,7 @@ export default function AboutPage({ onExploreProducts, onOpenQuote }) {
               <button
                 type="button"
                 onClick={onExploreProducts}
-                className="inline-flex items-center gap-2 rounded-xl bg-stone-900 px-6 py-3.5 text-xs sm:text-sm font-bold text-white transition hover:bg-stone-800"
+                className="inline-flex items-center gap-2 rounded-xl bg-stone-900 px-6 py-3.5 text-xs sm:text-sm font-semibold text-white transition hover:bg-stone-800"
               >
                 <span>Browse Ingredients Catalog</span>
                 <ArrowRight className="h-4 w-4" />
@@ -57,7 +57,7 @@ export default function AboutPage({ onExploreProducts, onOpenQuote }) {
               <button
                 type="button"
                 onClick={onOpenQuote}
-                className="inline-flex items-center gap-2 rounded-xl border border-stone-300 bg-white px-6 py-3.5 text-xs sm:text-sm font-bold text-stone-800 transition hover:border-[#D5AA37]"
+                className="inline-flex items-center gap-2 rounded-xl border border-stone-300 bg-white px-6 py-3.5 text-xs sm:text-sm font-semibold text-stone-800 transition hover:border-[#D5AA37]"
               >
                 <span>Contact Sourcing Team</span>
                 <ArrowUpRight className="h-4 w-4 text-[#D5AA37]" />
@@ -66,15 +66,15 @@ export default function AboutPage({ onExploreProducts, onOpenQuote }) {
 
             <div className="mt-10 grid max-w-xl grid-cols-3 border-t border-stone-200 pt-6">
               <div>
-                <p className="text-3xl font-black text-stone-900">{String(products.length).padStart(2, '0')}</p>
+                <p className="text-3xl font-bold text-stone-900">{String(products.length).padStart(2, '0')}</p>
                 <p className="mt-1 text-xs font-semibold text-stone-500 uppercase tracking-wider">Listed Powders</p>
               </div>
               <div className="border-l border-stone-200 pl-6">
-                <p className="text-3xl font-black text-stone-900">{String(categories.length).padStart(2, '0')}</p>
+                <p className="text-3xl font-bold text-stone-900">{String(categories.length).padStart(2, '0')}</p>
                 <p className="mt-1 text-xs font-semibold text-stone-500 uppercase tracking-wider">Product Groups</p>
               </div>
               <div className="border-l border-stone-200 pl-6">
-                <p className="text-3xl font-black text-stone-900">100%</p>
+                <p className="text-3xl font-bold text-stone-900">100%</p>
                 <p className="mt-1 text-xs font-semibold text-stone-500 uppercase tracking-wider">Traceable Supply</p>
               </div>
             </div>
@@ -104,7 +104,7 @@ export default function AboutPage({ onExploreProducts, onOpenQuote }) {
       <section className="mx-auto max-w-[1440px] px-6 sm:px-12 py-16 sm:py-20">
         <div className="text-center max-w-2xl mx-auto mb-12">
           <span className="text-xs font-bold uppercase tracking-widest text-amber-700">How We Operate</span>
-          <h2 className="text-3xl font-extrabold text-stone-900 mt-2">
+          <h2 className="text-3xl font-bold text-stone-900 mt-2">
             The Nuvaro Processing Standard
           </h2>
           <p className="mt-3 text-sm text-stone-600">

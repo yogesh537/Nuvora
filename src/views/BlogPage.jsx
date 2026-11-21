@@ -57,14 +57,14 @@ export default function BlogPage({ selectedPost, onSelectPost, onSelectProduct }
       <div className="min-h-screen bg-[#f4f1e8] text-[#183126]">
         <section className="bg-[#183126] text-[#f4f1e8]">
           <div className="mx-auto max-w-[1440px] px-5 pt-5 sm:px-8 lg:px-12">
-            <button type="button" onClick={closeArticle} className="inline-flex items-center gap-2 text-[10px] font-black uppercase tracking-[0.12em] text-white/65 hover:text-white">
+            <button type="button" onClick={closeArticle} className="inline-flex items-center gap-2 text-[10px] font-semibold uppercase tracking-[0.12em] text-white/65 hover:text-white">
               <ArrowLeft className="h-4 w-4" /> All articles
             </button>
           </div>
           <div className="mx-auto grid max-w-[1440px] lg:grid-cols-[1fr_0.85fr]">
             <div className="flex flex-col justify-center px-5 py-10 sm:px-8 sm:py-14 lg:px-12 lg:py-16">
-              <p className="text-[10px] font-black uppercase tracking-[0.18em] text-[#d4ad49]">{activeArticle.category} / Sourcing notes</p>
-              <h1 className="mt-5 max-w-3xl text-4xl font-black leading-[0.95] tracking-[-0.05em] sm:text-5xl">{activeArticle.title}</h1>
+              <p className="text-[10px] font-semibold uppercase tracking-[0.18em] text-[#d4ad49]">{activeArticle.category} / Sourcing notes</p>
+              <h1 className="mt-5 max-w-3xl text-4xl font-bold leading-[0.95] tracking-[-0.05em] sm:text-5xl">{activeArticle.title}</h1>
               <div className="mt-6"><ArticleMeta article={activeArticle} /></div>
             </div>
             <div className="relative min-h-[260px] overflow-hidden bg-[#756e5b] sm:min-h-[360px] lg:min-h-[460px]">
@@ -90,18 +90,18 @@ export default function BlogPage({ selectedPost, onSelectPost, onSelectProduct }
               </div>
             )}
             <div className="mt-10 flex flex-wrap items-center gap-3 border-t border-[#183126]/20 pt-6">
-              <button type="button" onClick={closeArticle} className="inline-flex items-center gap-2 border-b border-[#183126] pb-1 text-[9px] font-black uppercase tracking-[0.12em]">
+              <button type="button" onClick={closeArticle} className="inline-flex items-center gap-2 border-b border-[#183126] pb-1 text-[9px] font-semibold uppercase tracking-[0.12em]">
                 <ArrowLeft className="h-3.5 w-3.5" /> More articles
               </button>
-              <button type="button" onClick={() => openQuoteModal(relatedProduct || null)} className="inline-flex items-center gap-2 bg-[#183126] px-4 py-3 text-[9px] font-black uppercase tracking-[0.1em] text-white hover:bg-[#2b4939]">
+              <button type="button" onClick={() => openQuoteModal(relatedProduct || null)} className="inline-flex items-center gap-2 bg-[#183126] px-4 py-3 text-[9px] font-semibold uppercase tracking-[0.1em] text-white hover:bg-[#2b4939]">
                 Ask about a product <ArrowUpRight className="h-4 w-4 text-[#d4ad49]" />
               </button>
             </div>
           </article>
 
           <aside className="h-fit border-t border-[#183126]/20 bg-[#ebe7db] p-5 sm:p-6 lg:sticky lg:top-8">
-            <p className="text-[9px] font-black uppercase tracking-[0.16em] text-[#9b7a32]">For your product brief</p>
-            <h2 className="mt-3 text-xl font-black tracking-[-0.03em]">Questions worth clarifying</h2>
+            <p className="text-[9px] font-semibold uppercase tracking-[0.16em] text-[#9b7a32]">For your product brief</p>
+            <h2 className="mt-3 text-xl font-bold tracking-[-0.03em]">Questions worth clarifying</h2>
             <ul className="mt-5 space-y-3 border-t border-[#183126]/15 pt-4 text-xs leading-5 text-[#536056]">
               <li>Intended application and destination</li>
               <li>Product specification and order volume</li>
@@ -109,16 +109,16 @@ export default function BlogPage({ selectedPost, onSelectPost, onSelectProduct }
             </ul>
             {relatedProduct && (
               <div className="mt-6 border-t border-[#183126]/15 pt-5">
-                <p className="text-[9px] font-black uppercase tracking-[0.14em] text-[#657067]">Related catalog item</p>
+                <p className="text-[9px] font-semibold uppercase tracking-[0.14em] text-[#657067]">Related catalog item</p>
                 <img src={relatedProduct.image} alt={relatedProduct.imageAlt || relatedProduct.name} className="mt-3 h-32 w-full object-cover" />
                 {relatedProduct.imageCredit && (
                   <a href={relatedProduct.imageCreditUrl} target="_blank" rel="noreferrer" className="mt-2 block text-[8px] text-[#657067] underline underline-offset-2">
                     Photo: {relatedProduct.imageCredit}
                   </a>
                 )}
-                <p className="mt-3 text-xs font-black">{relatedProduct.name}</p>
+                <p className="mt-3 text-xs font-bold">{relatedProduct.name}</p>
                 <p className="mt-1 text-[9px] text-[#657067]">{relatedProduct.category}</p>
-                <button type="button" onClick={() => openRelatedProduct(relatedProduct)} className="mt-4 inline-flex items-center gap-2 text-[9px] font-black uppercase tracking-[0.1em]">
+                <button type="button" onClick={() => openRelatedProduct(relatedProduct)} className="mt-4 inline-flex items-center gap-2 text-[9px] font-semibold uppercase tracking-[0.1em]">
                   View product <ArrowRight className="h-3.5 w-3.5" />
                 </button>
               </div>
@@ -137,10 +137,10 @@ export default function BlogPage({ selectedPost, onSelectPost, onSelectProduct }
         <div className="pointer-events-none absolute -right-20 -top-32 h-96 w-96 rounded-full border border-white/10" />
         <div className="relative mx-auto grid max-w-[1440px] gap-8 px-5 py-12 sm:px-8 sm:py-16 lg:grid-cols-[1fr_0.65fr] lg:items-end lg:px-12 lg:py-20">
           <div>
-            <p className="inline-flex items-center gap-2 text-[10px] font-black uppercase tracking-[0.2em] text-[#d4ad49]">
+            <p className="inline-flex items-center gap-2 text-[10px] font-semibold uppercase tracking-[0.2em] text-[#d4ad49]">
               <BookOpen className="h-4 w-4" /> Field notes / Ingredient sourcing
             </p>
-            <h1 className="mt-5 max-w-3xl text-5xl font-black leading-[0.9] tracking-[-0.06em] sm:text-6xl lg:text-7xl">
+            <h1 className="mt-5 max-w-3xl text-5xl font-bold leading-[0.9] tracking-[-0.06em] sm:text-6xl lg:text-7xl">
               Better questions
               <br />
               <span className="font-medium italic text-[#d4ad49]">make better briefs.</span>
@@ -158,16 +158,16 @@ export default function BlogPage({ selectedPost, onSelectPost, onSelectProduct }
             <button type="button" onClick={() => openArticle(featuredArticle)} aria-label={`Read ${featuredArticle.title}`} className="group relative min-h-[260px] overflow-hidden bg-[#756e5b] text-left sm:min-h-[360px]">
               <img src={featuredArticle.image} alt={featuredArticle.imageAlt || ''} className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-[1.03]" />
               <div className="absolute inset-0 bg-gradient-to-t from-[#10231a]/55 via-transparent to-transparent" />
-              <span className="absolute left-4 top-4 bg-[#183126] px-3 py-2 text-[9px] font-black uppercase tracking-[0.14em] text-[#d4ad49]">Featured note</span>
+              <span className="absolute left-4 top-4 bg-[#183126] px-3 py-2 text-[9px] font-semibold uppercase tracking-[0.14em] text-[#d4ad49]">Featured note</span>
             </button>
             <div className="flex flex-col justify-center bg-[#ebe7db] p-6 sm:p-9 lg:p-12">
               <ArticleMeta article={featuredArticle} />
-              <button type="button" onClick={() => openArticle(featuredArticle)} className="mt-5 text-left text-3xl font-black leading-[1.02] tracking-[-0.045em] hover:text-[#9b7a32] sm:text-4xl">
+              <button type="button" onClick={() => openArticle(featuredArticle)} className="mt-5 text-left text-3xl font-bold leading-[1.02] tracking-[-0.045em] hover:text-[#9b7a32] sm:text-4xl">
                 {featuredArticle.title}
               </button>
               <p className="mt-4 max-w-xl text-sm leading-6 text-[#657067]">{featuredArticle.excerpt}</p>
               <div className="mt-5 flex flex-wrap items-center justify-between gap-3">
-                <button type="button" onClick={() => openArticle(featuredArticle)} className="inline-flex items-center gap-2 text-[9px] font-black uppercase tracking-[0.13em]">
+                <button type="button" onClick={() => openArticle(featuredArticle)} className="inline-flex items-center gap-2 text-[9px] font-semibold uppercase tracking-[0.13em]">
                   Read the note <ArrowRight className="h-4 w-4 text-[#9b7a32]" />
                 </button>
                 <PhotoCredit article={featuredArticle} />
@@ -181,8 +181,8 @@ export default function BlogPage({ selectedPost, onSelectPost, onSelectProduct }
         <div className="mx-auto max-w-[1440px] px-5 py-10 sm:px-8 lg:px-12 lg:py-14">
           <div className="mb-7 flex flex-col gap-3 border-b border-[#183126]/20 pb-5 sm:flex-row sm:items-end sm:justify-between">
             <div>
-              <p className="text-[10px] font-black uppercase tracking-[0.18em] text-[#9b7a32]">The archive / {String(otherArticles.length).padStart(2, '0')} notes</p>
-              <h2 className="mt-3 text-3xl font-black tracking-[-0.04em]">More from the field</h2>
+              <p className="text-[10px] font-semibold uppercase tracking-[0.18em] text-[#9b7a32]">The archive / {String(otherArticles.length).padStart(2, '0')} notes</p>
+              <h2 className="mt-3 text-3xl font-bold tracking-[-0.04em]">More from the field</h2>
             </div>
             <p className="max-w-md text-xs leading-5 text-[#657067]">Use these guides to prepare your next ingredient conversation.</p>
           </div>
@@ -195,12 +195,12 @@ export default function BlogPage({ selectedPost, onSelectPost, onSelectProduct }
                 </button>
                 <div className="flex flex-1 flex-col p-5">
                   <ArticleMeta article={article} />
-                  <button type="button" onClick={() => openArticle(article)} className="mt-3 text-left text-lg font-black leading-tight tracking-[-0.025em] hover:text-[#9b7a32]">
+                  <button type="button" onClick={() => openArticle(article)} className="mt-3 text-left text-lg font-bold leading-tight tracking-[-0.025em] hover:text-[#9b7a32]">
                     {article.title}
                   </button>
                   <p className="mt-3 flex-1 text-xs leading-5 text-[#657067]">{article.excerpt}</p>
                   <div className="mt-5 flex items-center justify-between gap-3 border-t border-[#183126]/15 pt-4">
-                    <button type="button" onClick={() => openArticle(article)} className="inline-flex items-center gap-2 text-[9px] font-black uppercase tracking-[0.1em]">
+                    <button type="button" onClick={() => openArticle(article)} className="inline-flex items-center gap-2 text-[9px] font-semibold uppercase tracking-[0.1em]">
                       Read note <ArrowUpRight className="h-3.5 w-3.5 text-[#9b7a32]" />
                     </button>
                     <PhotoCredit article={article} />
