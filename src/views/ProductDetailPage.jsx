@@ -4,10 +4,11 @@ import { useLeads } from '../context/LeadContext';
 
 export default function ProductDetailPage({ product, onBack, onOpenQuickSpec }) {
   const { openQuoteModal } = useLeads();
+  const whatsappNumber = import.meta.env.VITE_WHATSAPP_NUMBER || '918087405952';
   const whatsappMessage = encodeURIComponent(
     `Hello Nuvaro Agro, I would like to inquire about bulk ordering ${product.name}.`
   );
-  const whatsappUrl = `https://wa.me/919820012345?text=${whatsappMessage}`;
+  const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${whatsappMessage}`;
 
   return (
     <div className="min-h-screen bg-[#FAF9F6] text-stone-900 font-sans">

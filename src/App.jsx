@@ -28,6 +28,24 @@ import BlogPage from './views/BlogPage';
 import AdminPortalPage from './views/AdminPortalPage';
 import AdminLoginPage from './views/AdminLoginPage';
 
+function getViewAndPath() {
+  if (typeof window === 'undefined') return { view: 'home', path: '/' };
+  const pathname = window.location.pathname.toLowerCase().replace(/\/$/, '') || '/';
+  const hash = window.location.hash.toLowerCase();
+
+  // Support both clean pathname (preferred) and legacy hash
+  if (pathname === '/login' || hash === '#login') return { view: 'login', path: '/login' };
+  if (pathname === '/admin' || hash === '#admin') return { view: 'admin', path: '/admin' };
+  if (pathname === '/products' || hash === '#products') return { view: 'products', path: '/products' };
+  if (pathname === '/about' || hash === '#about') return { view: 'about', path: '/about' };
+  if (pathname === '/certificates' || pathname === '/quality' || hash === '#certificates') return { view: 'certificates', path: '/certificates' };
+  if (pathname === '/blog' || pathname === '/blogs' || hash === '#blog') return { view: 'blog', path: '/blog' };
+  if (pathname === '/industries' || hash === '#industries') return { view: 'industries', path: '/industries' };
+  if (pathname === '/private-label' || pathname === '/privatelabel') return { view: 'private-label', path: '/private-label' };
+
+  return { view: 'home', path: '/' };
+}
+
 function AppContent() {
   const { products } = useProducts();
   const [isAdminLoggedIn, setIsAdminLoggedIn] = useState(() => {
@@ -42,17 +60,20 @@ function AppContent() {
 
   const [currentView, setCurrentView] = useState(() => {
     if (typeof window !== 'undefined') {
-      const hash = window.location.hash;
+      const { view, path } = getViewAndPath();
       const authed =
         localStorage.getItem('nuvaro_admin_auth') === 'true' ||
         sessionStorage.getItem('nuvaro_admin_auth') === 'true';
 
-      if (hash === '#admin') {
+      // Clean up any legacy hash to standard pathname
+      if (window.location.hash) {
+        window.history.replaceState({ view }, '', path);
+      }
+
+      if (view === 'admin') {
         return authed ? 'admin' : 'login';
       }
-      if (hash === '#login') {
-        return 'login';
-      }
+      return view;
     }
     return 'home';
   });
@@ -61,31 +82,69 @@ function AppContent() {
   const [quickSpecProduct, setQuickSpecProduct] = useState(null);
   const [selectedBlogPost, setSelectedBlogPost] = useState(null);
 
-  // Listen to hash changes for direct #admin and #login routing
+  // Centralized router helper using HTML5 history pushState
+  const navigate = (view, customPath = null, replace = false) => {
+    let targetPath = customPath;
+    if (!targetPath) {
+      switch (view) {
+        case 'login': targetPath = '/login'; break;
+        case 'admin': targetPath = '/admin'; break;
+        case 'products': targetPath = '/products'; break;
+        case 'about': targetPath = '/about'; break;
+        case 'certificates': targetPath = '/certificates'; break;
+        case 'blog': targetPath = '/blog'; break;
+        case 'industries': targetPath = '/industries'; break;
+        case 'private-label': targetPath = '/private-label'; break;
+        case 'home': default: targetPath = '/'; break;
+      }
+    }
+
+    if (window.location.pathname !== targetPath || window.location.hash) {
+      if (replace) {
+        window.history.replaceState({ view }, '', targetPath);
+      } else {
+        window.history.pushState({ view }, '', targetPath);
+      }
+    }
+
+    setCurrentView(view);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  // Listen to browser back/forward and URL pathname changes
   useEffect(() => {
-    const handleHashChange = () => {
-      const hash = window.location.hash;
+    const handleLocationChange = () => {
       const authed =
         localStorage.getItem('nuvaro_admin_auth') === 'true' ||
         sessionStorage.getItem('nuvaro_admin_auth') === 'true';
 
-      if (hash === '#admin') {
+      const { view, path } = getViewAndPath();
+
+      // Clean up any hash into clean pathname
+      if (window.location.hash) {
+        window.history.replaceState({ view }, '', path);
+      }
+
+      if (view === 'admin') {
         if (authed) {
           setIsAdminLoggedIn(true);
           setCurrentView('admin');
         } else {
           setIsAdminLoggedIn(false);
-          setCurrentView('login');
-          window.location.hash = '#login';
+          navigate('login', '/login', true);
         }
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-      } else if (hash === '#login') {
-        setCurrentView('login');
-        window.scrollTo({ top: 0, behavior: 'smooth' });
+      } else {
+        setCurrentView(view);
       }
+      window.scrollTo({ top: 0, behavior: 'smooth' });
     };
-    window.addEventListener('hashchange', handleHashChange);
-    return () => window.removeEventListener('hashchange', handleHashChange);
+
+    window.addEventListener('popstate', handleLocationChange);
+    window.addEventListener('hashchange', handleLocationChange);
+    return () => {
+      window.removeEventListener('popstate', handleLocationChange);
+      window.removeEventListener('hashchange', handleLocationChange);
+    };
   }, []);
 
   const handleAdminLogout = () => {
@@ -93,9 +152,7 @@ function AppContent() {
     localStorage.removeItem('nuvaro_admin_user');
     sessionStorage.removeItem('nuvaro_admin_auth');
     setIsAdminLoggedIn(false);
-    setCurrentView('login');
-    window.location.hash = '#login';
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    navigate('login', '/login');
   };
 
   const handleNavigateView = (view) => {
@@ -105,45 +162,31 @@ function AppContent() {
         sessionStorage.getItem('nuvaro_admin_auth') === 'true';
       if (authed) {
         setIsAdminLoggedIn(true);
-        setCurrentView('admin');
-        window.location.hash = '#admin';
+        navigate('admin', '/admin');
       } else {
         setIsAdminLoggedIn(false);
-        setCurrentView('login');
-        window.location.hash = '#login';
+        navigate('login', '/login');
       }
     } else if (view === 'login') {
-      setCurrentView('login');
-      window.location.hash = '#login';
+      navigate('login', '/login');
     } else {
-      if (window.location.hash === '#admin' || window.location.hash === '#login') {
-        window.location.hash = '';
-      }
-      setCurrentView(view);
+      navigate(view);
     }
   };
 
   const handleSelectProduct = (product) => {
-    if (window.location.hash === '#admin' || window.location.hash === '#login') {
-      window.location.hash = '';
-    }
     if (product) {
       setSelectedProduct(product);
       setCurrentView('product-detail');
       window.scrollTo({ top: 0, behavior: 'smooth' });
     } else {
-      setCurrentView('products');
-      window.scrollTo({ top: 0, behavior: 'smooth' });
+      navigate('products', '/products');
     }
   };
 
   const handleSelectCategory = (categoryName) => {
-    if (window.location.hash === '#admin' || window.location.hash === '#login') {
-      window.location.hash = '';
-    }
     setSelectedCategoryFilter(categoryName);
-    setCurrentView('products');
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    navigate('products', '/products');
   };
 
   return (
@@ -218,14 +261,10 @@ function AppContent() {
           <AdminLoginPage
             onLoginSuccess={() => {
               setIsAdminLoggedIn(true);
-              setCurrentView('admin');
-              window.location.hash = '#admin';
-              window.scrollTo({ top: 0, behavior: 'smooth' });
+              navigate('admin', '/admin');
             }}
             onBackToSite={() => {
-              setCurrentView('home');
-              window.location.hash = '';
-              window.scrollTo({ top: 0, behavior: 'smooth' });
+              navigate('home', '/');
             }}
           />
         )}
@@ -235,23 +274,17 @@ function AppContent() {
             <AdminPortalPage
               onLogout={handleAdminLogout}
               onBackToSite={() => {
-                setCurrentView('home');
-                window.location.hash = '';
-                window.scrollTo({ top: 0, behavior: 'smooth' });
+                navigate('home', '/');
               }}
             />
           ) : (
             <AdminLoginPage
               onLoginSuccess={() => {
                 setIsAdminLoggedIn(true);
-                setCurrentView('admin');
-                window.location.hash = '#admin';
-                window.scrollTo({ top: 0, behavior: 'smooth' });
+                navigate('admin', '/admin');
               }}
               onBackToSite={() => {
-                setCurrentView('home');
-                window.location.hash = '';
-                window.scrollTo({ top: 0, behavior: 'smooth' });
+                navigate('home', '/');
               }}
             />
           )

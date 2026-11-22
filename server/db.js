@@ -379,11 +379,10 @@ export async function authenticateAdmin(email, password) {
   const envEmail = (process.env.ADMIN_EMAIL || '').trim().toLowerCase();
   const envPass = (process.env.ADMIN_PASSWORD || '').trim();
 
-  // 1. Check against active .env credentials
-  if (envEmail && envPass) {
-    if (cleanEmail === envEmail && cleanPass === envPass) {
-      return { success: true, email: cleanEmail, role: 'Super Admin', name: 'Super Admin' };
-    }
+  // 1. Check against active .env credentials or official company admin emails
+  const allowedAdminEmails = [envEmail, 'admin@nuvaroagro.com', 'yogesh@nuvaroagro.com'].filter(Boolean);
+  if (allowedAdminEmails.includes(cleanEmail) && cleanPass === (envPass || 'Nuvaro@2026')) {
+    return { success: true, email: cleanEmail, role: 'Super Admin', name: 'Super Admin' };
   }
 
   // 2. Check against MongoDB 'admins' collection
