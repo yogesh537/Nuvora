@@ -1,8 +1,10 @@
 import React from 'react';
 import { ArrowDownRight, ArrowUpRight, Factory, FlaskConical, PackageCheck, ShieldCheck } from 'lucide-react';
-import { industriesList, products } from '../data/products';
+import { useProducts } from '../context/ProductContext';
+import { industriesList } from '../data/products';
 
 export default function IndustriesPage({ onExploreProducts, onOpenQuote }) {
+  const { products } = useProducts();
   return (
     <div className="min-h-screen overflow-hidden bg-[#f4f1e8] text-[#183126]">
       <section className="border-b border-[#183126]/15">

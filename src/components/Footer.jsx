@@ -202,9 +202,16 @@ export default function Footer({ onNavigate, onSelectCategory }) {
           </div>
         </div>
 
-        {/* Bottom copyright */}
-        <div className="border-t border-stone-200 px-6 py-4 text-center text-xs text-stone-500">
-          © {new Date().getFullYear()} Nuvaro Agro Pvt Ltd. All rights reserved. • High Purity Dehydrated Powders, Flakes &amp; Granules
+        {/* Bottom copyright & Admin Link */}
+        <div className="border-t border-stone-200 px-6 py-4 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-stone-500">
+          <span>© {new Date().getFullYear()} Nuvaro Agro Pvt Ltd. All rights reserved. • High Purity Dehydrated Powders, Flakes &amp; Granules</span>
+          <button
+            type="button"
+            onClick={() => onNavigate('admin')}
+            className="text-[11px] font-semibold text-stone-400 hover:text-[#0B7337] transition-colors flex items-center gap-1.5 focus:outline-none"
+          >
+            <span>Admin Portal</span>
+          </button>
         </div>
       </div>
     </footer>

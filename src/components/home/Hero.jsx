@@ -1,10 +1,11 @@
 import React from 'react';
 import { ArrowRight, ArrowUpRight, BadgeCheck } from 'lucide-react';
 import { useLeads } from '../../context/LeadContext';
-import { products } from '../../data/products';
+import { useProducts } from '../../context/ProductContext';
 
 export default function Hero({ onExploreProducts }) {
   const { openQuoteModal } = useLeads();
+  const { products } = useProducts();
   const featuredProducts = products.filter((product) => product.featured).slice(0, 4);
 
   return (

@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { ArrowLeft, ArrowRight, ArrowUpRight, BookOpen, CalendarDays, Clock3 } from 'lucide-react';
 import { useLeads } from '../context/LeadContext';
-import { blogPostsData, products } from '../data/products';
+import { useProducts } from '../context/ProductContext';
+import { blogPostsData } from '../data/products';
 
 function ArticleMeta({ article }) {
   return (
@@ -31,6 +32,7 @@ function PhotoCredit({ article }) {
 export default function BlogPage({ selectedPost, onSelectPost, onSelectProduct }) {
   const [activeArticle, setActiveArticle] = useState(selectedPost || null);
   const { openQuoteModal } = useLeads();
+  const { products } = useProducts();
 
   useEffect(() => {
     setActiveArticle(selectedPost || null);

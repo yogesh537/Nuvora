@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
 import { useLeads } from '../../context/LeadContext';
-import { products } from '../../data/products';
+import { useProducts } from '../../context/ProductContext';
 import { X, Download, FileText, CheckCircle2, ShieldCheck, Mail, Building, User } from 'lucide-react';
 
 export default function CatalogueDownloadModal() {
   const { activeLeadModal, closeModal, addLead } = useLeads();
+  const { products } = useProducts();
   const isOpen = activeLeadModal === 'catalogue';
 
   const [downloaded, setDownloaded] = useState(false);

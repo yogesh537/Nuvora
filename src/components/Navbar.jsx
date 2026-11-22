@@ -162,75 +162,7 @@ export default function Navbar({ currentView, setCurrentView, onSelectCategory }
     );
   }
 
-  // --- 2. About Mega-Menu Panel (Exact Hyperiux Vault SolutionsPanel pattern) ---
-  function AboutPanel() {
-    const SOLUTION_BLOCKS = [
-      {
-        title: "Farm-Direct Sourcing",
-        description:
-          "Direct contract farming with vetted cultivators across India. Pesticide-free, single-origin produce harvested at peak freshness.",
-        action: () => go('about'),
-      },
-      {
-        title: "Global Export Logistics",
-        description:
-          "Regular container & air shipments to 40+ countries with complete phytosanitary clearance, palletized shipping, and port documentation.",
-        action: () => go('about'),
-      },
-      {
-        title: "Private Label & OEM Blends",
-        description:
-          "Custom mesh sizes (60 to 120 mesh), proprietary recipe blending, pouching, and bulk food-service drum packaging for worldwide brands.",
-        action: () => go('privatelabel'),
-      },
-    ];
-
-    return (
-      <div className="flex flex-col gap-6 text-left">
-        <div className="flex flex-col gap-2">
-          <p className="text-xs font-semibold uppercase tracking-[0.14em] text-[#B58A27]">
-            Who We Are
-          </p>
-          <h3 className="text-xl font-semibold text-foreground @3xl:text-2xl">
-            India's Trusted Name in Dehydrated Agro Commodities
-          </h3>
-        </div>
-
-        <div className="grid grid-cols-1 gap-3 @2xl:grid-cols-3 @2xl:gap-6">
-          {SOLUTION_BLOCKS.map((block) => (
-            <button
-              key={block.title}
-              type="button"
-              onClick={block.action}
-              className={`${linkClassName} flex flex-col gap-2 border border-border p-4 hover:bg-accent @2xl:gap-3 @2xl:p-6 text-left group`}
-            >
-              <h4 className="text-base font-semibold text-foreground @3xl:text-lg group-hover:text-[#B58A27] transition-colors flex items-center justify-between">
-                <span>{block.title}</span>
-                <ChevronRight className="h-4 w-4 text-muted-foreground group-hover:text-[#B58A27] transition-transform group-hover:translate-x-0.5" />
-              </h4>
-              <p className="text-sm leading-6 text-muted-foreground">{block.description}</p>
-            </button>
-          ))}
-        </div>
-
-        <div className="pt-2 flex flex-col sm:flex-row items-center justify-between gap-3 border-t border-border/60">
-          <span className="text-xs text-muted-foreground">
-            FSSAI Central Food License No. 10020021008942 • 100% Traceable • Steam Sterilized
-          </span>
-          <button
-            type="button"
-            onClick={() => go('about')}
-            className="text-xs font-semibold text-[#0B7337] hover:text-[#085e2c] inline-flex items-center gap-1.5 transition-colors"
-          >
-            <span>Learn More About Our Company Heritage</span>
-            <ArrowRight className="h-3.5 w-3.5" />
-          </button>
-        </div>
-      </div>
-    );
-  }
-
-  // --- 3. Official FSSAI Central Food Safety License Panel ---
+  // --- 2. Official FSSAI Central Food Safety License Panel ---
   function CertificatesPanel() {
     return (
       <div className="flex flex-col gap-6 text-left max-w-4xl">
@@ -397,7 +329,7 @@ export default function Navbar({ currentView, setCurrentView, onSelectCategory }
     },
     {
       label: "About",
-      customContent: <AboutPanel />,
+      onClick: () => go('about'),
     },
     {
       label: "Products",

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { ArrowRight, BadgeCheck, Check, ClipboardList, PackageCheck, SearchCheck } from 'lucide-react';
 import { useLeads } from '../context/LeadContext';
-import { products } from '../data/products';
+import { useProducts } from '../context/ProductContext';
 
 const stages = [
   { title: 'Share the concept', detail: 'Product idea, target use and market.', icon: ClipboardList },
@@ -15,6 +15,7 @@ const inputClass = 'mt-2 w-full border border-[#183126]/20 bg-white px-3.5 py-3 
 
 export default function PrivateLabelPage() {
   const { addLead } = useLeads();
+  const { products } = useProducts();
   const [submitted, setSubmitted] = useState(false);
   const [formData, setFormData] = useState({
     name: '',

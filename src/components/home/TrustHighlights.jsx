@@ -1,16 +1,17 @@
 import React from 'react';
-import { products } from '../../data/products';
-
-const categories = new Set(products.map((product) => product.category));
-
-const highlights = [
-  { value: products.length, label: 'Powders listed' },
-  { value: categories.size, label: 'Ingredient groups' },
-  { value: 'FSSAI', label: 'Facility license' },
-  { value: 'Per order', label: 'Quality scope' }
-];
+import { useProducts } from '../../context/ProductContext';
 
 export default function TrustHighlights() {
+  const { products } = useProducts();
+  const categories = new Set(products.map((product) => product.category));
+
+  const highlights = [
+    { value: products.length, label: 'Powders listed' },
+    { value: categories.size, label: 'Ingredient groups' },
+    { value: 'FSSAI', label: 'Facility license' },
+    { value: 'Per order', label: 'Quality scope' }
+  ];
+
   return (
     <section className="bg-[#183126] text-[#f4f1e8]" aria-label="Sourcing facts">
       <div className="mx-auto grid max-w-[1440px] grid-cols-2 px-5 sm:px-8 lg:grid-cols-4 lg:px-12">

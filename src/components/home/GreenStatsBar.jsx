@@ -1,8 +1,9 @@
 import React from 'react';
 import { Package, Sprout, ThumbsUp, Heart } from 'lucide-react';
-import { products } from '../../data/products';
+import { useProducts } from '../../context/ProductContext';
 
 export default function GreenStatsBar() {
+  const { products } = useProducts();
   const stats = [
     {
       icon: Package,

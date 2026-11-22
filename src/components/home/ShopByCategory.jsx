@@ -1,6 +1,6 @@
 import React from 'react';
 import { ArrowRight, ArrowUpRight } from 'lucide-react';
-import { products } from '../../data/products';
+import { useProducts } from '../../context/ProductContext';
 
 const categoryDetails = [
   {
@@ -22,6 +22,7 @@ const categoryDetails = [
 ];
 
 export default function ShopByCategory({ onSelectCategory }) {
+  const { products } = useProducts();
   const categories = categoryDetails
     .map((category) => {
       const categoryProducts = products.filter((product) => product.category === category.name);

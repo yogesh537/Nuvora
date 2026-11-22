@@ -108,6 +108,25 @@ export function LeadProvider({ children }) {
   const [activeLeadModal, setActiveLeadModal] = useState(null); // 'quote' | 'sample' | 'catalogue' | null
   const [selectedProductForQuote, setSelectedProductForQuote] = useState(null);
 
+  // Sync leads from backend API
+  useEffect(() => {
+    async function loadBackendLeads() {
+      try {
+        const res = await fetch('/api/leads');
+        if (res.ok) {
+          const data = await res.json();
+          if (Array.isArray(data) && data.length > 0) {
+            setLeads(data);
+            localStorage.setItem('nuvaro_leads', JSON.stringify(data));
+          }
+        }
+      } catch {
+        // running in offline/client mode
+      }
+    }
+    loadBackendLeads();
+  }, []);
+
   useEffect(() => {
     try {
       localStorage.setItem('nuvaro_leads', JSON.stringify(leads));
@@ -116,7 +135,7 @@ export function LeadProvider({ children }) {
     }
   }, [leads]);
 
-  const addLead = (leadData) => {
+  const addLead = async (leadData) => {
     const isSample = leadData.type === 'Sample Request';
     const prefix = isSample ? 'NVS' : 'NVQ';
     const randomNum = Math.floor(1000 + Math.random() * 9000);
@@ -131,10 +150,22 @@ export function LeadProvider({ children }) {
     };
 
     setLeads(prev => [newLead, ...prev]);
+
+    // Send to backend API
+    try {
+      await fetch('/api/leads', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(newLead)
+      });
+    } catch {
+      console.log('Saved inquiry locally (server offline)');
+    }
+
     return newLead;
   };
 
-  const updateLeadStatus = (leadId, newStatus, newNotes) => {
+  const updateLeadStatus = async (leadId, newStatus, newNotes) => {
     setLeads(prev => prev.map(lead => {
       if (lead.id === leadId) {
         return {
@@ -145,10 +176,28 @@ export function LeadProvider({ children }) {
       }
       return lead;
     }));
+
+    try {
+      await fetch(`/api/leads/${leadId}`, {
+        method: 'PATCH',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ status: newStatus, notes: newNotes })
+      });
+    } catch {
+      console.warn('Backend patch failed, updated in local state');
+    }
   };
 
-  const deleteLead = (leadId) => {
+  const deleteLead = async (leadId) => {
     setLeads(prev => prev.filter(l => l.id !== leadId));
+
+    try {
+      await fetch(`/api/leads/${leadId}`, {
+        method: 'DELETE'
+      });
+    } catch {
+      console.warn('Backend delete failed, removed from local state');
+    }
   };
 
   const openQuoteModal = (product = null) => {

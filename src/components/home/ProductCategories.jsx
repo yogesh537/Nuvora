@@ -1,8 +1,9 @@
 import React from 'react';
-import { products } from '../../data/products';
+import { useProducts } from '../../context/ProductContext';
 import { ArrowRight } from 'lucide-react';
 
 export default function ProductCategories({ onSelectCategory }) {
+  const { products } = useProducts();
   const categoriesList = [...new Set(products.map((product) => product.category))].map((name) => {
     const categoryProducts = products.filter((product) => product.category === name);
     return {

@@ -1,0 +1,211 @@
+[
+  {
+    "id": "onion-powder",
+    "name": "Dehydrated Onion Powder & Flakes",
+    "botanicalName": "Allium cepa",
+    "category": "Spice Powders",
+    "forms": [
+      "Fine Powder (80-100 Mesh)",
+      "Dehydrated Flakes",
+      "Minced / Granules (16-40 Mesh)",
+      "Chopped (3-5mm)"
+    ],
+    "meshSize": "80-100 Mesh (Powder) / 8-24 Mesh (Flakes)",
+    "purity": "100% Pure White & Red Onion, No Caking Agents",
+    "colorProfile": "Creamy White / Pale Golden / Pink",
+    "description": "Industrial-grade dehydrated onion processed from fresh selected bulbs. Available in fine powder, crispy flakes, chopped and minced granules for savory formulations and seasoning lines.",
+    "applications": [
+      "Snack seasonings, chips coatings & noodle tastemakers",
+      "Soups, bouillons, sauces and broth bases",
+      "Dry marinades, rubs & meat processing blends",
+      "Ready-to-eat meals and instant food formulations"
+    ],
+    "image": "/images/powders/onion-powder.jpg",
+    "imageAlt": "Fine cream-colored onion powder, golden dehydrated onion flakes and raw onions",
+    "featured": true
+  },
+  {
+    "id": "garlic-powder",
+    "name": "Dehydrated Garlic Powder & Granules",
+    "botanicalName": "Allium sativum",
+    "category": "Spice Powders",
+    "forms": [
+      "Fine Powder (80-100 Mesh)",
+      "Granules (16-40 Mesh)",
+      "Minced Garlic",
+      "Toasted Flakes"
+    ],
+    "meshSize": "80-100 Mesh (Powder) / 16-40 Mesh (Granules)",
+    "purity": "100% Pure Garlic, High Allicin Potency",
+    "colorProfile": "Warm Pale Cream / Light Sand",
+    "description": "Pungent, high-potency dehydrated garlic delivering consistent allicin flavor profiles across bulk spice shakers, savory coatings, gourmet dips, and processed foods.",
+    "applications": [
+      "Spice shakers, BBQ rubs & dry table seasonings",
+      "Garlic bread coatings, dips, mayonnaise & dressings",
+      "Processed meats, sausages and canned foods",
+      "Industrial sauce, pasta sauce & culinary premixes"
+    ],
+    "image": "/images/powders/garlic-powder.jpg",
+    "imageAlt": "Fine garlic powder and coarse garlic granules with fresh whole garlic bulb",
+    "featured": true
+  },
+  {
+    "id": "ginger-powder",
+    "name": "Ginger Powder & Granules",
+    "botanicalName": "Zingiber officinale",
+    "category": "Spice Powders",
+    "forms": [
+      "Fine Powder (80-100 Mesh)",
+      "Granules / Crushed (20-40 Mesh)"
+    ],
+    "meshSize": "80-100 Mesh",
+    "purity": "100% Pure Sun-Dried Ginger, High Gingerol",
+    "colorProfile": "Pale Golden Sand / Warm Buff",
+    "description": "Warm, pungent ginger milled from dried rhizomes. Free-flowing powder with sharp aroma for beverage premixes, bakery, spice chai blends, and Asian cooking pastes.",
+    "applications": [
+      "Chai concentrates, herbal teas & wellness shots",
+      "Gingerbread, cookies, cakes & bakery premixes",
+      "Curry powders, oriental sauces & marinade pastes",
+      "Dietary supplements and digestion-support blends"
+    ],
+    "image": "/images/powders/ginger-powder.jpg",
+    "imageAlt": "Smooth golden ginger powder in wooden bowl with fresh sliced ginger root",
+    "featured": true
+  },
+  {
+    "id": "beetroot-powder",
+    "name": "Pure Beetroot Powder",
+    "botanicalName": "Beta vulgaris",
+    "category": "Vegetable Powders",
+    "forms": [
+      "Fine Powder (80-100 Mesh)",
+      "Granules (20-40 Mesh)"
+    ],
+    "meshSize": "80-100 Mesh (Fine Sifted)",
+    "purity": "100% Pure, Zero Artificial Colorants",
+    "colorProfile": "Intense Ruby Magenta / Deep Red",
+    "description": "Vibrant, nutrient-dense dehydrated beetroot powder with high natural betanin content for clean-label food coloring, beverages, bakery and functional nutraceutical blends.",
+    "applications": [
+      "Natural food & beverage coloring",
+      "Smoothies, drink mixes & hydration sticks",
+      "Artisanal bakery, pasta & confectionery",
+      "Pre-workout & functional dietary formulations"
+    ],
+    "image": "/images/powders/beetroot-powder.jpg",
+    "imageAlt": "Vibrant red beetroot powder conical heap with fresh beetroots and glass spice jar",
+    "featured": true
+  },
+  {
+    "id": "rose-petal-powder",
+    "name": "Rose Petal Powder & Flakes",
+    "botanicalName": "Rosa damascena",
+    "category": "Herbal & Botanical",
+    "forms": [
+      "Fine Powder (80-100 Mesh)",
+      "Crushed Petals (10-20 Mesh)"
+    ],
+    "meshSize": "80-100 Mesh",
+    "purity": "100% Edible & Cosmetic Grade Damask Rose",
+    "colorProfile": "Dusty Crimson / Rose Pink",
+    "description": "Fragrant, shade-dried Damask rose petal powder with gentle floral aroma. Formulated for luxury cosmetics, skincare face packs, artisanal desserts, and gourmet herbal teas.",
+    "applications": [
+      "Cosmetic clay masks, ubtan & botanical skincare",
+      "Gourmet desserts, floral syrups & baking glazes",
+      "Artisanal tea blends and relaxation beverages",
+      "Natural body dusting and aromatherapy compounds"
+    ],
+    "image": "/images/powders/rose-petal-powder.jpg",
+    "imageAlt": "Dusty pink rose petal powder on dark slate with dried crimson petals",
+    "featured": true
+  },
+  {
+    "id": "moringa-powder",
+    "name": "Moringa Leaf Powder",
+    "botanicalName": "Moringa oleifera",
+    "category": "Herbal & Botanical",
+    "forms": [
+      "Micro-Milled Powder (100-120 Mesh)"
+    ],
+    "meshSize": "100-120 Mesh Ultra-Fine",
+    "purity": "100% Shade-Dried Moringa Oleifera Leaves",
+    "colorProfile": "Brilliant Emerald Green",
+    "description": "Certified organic shade-dried moringa leaf powder with maximum chlorophyll and antioxidant retention. Ideal for green superfood blends, wellness capsules, and nutritional powders.",
+    "applications": [
+      "Green drink mixes, superfood smoothies & juices",
+      "Fortified nutritional snacks, pasta & energy bars",
+      "Nutraceutical tablets, dietary capsules & botanicals",
+      "Organic teas and herbal wellness infusions"
+    ],
+    "image": "/images/powders/moringa-powder.jpg",
+    "imageAlt": "Conical heap of brilliant emerald green moringa powder with fresh sprigs",
+    "featured": true
+  },
+  {
+    "id": "turmeric-powder",
+    "name": "Pure Turmeric Powder",
+    "botanicalName": "Curcuma longa",
+    "category": "Spice Powders",
+    "forms": [
+      "Fine Powder (80-100 Mesh)",
+      "Polished Turmeric Fingers"
+    ],
+    "meshSize": "80-100 Mesh",
+    "purity": "High Curcumin (3-5%), Steam Sterilized, Zero Lead Chromate",
+    "colorProfile": "Brilliant Golden Amber / Saffron Yellow",
+    "description": "Single-origin Indian turmeric powder dried under precision thermal controls with high curcuminoid bioavailability for golden milk premixes, dietary supplements, seasonings and culinary preparations.",
+    "applications": [
+      "Curry powders, seasonings & ready marinades",
+      "Golden milk lattes, wellness tonics & immunity beverages",
+      "Dietary supplement capsules and curcumin extracts",
+      "Natural clean-label culinary yellow coloring"
+    ],
+    "image": "/images/powders/turmeric-powder.jpg",
+    "imageAlt": "Fine vibrant yellow-orange turmeric powder in ceramic bowl with raw turmeric roots",
+    "featured": true
+  },
+  {
+    "id": "green-chilli-powder",
+    "name": "Dehydrated Green Chilli Powder & Flakes",
+    "botanicalName": "Capsicum annuum",
+    "category": "Spice Powders",
+    "forms": [
+      "Fine Powder (60-80 Mesh)",
+      "Crushed Flakes (10-20 Mesh)"
+    ],
+    "meshSize": "60-80 Mesh",
+    "purity": "100% Fresh Indian Green Chillies, Uniform Scoville Heat",
+    "colorProfile": "Natural Olive Green / Sage",
+    "description": "Authentic fresh green chilli heat preserved through cold dehydration. Imparts genuine fresh pungent heat without the roasted note of red chillies, ideal for savory snacks, namkeens, and table seasoning blends.",
+    "applications": [
+      "Extruded savory snacks, potato chips & namkeen seasonings",
+      "Instant noodles, ramen tastemakers & hot sauces",
+      "Canned food formulations and dry meat rubs",
+      "Spice shaker mixes and table seasoning blends"
+    ],
+    "image": "/images/powders/green-chilli-powder.jpg",
+    "imageAlt": "Fine olive green chilli powder in bowl with crisp dehydrated green chillies",
+    "featured": true
+  },
+  {
+    "id": "jackfruit-powder",
+    "name": "Raw Green Jackfruit Powder",
+    "botanicalName": "Artocarpus heterophyllus",
+    "category": "Exotic Fruit",
+    "forms": [
+      "Fine Powder (80-100 Mesh)"
+    ],
+    "meshSize": "80-100 Mesh",
+    "purity": "100% Unripe Green Jackfruit, High Resistant Starch & Low Glycemic Index",
+    "colorProfile": "Creamy Off-White / Pale Ivory",
+    "description": "Dehydrated raw unripe green jackfruit milled into a versatile neutral powder. Renowned for its low glycemic index and high dietary fiber content, widely blended into daily flour, baking premixes, and vegan functional foods.",
+    "applications": [
+      "Low GI flour blends, flatbreads & bakery premixes",
+      "Dietary fiber fortification in cereals and snack bars",
+      "Plant-based food formulations and nutritional supplements",
+      "Thickening and fiber-enhancing base for soups and gravies"
+    ],
+    "image": "/images/powders/jackfruit-powder.jpg",
+    "imageAlt": "Creamy pale unripe jackfruit powder with slices of green raw jackfruit",
+    "featured": false
+  }
+]

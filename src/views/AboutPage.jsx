@@ -1,8 +1,9 @@
 import React from 'react';
 import { ArrowRight, ArrowUpRight, BadgeCheck, Building2, Leaf, PackageCheck, Sprout, UsersRound, ShieldCheck } from 'lucide-react';
-import { products } from '../data/products';
+import { useProducts } from '../context/ProductContext';
 
 export default function AboutPage({ onExploreProducts, onOpenQuote }) {
+  const { products } = useProducts();
   const categories = [...new Set(products.map((product) => product.category))];
   const featuredProduct = products.find((product) => product.id === 'ginger-powder') || products[0];
 

@@ -25,9 +25,10 @@ import {
 } from 'lucide-react';
 import { useLeads } from '../context/LeadContext';
 import { useCompare } from '../context/CompareContext';
-import { products } from '../data/products';
+import { useProducts } from '../context/ProductContext';
 
 export default function HomePage({ onSelectProduct, onSelectCategory, onOpenQuickSpec }) {
+  const { products } = useProducts();
   const { openQuoteModal, openSampleModal } = useLeads();
   const { comparedProducts, addToCompare, removeFromCompare } = useCompare();
 
@@ -382,21 +383,6 @@ export default function HomePage({ onSelectProduct, onSelectCategory, onOpenQuic
                 </button>
               </div>
 
-              {/* Trust & Commercial Export Indicators */}
-              <div className="mt-6 sm:mt-7 flex flex-wrap items-center gap-3">
-                <span className="inline-flex items-center gap-2 rounded-full bg-emerald-50 border border-emerald-200/80 px-3.5 py-1.5 text-xs font-semibold text-[#0B7337]">
-                  <span className="relative flex h-2 w-2">
-                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-                    <span className="relative inline-flex rounded-full h-2 w-2 bg-[#0B7337]"></span>
-                  </span>
-                  Commercial Export Shipments Worldwide
-                </span>
-                <span className="inline-flex items-center gap-1.5 rounded-full bg-amber-50 border border-amber-200/80 px-3 py-1.5 text-xs font-semibold text-amber-800">
-                  <Award className="h-3.5 w-3.5 text-amber-600" />
-                  Direct Farm Sourced • FSSAI Certified
-                </span>
-              </div>
-
             </div>
 
             {/* Right Sliding Showcase - Parallel Scrolling Gallery Wall (Clean Light Theme) */}
@@ -591,11 +577,6 @@ export default function HomePage({ onSelectProduct, onSelectCategory, onOpenQuic
 
             {/* Right: Editorial Typography */}
             <div>
-              <div className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-[#0B7337] bg-emerald-50 border border-emerald-200/60 rounded-full px-3 py-1 mb-3">
-                <Leaf className="h-3.5 w-3.5" />
-                <span>ABOUT US</span>
-              </div>
-
               <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-stone-900 tracking-tight leading-[1.25]">
                 Leading Dehydrated Vegetable &amp; Fruit Powder Wholesale Supplier in India
               </h2>

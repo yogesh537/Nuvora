@@ -13,7 +13,7 @@ import {
   ShieldCheck
 } from 'lucide-react';
 import { useLeads } from '../context/LeadContext';
-import { products } from '../data/products';
+import { useProducts } from '../context/ProductContext';
 
 const qualityCycle = [
   {
@@ -74,6 +74,7 @@ const reviewAreas = [
 
 export default function QualityCertificationsPage() {
   const { openQuoteModal } = useLeads();
+  const { products } = useProducts();
   const showcaseProduct = products.find((product) => product.id === 'ginger-powder') || products[0];
 
   return (

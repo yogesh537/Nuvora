@@ -8,7 +8,6 @@ import {
   Award,
   Sparkles
 } from 'lucide-react';
-import { products } from '../../data/products';
 
 export default function AboutAndImpactSection() {
   return (

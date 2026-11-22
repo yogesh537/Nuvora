@@ -1,0 +1,89 @@
+[
+  {
+    "id": "NV-QT-2026-4953",
+    "quoteNumber": "NV-QT-2026-3898",
+    "quoteDate": "2026-11-22",
+    "validUntil": "2026-12-22",
+    "buyerName": "Henrik Van Der Meer",
+    "buyerCompany": "Nordic Clean Foods BV",
+    "buyerEmail": "h.vandermeer@nordiccleanfoods.nl",
+    "buyerCountry": "Rotterdam, Netherlands",
+    "incoterm": "CIF Rotterdam Port",
+    "currency": "INR",
+    "paymentTerms": "30% Advance T/T, 70% against Bill of Lading (B/L)",
+    "lineItems": [
+      {
+        "product": "Spinach Powder (Air dried, 80 Mesh)",
+        "qty": 5000,
+        "unit": "kg",
+        "unitPrice": 380
+      },
+      {
+        "product": "Beetroot Powder (Spray dried, 80 Mesh)",
+        "qty": 2500,
+        "unit": "kg",
+        "unitPrice": 420
+      }
+    ],
+    "notes": "Packaging: 25kg HDPE fibre drums with food-grade inner liners. FSSAI facility license No. 10020021008942; phytosanitary inspection and laboratory COA confirmed with shipment.",
+    "subtotal": 2950000,
+    "status": "Draft",
+    "createdAt": "2026-11-22T11:02:28.734Z"
+  },
+  {
+    "id": "NV-QT-2026-8941",
+    "quoteNumber": "NV-QT-2026-8941",
+    "quoteDate": "2026-11-17",
+    "validUntil": "2026-12-17",
+    "buyerName": "Henrik Van Der Meer",
+    "buyerCompany": "Nordic Clean Foods BV",
+    "buyerEmail": "h.vandermeer@nordiccleanfoods.nl",
+    "buyerCountry": "Rotterdam, Netherlands",
+    "incoterm": "CIF Rotterdam Port",
+    "currency": "USD",
+    "paymentTerms": "30% Advance T/T, 70% against Bill of Lading (B/L)",
+    "lineItems": [
+      {
+        "product": "Spinach Powder (Air dried, 80 Mesh)",
+        "qty": 5000,
+        "unit": "kg",
+        "unitPrice": 4.8
+      },
+      {
+        "product": "Beetroot Powder (Spray dried, 80 Mesh)",
+        "qty": 2500,
+        "unit": "kg",
+        "unitPrice": 5.4
+      }
+    ],
+    "notes": "Packaging: 25kg fibre drums with inner liners. FSSAI facility license available; phytosanitary and Certificate of Analysis provided with shipment.",
+    "subtotal": 37500,
+    "status": "Sent",
+    "createdAt": "2026-11-17T15:00:00Z"
+  },
+  {
+    "id": "NV-QT-2026-8925",
+    "quoteNumber": "NV-QT-2026-8925",
+    "quoteDate": "2026-11-15",
+    "validUntil": "2026-12-15",
+    "buyerName": "David Chen",
+    "buyerCompany": "Pacific Rim Flavors Inc",
+    "buyerEmail": "dchen@pacificrimflavors.com",
+    "buyerCountry": "Los Angeles, United States",
+    "incoterm": "FOB Nhava Sheva",
+    "currency": "USD",
+    "paymentTerms": "Irrevocable Letter of Credit (L/C) at sight",
+    "lineItems": [
+      {
+        "product": "Dehydrated Garlic Powder (80-100 Mesh)",
+        "qty": 12000,
+        "unit": "kg",
+        "unitPrice": 3.85
+      }
+    ],
+    "notes": "FOB Nhava Sheva. 25kg multi-wall paper bags with PE food-grade inner liners. US FDA registered facility COA included.",
+    "subtotal": 46200,
+    "status": "Negotiation",
+    "createdAt": "2026-11-15T10:30:00Z"
+  }
+]

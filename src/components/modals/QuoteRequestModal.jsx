@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useLeads } from '../../context/LeadContext';
-import { products } from '../../data/products';
+import { useProducts } from '../../context/ProductContext';
 import { ArrowLeft, ArrowRight, BadgeCheck, Building2, CheckCircle2, Mail, MapPin, Package, Phone, Send, User, X } from 'lucide-react';
 
 const CUSTOM_PRODUCT = 'Custom blend or another ingredient';
@@ -27,6 +27,7 @@ const initialFormData = {
 
 export default function QuoteRequestModal() {
   const { activeLeadModal, selectedProductForQuote, closeModal, addLead, openQuoteModal } = useLeads();
+  const { products } = useProducts();
   const isOpen = activeLeadModal === 'quote' || activeLeadModal === 'sample';
   const isSample = activeLeadModal === 'sample';
   const [step, setStep] = useState(1);
@@ -96,9 +97,9 @@ export default function QuoteRequestModal() {
     setStep((currentStep) => currentStep + 1);
   };
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    const newLead = addLead({
+    const newLead = await addLead({
       fullName: formData.fullName,
       jobTitle: formData.jobTitle,
       company: formData.company,

@@ -250,12 +250,17 @@
 
 /* Print Styles for official quotations & TDS sheets */
 @media print {
+  *, ::before, ::after {
+    font-family: 'Poppins', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif !important;
+  }
+
   body {
     background: #ffffff !important;
     color: #000000 !important;
+    font-family: 'Poppins', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif !important;
   }
 
-  header, footer, #floating-whatsapp {
+  aside, header, footer, #floating-whatsapp, .print\:hidden {
     display: none !important;
   }
 
@@ -265,5 +270,6 @@
     padding: 0 !important;
     margin: 0 !important;
     width: 100% !important;
+    font-family: 'Poppins', sans-serif !important;
   }
 }
