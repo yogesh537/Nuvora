@@ -79,26 +79,42 @@ export default function HomePage({ onSelectProduct, onSelectCategory, onOpenQuic
   ];
 
   const [heroSlide, setHeroSlide] = useState(0);
-  const [isHeroPaused, setIsHeroPaused] = useState(false);
 
   useEffect(() => {
-    if (isHeroPaused) return;
     const timer = setInterval(() => {
       setHeroSlide((prev) => (prev + 1) % heroSlides.length);
-    }, 4500);
+    }, 3800);
     return () => clearInterval(timer);
-  }, [isHeroPaused, heroSlides.length]);
+  }, [heroSlides.length]);
 
   const currentHero = heroSlides[heroSlide];
   const currentHeroProduct =
     products.find((p) => p.id === currentHero.id) || products[0];
 
-  const nextHeroSlide = () => {
-    setHeroSlide((prev) => (prev + 1) % heroSlides.length);
-  };
-  const prevHeroSlide = () => {
-    setHeroSlide((prev) => (prev - 1 + heroSlides.length) % heroSlides.length);
-  };
+  // --- Parallel Scrolling Image Wall Columns (100% Dehydrated Powders Only) ---
+  const marqueeCol1 = [
+    { id: 'onion-powder', image: '/images/powders/onion-powder.jpg' },
+    { id: 'rose-petal-powder', image: '/images/powders/rose-petal-powder.jpg' },
+    { id: 'onion-powder', image: '/images/powders/turmeric-powder.jpg' },
+    { id: 'moringa-powder', image: '/images/powders/spinach-powder.jpg' },
+    { id: 'beetroot-powder', image: '/images/powders/beetroot-powder.jpg' },
+  ];
+
+  const marqueeCol2 = [
+    { id: 'garlic-powder', image: '/images/powders/garlic-powder.jpg' },
+    { id: 'moringa-powder', image: '/images/powders/moringa-powder.jpg' },
+    { id: 'ginger-powder', image: '/images/powders/ginger-powder.jpg' },
+    { id: 'garlic-powder', image: '/images/powders/green-chilli-powder.jpg' },
+    { id: 'onion-powder', image: '/images/powders/onion-powder.jpg' },
+  ];
+
+  const marqueeCol3 = [
+    { id: 'ginger-powder', image: '/images/powders/ginger-powder.jpg' },
+    { id: 'beetroot-powder', image: '/images/powders/beetroot-powder.jpg' },
+    { id: 'garlic-powder', image: '/images/powders/garlic-powder.jpg' },
+    { id: 'rose-petal-powder', image: '/images/powders/rose-petal-powder.jpg' },
+    { id: 'moringa-powder', image: '/images/powders/moringa-powder.jpg' },
+  ];
 
   // --- 6 Trust Pillars ---
   const trustPillars = [
@@ -315,15 +331,15 @@ export default function HomePage({ onSelectProduct, onSelectCategory, onOpenQuic
         </div>
 
         <div className="relative z-10 mx-auto w-full max-w-[1440px] px-6 sm:px-12 lg:px-16">
-          <div className="grid grid-cols-1 lg:grid-cols-[1.15fr_0.85fr] items-center gap-8 lg:gap-10 xl:gap-14">
+          <div className="grid grid-cols-1 lg:grid-cols-12 items-center gap-8 lg:gap-8 xl:gap-12">
             
             {/* Left Content */}
-            <div className="flex flex-col justify-center">
+            <div className="lg:col-span-6 xl:col-span-6 flex flex-col justify-center">
 
               {/* Main Headline - Stable Base with Animated Highlight Text */}
-              <h1 className="text-[32px] sm:text-[44px] md:text-[50px] lg:text-[54px] xl:text-[58px] font-bold leading-[1.15] tracking-tight text-stone-900 min-h-[75px] sm:min-h-[70px] lg:min-h-[85px]">
-                India’s Trusted Bulk Supplier of{' '}
-                <span className="inline-block text-[#0B7337] underline decoration-[#FBBF24] decoration-4 underline-offset-8">
+              <h1 className="text-[28px] sm:text-[38px] md:text-[44px] lg:text-[46px] xl:text-[50px] font-bold leading-[1.2] tracking-tight text-stone-900">
+                India’s Trusted Bulk Supplier of
+                <span className="block mt-1 sm:mt-1.5 text-[#0B7337] underline decoration-[#FBBF24] decoration-4 underline-offset-8">
                   <span key={currentHero.highlight} className="inline-block animate-text-in">
                     {currentHero.highlight}
                   </span>
@@ -331,7 +347,7 @@ export default function HomePage({ onSelectProduct, onSelectCategory, onOpenQuic
               </h1>
 
               {/* Subtitle - Persistent & Authoritative */}
-              <p className="mt-3 sm:mt-4 text-sm sm:text-base md:text-lg text-stone-600 leading-relaxed font-normal max-w-xl">
+              <p className="mt-3.5 sm:mt-4 text-sm sm:text-base md:text-lg text-stone-600 leading-relaxed font-normal max-w-xl">
                 Authentic Indian farm harvests, dehydrated under precision low-temperature conditions. 100% pure, steam-sterilized, and delivered in commercial export container loads worldwide.
               </p>
 
@@ -366,97 +382,101 @@ export default function HomePage({ onSelectProduct, onSelectCategory, onOpenQuic
                 </button>
               </div>
 
-              {/* Slide Indicators & Navigation Controls */}
-              <div className="mt-6 sm:mt-7 flex items-center gap-4">
-                <div className="flex items-center gap-2">
-                  {heroSlides.map((_, idx) => {
-                    const isActive = idx === heroSlide;
-                    return (
-                      <button
-                        key={idx}
-                        type="button"
-                        onClick={() => setHeroSlide(idx)}
-                        aria-label={`Slide ${idx + 1}`}
-                        className="py-1.5 focus:outline-none"
-                      >
-                        <div
-                          className={`h-1.5 rounded-full transition-all duration-500 ${
-                            isActive
-                              ? 'w-10 sm:w-12 bg-[#FBBF24] shadow-xs'
-                              : 'w-4 sm:w-5 bg-stone-200 hover:bg-stone-300'
-                          }`}
-                        />
-                      </button>
-                    );
-                  })}
-                </div>
-
-                <div className="ml-2 flex items-center gap-1.5">
-                  <button
-                    type="button"
-                    onClick={prevHeroSlide}
-                    className="flex h-8 w-8 items-center justify-center rounded-full border border-stone-200 bg-white text-stone-600 hover:border-[#0B7337] hover:text-[#0B7337] transition-colors shadow-2xs"
-                    aria-label="Previous Slide"
-                  >
-                    <ChevronLeft className="h-4 w-4" />
-                  </button>
-                  <button
-                    type="button"
-                    onClick={nextHeroSlide}
-                    className="flex h-8 w-8 items-center justify-center rounded-full border border-stone-200 bg-white text-stone-600 hover:border-[#0B7337] hover:text-[#0B7337] transition-colors shadow-2xs"
-                    aria-label="Next Slide"
-                  >
-                    <ChevronRight className="h-4 w-4" />
-                  </button>
-                  <span className="text-xs font-mono font-medium text-stone-400 ml-1.5">
-                    0{heroSlide + 1} / 0{heroSlides.length}
+              {/* Trust & Commercial Export Indicators */}
+              <div className="mt-6 sm:mt-7 flex flex-wrap items-center gap-3">
+                <span className="inline-flex items-center gap-2 rounded-full bg-emerald-50 border border-emerald-200/80 px-3.5 py-1.5 text-xs font-semibold text-[#0B7337]">
+                  <span className="relative flex h-2 w-2">
+                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                    <span className="relative inline-flex rounded-full h-2 w-2 bg-[#0B7337]"></span>
                   </span>
-                </div>
+                  Commercial Export Shipments Worldwide
+                </span>
+                <span className="inline-flex items-center gap-1.5 rounded-full bg-amber-50 border border-amber-200/80 px-3 py-1.5 text-xs font-semibold text-amber-800">
+                  <Award className="h-3.5 w-3.5 text-amber-600" />
+                  Direct Farm Sourced • FSSAI Certified
+                </span>
               </div>
 
             </div>
 
-            {/* Right Sliding Showcase Card - Slideshow of Images */}
-            <div
-              className="relative flex justify-center lg:justify-end"
-              onMouseEnter={() => setIsHeroPaused(true)}
-              onMouseLeave={() => setIsHeroPaused(false)}
-            >
-              <div
-                onClick={() => onSelectProduct(currentHeroProduct)}
-                className="group relative cursor-pointer overflow-hidden rounded-3xl border border-stone-200/90 bg-white p-3 shadow-[0_20px_50px_rgba(0,0,0,0.06)] transition-all duration-500 hover:shadow-2xl hover:border-emerald-300 w-full max-w-[480px] aspect-[4/3.2]"
-              >
-                <div className="relative h-full w-full overflow-hidden rounded-2xl bg-stone-950">
-                  {heroSlides.map((slide, idx) => (
-                    <img
-                      key={slide.id}
-                      src={slide.image}
-                      alt={slide.alt}
-                      className={`absolute inset-0 h-full w-full object-cover transition-all duration-700 ease-in-out ${
-                        idx === heroSlide
-                          ? 'opacity-100 scale-100'
-                          : 'opacity-0 scale-105 pointer-events-none'
-                      }`}
-                      loading={idx === 0 ? "eager" : "lazy"}
-                    />
-                  ))}
+            {/* Right Sliding Showcase - Parallel Scrolling Gallery Wall (Clean Light Theme) */}
+            <div className="lg:col-span-6 xl:col-span-6 relative flex justify-center lg:justify-end">
+              <div className="relative h-[480px] sm:h-[530px] lg:h-[580px] xl:h-[620px] w-full max-w-[540px] overflow-hidden rounded-3xl bg-transparent p-2.5 sm:p-3 group">
+                
+                {/* Ambient Soft Radiance */}
+                <div className="pointer-events-none absolute -top-16 -left-16 w-48 h-48 bg-emerald-500/10 rounded-full blur-3xl z-10" />
+                <div className="pointer-events-none absolute -bottom-16 -right-16 w-48 h-48 bg-amber-400/10 rounded-full blur-3xl z-10" />
 
-                  {/* Ambient Gradient & Product Badge Overlay */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-stone-950/85 via-stone-950/20 to-transparent flex items-end p-5 z-10 pointer-events-none">
-                    <div className="flex items-center justify-between w-full">
-                      <div>
-                        <span className="inline-block rounded-full bg-[#FBBF24] px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-wider text-stone-950 mb-1 shadow-2xs">
-                          {currentHero.badge}
-                        </span>
-                        <h4 className="text-base sm:text-lg font-bold text-white drop-shadow-sm">
-                          {currentHero.alt}
-                        </h4>
+                {/* Top and Bottom Clean Gradient Fade Masks (Matching White Hero Background) */}
+                <div className="pointer-events-none absolute inset-x-0 top-0 h-24 sm:h-32 bg-gradient-to-b from-white via-white/85 to-transparent z-20" />
+                <div className="pointer-events-none absolute inset-x-0 bottom-0 h-24 sm:h-32 bg-gradient-to-t from-white via-white/85 to-transparent z-20" />
+
+                {/* Tilted Parallel Columns Container */}
+                <div className="flex gap-2.5 sm:gap-3 lg:gap-3.5 justify-center transform -rotate-[10deg] scale-105 sm:scale-115 lg:scale-120 origin-center h-[140%] -mt-[20%]">
+                  
+                  {/* Column 1 - Moving UP */}
+                  <div className="flex flex-col gap-3 sm:gap-3.5 animate-marquee-up-slow group-hover:[animation-play-state:paused] w-[105px] sm:w-[135px] lg:w-[155px] shrink-0">
+                    {[...marqueeCol1, ...marqueeCol1].map((card, idx) => (
+                      <div
+                        key={`col1-${idx}`}
+                        onClick={() => {
+                          const prod = products.find((p) => p.id === card.id) || products[0];
+                          onSelectProduct(prod);
+                        }}
+                        className="group/card relative h-[150px] sm:h-[190px] lg:h-[220px] w-full shrink-0 overflow-hidden rounded-2xl sm:rounded-3xl border border-stone-200/90 bg-white shadow-[0_10px_25px_rgba(0,0,0,0.08)] cursor-pointer transition-all duration-300 hover:scale-105 hover:shadow-xl hover:border-emerald-500/60"
+                      >
+                        <img
+                          src={card.image}
+                          alt="Dehydrated Powder"
+                          className="h-full w-full object-cover transition-transform duration-500 group-hover/card:scale-110"
+                          loading="lazy"
+                        />
                       </div>
-                      <span className="rounded-full bg-white text-stone-950 p-2.5 font-bold shadow-md group-hover:bg-[#FBBF24] group-hover:text-stone-950 transition-colors pointer-events-auto">
-                        <ArrowRight className="h-4 w-4" />
-                      </span>
-                    </div>
+                    ))}
                   </div>
+
+                  {/* Column 2 - Moving DOWN */}
+                  <div className="flex flex-col gap-3 sm:gap-3.5 animate-marquee-down-slow group-hover:[animation-play-state:paused] w-[105px] sm:w-[135px] lg:w-[155px] shrink-0">
+                    {[...marqueeCol2, ...marqueeCol2].map((card, idx) => (
+                      <div
+                        key={`col2-${idx}`}
+                        onClick={() => {
+                          const prod = products.find((p) => p.id === card.id) || products[0];
+                          onSelectProduct(prod);
+                        }}
+                        className="group/card relative h-[150px] sm:h-[190px] lg:h-[220px] w-full shrink-0 overflow-hidden rounded-2xl sm:rounded-3xl border border-stone-200/90 bg-white shadow-[0_10px_25px_rgba(0,0,0,0.08)] cursor-pointer transition-all duration-300 hover:scale-105 hover:shadow-xl hover:border-emerald-500/60"
+                      >
+                        <img
+                          src={card.image}
+                          alt="Dehydrated Powder"
+                          className="h-full w-full object-cover transition-transform duration-500 group-hover/card:scale-110"
+                          loading="lazy"
+                        />
+                      </div>
+                    ))}
+                  </div>
+
+                  {/* Column 3 - Moving UP */}
+                  <div className="flex flex-col gap-3 sm:gap-3.5 animate-marquee-up-fast group-hover:[animation-play-state:paused] w-[105px] sm:w-[135px] lg:w-[155px] shrink-0">
+                    {[...marqueeCol3, ...marqueeCol3].map((card, idx) => (
+                      <div
+                        key={`col3-${idx}`}
+                        onClick={() => {
+                          const prod = products.find((p) => p.id === card.id) || products[0];
+                          onSelectProduct(prod);
+                        }}
+                        className="group/card relative h-[150px] sm:h-[190px] lg:h-[220px] w-full shrink-0 overflow-hidden rounded-2xl sm:rounded-3xl border border-stone-200/90 bg-white shadow-[0_10px_25px_rgba(0,0,0,0.08)] cursor-pointer transition-all duration-300 hover:scale-105 hover:shadow-xl hover:border-emerald-500/60"
+                      >
+                        <img
+                          src={card.image}
+                          alt="Dehydrated Powder"
+                          className="h-full w-full object-cover transition-transform duration-500 group-hover/card:scale-110"
+                          loading="lazy"
+                        />
+                      </div>
+                    ))}
+                  </div>
+
                 </div>
               </div>
             </div>
