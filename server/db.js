@@ -12,14 +12,23 @@ import { fileURLToPath } from 'node:url';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
-const DATA_DIR = path.join(__dirname, 'data');
+
+// On serverless environments like Vercel, the filesystem is read-only except /tmp
+const DATA_DIR = process.env.VERCEL
+  ? path.join('/tmp', 'nuvaro_data')
+  : path.join(__dirname, 'data');
+
 const PRODUCTS_FILE = path.join(DATA_DIR, 'products.json');
 const LEADS_FILE = path.join(DATA_DIR, 'leads.json');
 const QUOTES_FILE = path.join(DATA_DIR, 'quotes.json');
 
-// Ensure data folder exists
-if (!fs.existsSync(DATA_DIR)) {
-  fs.mkdirSync(DATA_DIR, { recursive: true });
+// Ensure data folder exists safely without throwing on read-only environments
+try {
+  if (!fs.existsSync(DATA_DIR)) {
+    fs.mkdirSync(DATA_DIR, { recursive: true });
+  }
+} catch (err) {
+  console.warn('[DATABASE] Could not create local data directory:', err.message);
 }
 
 // Helper: JSON file reader/writer

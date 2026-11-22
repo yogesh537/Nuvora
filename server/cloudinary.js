@@ -11,10 +11,16 @@ import { fileURLToPath } from 'node:url';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
-const UPLOADS_DIR = path.join(__dirname, '..', 'public', 'images', 'uploads');
+const UPLOADS_DIR = process.env.VERCEL
+  ? path.join('/tmp', 'nuvaro_uploads')
+  : path.join(__dirname, '..', 'public', 'images', 'uploads');
 
-if (!fs.existsSync(UPLOADS_DIR)) {
-  fs.mkdirSync(UPLOADS_DIR, { recursive: true });
+try {
+  if (!fs.existsSync(UPLOADS_DIR)) {
+    fs.mkdirSync(UPLOADS_DIR, { recursive: true });
+  }
+} catch (err) {
+  console.warn('[CLOUDINARY] Could not create local uploads folder:', err.message);
 }
 
 // Check if Cloudinary credentials are provided in environment
