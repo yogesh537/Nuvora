@@ -54,7 +54,7 @@ export default function CatalogueDownloadModal() {
         `Packaging options: ${product.packaging.join(', ')}`,
         ''
       ].join('\n')),
-      'Contact: export@nuvaroagro.com | +91 98200 12345'
+      'Contact: yogesh@nuvaroagro.com | +91 80874 05952'
     ].join('\n');
     const blob = new Blob([catalogContent], { type: 'text/plain;charset=utf-8' });
     const url = URL.createObjectURL(blob);

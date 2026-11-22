@@ -160,14 +160,14 @@ export default function FarmToFacilityTracking() {
                 {/* Direct Action Buttons */}
                 <div className="flex items-center gap-2">
                   <a
-                    href="tel:+919820012345"
+                    href="tel:+918087405952"
                     className="p-2.5 rounded-full bg-white text-emerald-800 hover:bg-emerald-50 border border-stone-200 shadow-sm transition-colors"
                     title="Call Export Desk"
                   >
                     <Phone className="w-4 h-4" />
                   </a>
                   <a
-                    href="https://wa.me/919820012345"
+                    href="https://wa.me/918087405952"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="p-2.5 rounded-full bg-[#25D366] text-white hover:bg-emerald-600 shadow-sm transition-transform hover:scale-110"

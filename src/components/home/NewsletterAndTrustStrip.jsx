@@ -40,7 +40,7 @@ export default function NewsletterAndTrustStrip() {
   };
 
   const whatsappMessage = encodeURIComponent("Hello Nuvaro Agro, I need support regarding bulk dehydrated powder procurement.");
-  const whatsappUrl = `https://wa.me/919820012345?text=${whatsappMessage}`;
+  const whatsappUrl = `https://wa.me/918087405952?text=${whatsappMessage}`;
 
   return (
     <div className="bg-[#183D28] text-white">

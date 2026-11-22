@@ -96,7 +96,7 @@ export default function CustomerFavorites({ onSelectProduct }) {
         {/* Horizontal scrollable row */}
         <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4">
           {allPowders.map((p) => {
-            const waUrl = `https://wa.me/919820012345?text=${encodeURIComponent(p.waMsg)}`;
+            const waUrl = `https://wa.me/918087405952?text=${encodeURIComponent(p.waMsg)}`;
             return (
               <div key={p.name} className="bg-white rounded-xl border border-stone-200 overflow-hidden hover:shadow-md transition-all group flex flex-col">
                 <div className="relative aspect-square bg-stone-50 overflow-hidden">

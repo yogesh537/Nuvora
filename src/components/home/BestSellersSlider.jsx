@@ -82,7 +82,7 @@ export default function BestSellersSlider({ products, onSelectProduct, onOpenQui
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 sm:gap-6">
             {products.slice(scrollIndex, scrollIndex + itemsPerPage).map((product) => {
               const inWishlist = isCompared(product.id);
-              const waUrl = `https://wa.me/919820012345?text=${encodeURIComponent(`Hello Nuvaro Agro, I would like to inquire about wholesale B2B pricing and samples for ${product.name}.`)}`;
+              const waUrl = `https://wa.me/918087405952?text=${encodeURIComponent(`Hello Nuvaro Agro, I would like to inquire about wholesale B2B pricing and samples for ${product.name}.`)}`;
 
               return (
                 <div 

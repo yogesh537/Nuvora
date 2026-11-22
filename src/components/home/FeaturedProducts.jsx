@@ -90,7 +90,7 @@ export default function FeaturedProducts({ onSelectProduct }) {
         {/* Product Cards Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {featuredProducts.map((p) => {
-            const waUrl = `https://wa.me/919820012345?text=${encodeURIComponent(p.waMsg)}`;
+            const waUrl = `https://wa.me/918087405952?text=${encodeURIComponent(p.waMsg)}`;
             return (
               <div key={p.id} className="group bg-white border border-stone-200 rounded-2xl overflow-hidden hover:shadow-lg transition-all duration-300 flex flex-col">
 

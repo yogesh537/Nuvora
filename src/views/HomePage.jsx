@@ -557,7 +557,7 @@ export default function HomePage({ onSelectProduct, onSelectCategory, onOpenQuic
               {/* Floating "Call Us Anytime" Yellow Card */}
               <div className="absolute -bottom-5 sm:-bottom-7 left-6 sm:left-10 z-20 animate-float">
                 <a
-                  href="tel:+918888006532"
+                  href="tel:+918087405952"
                   className="flex items-center gap-3.5 rounded-2xl bg-[#FBBF24] px-5 py-3.5 shadow-xl border border-amber-300/80 transition-all duration-300 hover:bg-[#F59E0B] hover:scale-105 group"
                 >
                   <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-[#0B7337] text-white shadow-sm transition-transform group-hover:rotate-12">
@@ -568,7 +568,7 @@ export default function HomePage({ onSelectProduct, onSelectCategory, onOpenQuic
                       Call Us Anytime
                     </span>
                     <span className="block text-base sm:text-lg font-bold text-stone-950 tracking-tight">
-                      +91 8888006532
+                      +91 80874 05952
                     </span>
                   </div>
                 </a>

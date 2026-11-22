@@ -2,7 +2,7 @@ import React from 'react';
 import { MessageCircle, ShieldCheck } from 'lucide-react';
 
 export default function FloatingWhatsApp() {
-  const phoneNumber = import.meta.env.VITE_WHATSAPP_NUMBER || "918087405952";
+  const phoneNumber = "918087405952";
   const defaultMessage = encodeURIComponent("Hello Nuvaro Agro Export Desk, I would like to inquire about bulk dehydrated powders specification, FOB/CIF pricing, and lab samples.");
   const whatsappUrl = `https://wa.me/${phoneNumber}?text=${defaultMessage}`;
 
