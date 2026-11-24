@@ -1,7 +1,6 @@
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 import path from 'path';
-import { handleApiRequest } from './server/index.js';
 
 export default defineConfig({
   plugins: [
@@ -9,10 +8,11 @@ export default defineConfig({
     {
       name: 'nuvaro-backend-api',
       configureServer(server) {
-        // Direct built-in backend API handler for /api/* routes during development
+        // Direct built-in backend API handler for /api/* routes during local development only
         server.middlewares.use(async (req, res, next) => {
           if (req.url && req.url.startsWith('/api')) {
             try {
+              const { handleApiRequest } = await import('./server/index.js');
               const handled = await handleApiRequest(req, res);
               if (handled) return;
             } catch (err) {

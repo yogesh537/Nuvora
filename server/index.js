@@ -17,7 +17,7 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 const PORT = process.env.PORT || 5000;
 
-// Initialize database on startup
+// Initialize database on request
 let dbInitialized = false;
 async function ensureDb() {
   if (!dbInitialized) {
@@ -25,7 +25,6 @@ async function ensureDb() {
     await db.initDb();
   }
 }
-ensureDb().catch(err => console.error('DB Init Error:', err));
 
 // Helper: Send JSON response
 function sendJson(res, statusCode, data) {
